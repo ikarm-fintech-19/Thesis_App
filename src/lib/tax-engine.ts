@@ -81,6 +81,15 @@ interface TaxRuleRow {
 // ---- Pure Functions ----
 
 /**
+ * Checks if a tax refund claim is still valid according to the 4-year limitation (Art. 27 LF 2026).
+ */
+export function isClaimValid(declarationYear: number, currentYear: number): boolean {
+  // LF 2026 specifies that the right to claim a refund expires after 4 years
+  // following the year the right was acquired.
+  return (currentYear - declarationYear) <= 4;
+}
+
+/**
  * Get the applicable TVA bracket for a given category
  */
 function getApplicableBracket(brackets: TaxBracketData[], category: TVACategory): TaxBracketData | null {

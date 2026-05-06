@@ -29,6 +29,13 @@ export function FiscalInsights() {
       icon: TrendingDown,
       color: 'text-blue-500',
       bg: 'bg-blue-500/10',
+    },
+    {
+      id: 4,
+      type: 'tfpc',
+      icon: Info,
+      color: 'text-indigo-500',
+      bg: 'bg-indigo-500/10',
     }
   ];
 

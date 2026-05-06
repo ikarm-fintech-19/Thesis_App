@@ -1,14 +1,15 @@
 'use client'
 
 import { AnnualTaxData } from './AnnualTaxWizard'
-import { calculateIBS } from '@/lib/ibs-engine'
+import { calculateIBS, calculateRdAllocation } from '@/lib/ibs-engine'
 import { calculateIRGBusiness } from '@/lib/irg-business-engine'
 import Decimal from 'decimal.js'
 import { Card, CardContent } from '@/components/ui/card'
-import { FileText, Download } from 'lucide-react'
+import { FileText, Download, Beaker } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n-context'
 import { downloadJSON } from '@/lib/export-utils'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 interface TaxSummaryStepProps {
   data: AnnualTaxData
@@ -32,8 +33,22 @@ export default function TaxSummaryStep({ data }: TaxSummaryStepProps) {
   const taxName = isIBS ? 'IBS (Impôt sur les Bénéfices)' : 'IRG (Impôt sur le Revenu Global)'
   const finalTax = isIBS ? ibsResult!.ibsAmount.toNumber() : irgResult!.totalIrg.toNumber()
 
+  const turnover = new Decimal(data.estimatedRevenue)
+  const isLargeEnterprise = isIBS && turnover.gte(2000000000) 
+  const rdAllocation = isLargeEnterprise ? calculateRdAllocation(turnover) : null
+
   return (
     <div className="space-y-6 animate-fade-in py-4">
+      {isLargeEnterprise && (
+        <Alert className="bg-purple-50 border-purple-200 text-purple-800">
+          <Beaker className="h-4 w-4 text-purple-600" />
+          <AlertTitle>Obligation R&D (Art. 119 LF 2026)</AlertTitle>
+          <AlertDescription>
+            Votre chiffre d'affaires dépasse 2 Mds DZD. Vous avez l'obligation d'allouer au moins 1% de votre CA ({rdAllocation?.toNumber().toLocaleString()} DZD) à la recherche et développement, ou de verser ce montant au fonds national.
+          </AlertDescription>
+        </Alert>
+      )}
+
       <div className="text-center space-y-2 mb-8">
         <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-2">
           <FileText className="w-8 h-8 text-primary" />

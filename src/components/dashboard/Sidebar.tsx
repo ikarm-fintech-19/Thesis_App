@@ -18,7 +18,10 @@ import {
   ChevronRight,
   Zap,
   PieChart,
-  Briefcase
+  Briefcase,
+  GraduationCap,
+  PiggyBank,
+  Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -33,6 +36,9 @@ export function Sidebar() {
     { name: t('nav.aiScanner'), href: '/dashboard/scanner', icon: Zap },
     { name: t('nav.declarations') || 'Déclarations', href: '/dashboard/declarations', icon: FileText },
     { name: t('nav.g50') || 'G50 Mensuel', href: '/dashboard/g50', icon: FileCheck },
+    { name: t('nav.tfpc') || 'Taxe Formation', href: '/dashboard/tfpc', icon: GraduationCap },
+    { name: 'Dividendes', href: '/dashboard/dividends', icon: PiggyBank },
+    { name: 'Retenue Étrangère', href: '/dashboard/foreign-withholding', icon: Globe },
     { name: t('annualTax.nav') || 'Bilan Annuel', href: '/dashboard/annual-tax', icon: PieChart },
     { name: t('nav.myTeam'), href: '/dashboard/team', icon: Users, roles: ['ACCOUNTANT', 'ADMIN'] },
     { name: t('nav.myClients') || 'Mes Clients', href: '/dashboard/accountant', icon: Briefcase, roles: ['ACCOUNTANT', 'ADMIN'] },

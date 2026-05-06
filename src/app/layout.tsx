@@ -62,7 +62,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} antialiased bg-background text-foreground font-sans min-h-screen flex flex-col`}
+        className={`${lexend.variable} ${sourceSans3.variable} ${cairo.variable} antialiased bg-background text-foreground font-sans min-h-screen flex flex-col`}
       >
         <Providers>
           <Header />

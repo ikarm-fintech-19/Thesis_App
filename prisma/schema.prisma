@@ -34,6 +34,7 @@ model User {
   company       String?
   nif           String?   // Numéro d'Identification Fiscale
   role          UserRole  @default(CITIZEN)
+  isForeignNonResident Boolean @default(false) // Phase 3 LF 2026
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -41,6 +42,7 @@ model User {
   subscription  Subscription?
   calculations  Calculation[]
   declarations  Declaration[]
+  overpaymentClaims OverpaymentClaim[] // Phase 4 LF 2026
   auditLogs     AuditLog[]
   
   // For Accountants: Clients they manage
@@ -165,11 +167,26 @@ model DeclarationPeriod {
   id          String   @id @default(cuid())
   month       Int?
   quarter     Int?
+  semester    Int?     // Phase 1 LF 2026: S1 or S2
   year        Int
   isClosed    Boolean  @default(false)
   
   declarations Declaration[]
   transactions Transaction[]
+}
+
+model OverpaymentClaim {
+  id              String   @id @default(cuid())
+  userId          String
+  amount          String
+  taxType         String   // IBS, IRG
+  dateEstablished DateTime // Art. 26, 27 LF 2026
+  expiryDate      DateTime // 4 years after dateEstablished
+  status          String   @default("PENDING") // PENDING, CLAIMED, EXPIRED
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id])
 }
 
 model Transaction {

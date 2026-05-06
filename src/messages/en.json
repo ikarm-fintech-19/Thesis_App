@@ -1,5 +1,5 @@
 {
-  "nav": {
+    "nav": {
     "dashboard": "Dashboard",
     "logout": "Logout",
     "regtech": "RegTech Compliance Platform",
@@ -14,6 +14,7 @@
     "aiScanner": "AI Scanner",
     "myDeclarations": "My Declarations",
     "g50": "G50 Declaration",
+    "tfpc": "Training Tax (TFPC)",
     "myTeam": "My Team",
     "billing": "Billing",
     "settings": "Settings",
@@ -522,6 +523,10 @@
       "digital": {
         "title": "Digital Filing",
         "desc": "Using e-payment avoids queues and secures your receipt instantly."
+      },
+      "tfpc": {
+        "title": "Training Tax 2026",
+        "desc": "New: TFPC and TA declarations are now semestrial. Don't forget to file by July 20th for S1."
       }
     }
   },
@@ -611,6 +616,42 @@
     "tap": {
       "title": "TAP",
       "desc": "Tax on Professional Activity."
+    }
+  },
+  "tfpc": {
+    "title": "Training Taxes (TFPC/TA)",
+    "subtitle": "Semestrial Declaration — Art. 18-21 LF 2026",
+    "step1": "Semestrial Period",
+    "step2": "Tax Calculation",
+    "step3": "Summary & Payment",
+    "period": {
+      "title": "Semester Choice",
+      "description": "Choose the declaration semester",
+      "s1": "1st Semester (January - June)",
+      "s2": "2nd Semester (July - December)",
+      "deadline": "Deadline: 20th of the month following the semester",
+      "s1Deadline": "Deadline: July 20th",
+      "s2Deadline": "Deadline: January 20th",
+      "year": "Year"
+    },
+    "calculation": {
+      "title": "TFPC & TA Calculation",
+      "description": "Enter the gross payroll for the semester",
+      "mass": "Gross Semester Payroll (DZD)",
+      "massPlaceholder": "Sum of gross salaries (S1 or S2)",
+      "trainingCosts": "Training Costs Incurred (-)",
+      "apprenticeCosts": "Apprenticeship Costs Incurred (-)",
+      "tfpcResult": "TFPC Amount (1%)",
+      "taResult": "TA Amount (1%)",
+      "netToPay": "Total Net to Pay",
+      "totalBrut": "Total Gross (2%)"
+    },
+    "summary": {
+      "title": "Declaration Summary",
+      "description": "Verify your calculations before generating the form",
+      "print": "Print G50-TFPC Form",
+      "ready": "Declaration Ready",
+      "readyInfo": "In accordance with LF 2026, this declaration must be filed semestrially."
     }
   }
 }

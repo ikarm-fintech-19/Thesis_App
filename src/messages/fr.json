@@ -16,6 +16,7 @@
     "billing": "Facturation",
     "settings": "Paramètres",
     "adminConsole": "Admin Console",
+    "tfpc": "Taxe de Formation (TFPC/TA)",
     "assistance": "Assistance",
     "helpText": "Besoin d'aide avec la Loi de Finances 2026 ?",
     "contactExpert": "Contacter un expert",
@@ -521,8 +522,12 @@
         "desc": "Toutes vos déclarations mensuelles pour 2026 sont à jour. Excellent travail !"
       },
       "digital": {
-        "title": "Télédéclaration",
-        "desc": "L'utilisation du paiement électronique évite les files d'attente et sécurise votre reçu instantanément."
+        "title": "Paiement Digital",
+        "desc": "L'utilisation de l'e-paiement vous permet d'éviter les files d'attente et de sécuriser votre reçu instantanément."
+      },
+      "tfpc": {
+        "title": "Taxe Formation 2026",
+        "desc": "Nouveau: La déclaration de la TFPC et TA est désormais semestrielle. N'oubliez pas de déclarer avant le 20 Juillet pour le S1."
       }
     }
   },
@@ -612,6 +617,42 @@
     "tap": {
       "title": "TAP",
       "desc": "Taxe sur l'Activité Professionnelle."
+    }
+  },
+  "tfpc": {
+    "title": "Taxes de Formation (TFPC/TA)",
+    "subtitle": "Déclaration semestrielle — Art. 18-21 LF 2026",
+    "step1": "Période Semestrielle",
+    "step2": "Calcul des Taxes",
+    "step3": "Résumé & Paiement",
+    "period": {
+      "title": "Choix du Semestre",
+      "description": "Choisissez le semestre de déclaration",
+      "s1": "1er Semestre (Janvier - Juin)",
+      "s2": "2ème Semestre (Juillet - Décembre)",
+      "deadline": "Date limite: 20 du mois suivant le semestre",
+      "s1Deadline": "Date limite: 20 Juillet",
+      "s2Deadline": "Date limite: 20 Janvier",
+      "year": "Année"
+    },
+    "calculation": {
+      "title": "Calcul de la TFPC et TA",
+      "description": "Saisissez la masse salariale brute du semestre",
+      "mass": "Masse Salariale Brute du Semestre (DZD)",
+      "massPlaceholder": "Somme des salaires bruts (S1 ou S2)",
+      "trainingCosts": "Frais de Formation Engagés (-)",
+      "apprenticeCosts": "Frais d'Apprentissage Engagés (-)",
+      "tfpcResult": "Montant TFPC (1%)",
+      "taResult": "Montant TA (1%)",
+      "netToPay": "Total Net à Payer",
+      "totalBrut": "Total Brut (2%)"
+    },
+    "summary": {
+      "title": "Résumé de la Déclaration",
+      "description": "Vérifiez vos calculs avant de générer le formulaire",
+      "print": "Imprimer Formulaire G50-TFPC",
+      "ready": "Déclaration Prête",
+      "readyInfo": "Conformément à la LF 2026, cette déclaration doit être déposée semestriellement."
     }
   }
 }
