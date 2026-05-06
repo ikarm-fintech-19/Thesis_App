@@ -1,0 +1,440 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.005 90);
+  --foreground: oklch(0.145 0.015 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0.015 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0.015 260);
+  --primary: oklch(0.40 0.15 250);
+  --primary-foreground: oklch(0.985 0.01 250);
+  --secondary: oklch(0.96 0.02 240);
+  --secondary-foreground: oklch(0.35 0.12 250);
+  --muted: oklch(0.96 0.02 240);
+  --muted-foreground: oklch(0.50 0.05 250);
+  --accent: oklch(0.75 0.14 230);
+  --accent-foreground: oklch(0.20 0.05 230);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.985 0.01 25);
+  --border: oklch(0.92 0.02 240);
+  --input: oklch(0.92 0.02 240);
+  --ring: oklch(0.40 0.15 250);
+  --chart-1: oklch(0.40 0.15 250);
+  --chart-2: oklch(0.75 0.14 230);
+  --chart-3: oklch(0.60 0.18 245);
+  --chart-4: oklch(0.828 0.189 230);
+  --chart-5: oklch(0.769 0.188 220);
+  --sidebar: oklch(0.985 0.01 240);
+  --sidebar-foreground: oklch(0.145 0.015 260);
+  --sidebar-primary: oklch(0.40 0.15 250);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.96 0.02 240);
+  --sidebar-accent-foreground: oklch(0.40 0.15 250);
+  --sidebar-border: oklch(0.92 0.02 240);
+  --sidebar-ring: oklch(0.40 0.15 250);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 260);
+  --foreground: oklch(0.985 0.005 90);
+  --card: oklch(0.22 0.015 260);
+  --card-foreground: oklch(0.985 0.005 90);
+  --popover: oklch(0.22 0.015 260);
+  --popover-foreground: oklch(0.985 0.005 90);
+  --primary: oklch(0.65 0.15 240);
+  --primary-foreground: oklch(0.15 0.02 250);
+  --secondary: oklch(0.22 0.03 250);
+  --secondary-foreground: oklch(0.85 0.10 240);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.75 0.05 240);
+  --accent: oklch(0.75 0.14 230);
+  --accent-foreground: oklch(0.15 0.05 230);
+  --destructive: oklch(0.65 0.20 25);
+  --destructive-foreground: oklch(0.16 0.015 260);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.65 0.15 240);
+  --chart-1: oklch(0.65 0.15 240);
+  --chart-2: oklch(0.78 0.14 230);
+  --chart-3: oklch(0.769 0.188 220);
+  --chart-4: oklch(0.627 0.265 250);
+  --chart-5: oklch(0.645 0.246 260);
+  --sidebar: oklch(0.205 0.01 250);
+  --sidebar-foreground: oklch(0.985 0.01 250);
+  --sidebar-primary: oklch(0.65 0.15 240);
+  --sidebar-primary-foreground: oklch(0.985 0.01 250);
+  --sidebar-accent: oklch(0.269 0.02 250);
+  --sidebar-accent-foreground: oklch(0.985 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0.05 250);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* RTL support for Arabic */
+  [dir="rtl"] .font-mono {
+    font-family: var(--font-geist-mono), monospace;
+  }
+  [dir="rtl"] input[type="number"],
+  [dir="rtl"] input[inputmode="decimal"] {
+    text-align: right;
+  }
+}
+
+/* ===================================================
+   UI TRANSITIONS & ANIMATIONS
+   =================================================== */
+
+/* Glassmorphism card */
+.glass-card {
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm;
+}
+
+/* Smooth card hover effect */
+.card-interactive {
+  @apply transition-all duration-300 ease-in-out cursor-pointer;
+}
+.card-interactive:hover {
+  @apply shadow-lg -translate-y-1 border-primary/20 dark:border-primary/40;
+}
+
+/* Floating effect */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Fade-in animation for results */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+/* Staggered children animation */
+.animate-stagger > * {
+  animation: fadeInUp 0.3s ease-out both;
+}
+.animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.animate-stagger > *:nth-child(2) { animation-delay: 60ms; }
+.animate-stagger > *:nth-child(3) { animation-delay: 120ms; }
+.animate-stagger > *:nth-child(4) { animation-delay: 180ms; }
+.animate-stagger > *:nth-child(5) { animation-delay: 240ms; }
+.animate-stagger > *:nth-child(6) { animation-delay: 300ms; }
+
+/* Summary card shine effect */
+.summary-card {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.summary-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+.summary-card:hover::after {
+  left: 100%;
+}
+.summary-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Tab content transition */
+.tab-content-enter {
+  animation: fadeInUp 0.25s ease-out both;
+}
+
+/* Transaction row animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-in {
+  animation: slideIn 0.2s ease-out both;
+}
+
+/* Number counter pulse on result */
+@keyframes pulseOnce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.animate-pulse-once {
+  animation: pulseOnce 0.4s ease-out;
+}
+
+/* Smooth table row hover */
+.table-row-hover {
+  transition: background-color 0.15s ease;
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* Progress indicator bar */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.simmer-bar {
+  background: linear-gradient(90deg, transparent 25%, rgba(0,0,0,0.05) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ===================================================
+   PRINT STYLES — Thesis Validation Report
+   =================================================== */
+@media print {
+  /* Force white background for print */
+  * {
+    color: #000 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Hide navigation, mode toggles, buttons, inputs */
+  header,
+  footer,
+  .no-print,
+  button,
+  input,
+  select,
+  textarea,
+  [role="group"],
+  nav {
+    display: none !important;
+  }
+
+  /* Show print-only header */
+  .print-header {
+    display: block !important;
+  }
+
+  /* Full width layout */
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Cards without borders/shadows for clean print */
+  .print-card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  /* Tables print-friendly */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #333 !important;
+    padding: 4px 8px !important;
+  }
+  th {
+    background: #f0f0f0 !important;
+    font-weight: bold;
+  }
+
+  /* Ensure charts/diagrams fit on page */
+  pre {
+    font-size: 8pt;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    page-break-inside: avoid;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  /* Avoid page breaks inside important sections */
+  .print-avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Page break before major sections */
+  .print-page-break {
+    page-break-before: always;
+  }
+
+  /* Print header for thesis report */
+  .print-only-header {
+    display: block !important;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .print-only-header h1 {
+    font-size: 16pt;
+    margin-bottom: 0.25rem;
+  }
+  .print-only-header p {
+    font-size: 10pt;
+    color: #555;
+  }
+
+  /* Print footer */
+  .print-only-footer {
+    display: block !important;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 0.5rem;
+    margin-top: 2rem;
+    font-size: 8pt;
+    color: #777;
+  }
+
+  /* Make RTL text work in print */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  /* ===================================================
+     CA12 DECLARATION PRINT STYLES
+     =================================================== */
+
+  /* Show declaration print header */
+  .declaration-print-header {
+    display: block !important;
+    text-align: center;
+    border-bottom: 3px double #000;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .declaration-print-header h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+  }
+  .declaration-print-header p {
+    font-size: 10pt;
+    color: #555;
+  }
+
+  /* Declaration card styling for print */
+  .declaration-card {
+    border: 1px solid #333 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  /* Summary cards */
+  .declaration-summary {
+    page-break-inside: avoid;
+  }
+  .declaration-summary > div {
+    border: 1px solid #333 !important;
+    padding: 0.5rem !important;
+  }
+
+  /* Declaration print footer */
+  .declaration-print-footer {
+    display: block !important;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 0.5rem;
+    margin-top: 2rem;
+    font-size: 8pt;
+    color: #777;
+  }
+
+  /* Badge text fix for print */
+  [data-slot="badge"] {
+    border: 1px solid #666 !important;
+    padding: 0 4px !important;
+    font-size: 9pt !important;
+  }
+}

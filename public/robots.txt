@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matax.dz/sitemap.xml
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

@@ -1,0 +1,617 @@
+{
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "home": "Accueil",
+    "calculator": "Calculateur",
+    "declarations": "Déclarations",
+    "pricing": "Tarifs",
+    "contact": "Contact",
+    "legal": "Mentions Légales",
+    "overview": "Vue d'ensemble",
+    "newCalculation": "Nouveau Calcul",
+    "aiScanner": "Scanner IA",
+    "myDeclarations": "Mes Déclarations",
+    "g50": "Déclaration G50",
+    "myTeam": "Mon Équipe",
+    "billing": "Facturation",
+    "settings": "Paramètres",
+    "adminConsole": "Admin Console",
+    "assistance": "Assistance",
+    "helpText": "Besoin d'aide avec la Loi de Finances 2026 ?",
+    "contactExpert": "Contacter un expert",
+    "logout": "Déconnexion",
+    "regtech": "Plateforme de Conformité RegTech"
+  },
+  "landing": {
+    "hero": {
+      "title": "Calculez votre TVA en conformité avec la Loi de Finances 2026",
+      "subtitle": "L'outil expert pour les entrepreneurs et experts-comptables algériens. TVA, G50, IRG - tout au même endroit.",
+      "cta": "Commencer gratuitement",
+      "cta2": "Voir les tarifs",
+      "noCredit": "Pas de carte de crédit requise • Essai gratuit"
+    },
+    "features": {
+      "title": "Pourquoi Matax?",
+      "calculator": {
+        "title": "Calculateur TVA Intelligent",
+        "desc": "Calculez instantanément votre TVA avec les taux 2026. 19%, 9% ou exonéré - selon les règles de la DGIP."
+      },
+      "declaration": {
+        "title": "Déclaration G50 Simplifiée",
+        "desc": "Remplissez votre déclaration mensuelle en 5 étapes. Guidé et sans erreur."
+      },
+      "compliant": {
+        "title": "Conforme Loi 2026",
+        "desc": "Tous les calculs sont basés sur le Code des Impôts Directs et Indirects (CID). Vérifié académiquement."
+      },
+      "time": {
+        "title": "Gagnez du Temps",
+        "desc": "Finis les calculs manuels. Déclarez en quelques clics, pas en heures."
+      }
+    },
+    "howItWorks": {
+      "title": "Comment ça marche?",
+      "subtitle": "Trois étapes simples pour calculer votre TVA et déclarer",
+      "steps": {
+        "step1": { "title": "Saisissez vos données", "desc": "Entrez votre chiffre d'affaires ou vos ventes/achats" },
+        "step2": { "title": "Laissez calculer", "desc": "Notre moteur calcule automatiquement la TVA collectée et déductible" },
+        "step3": { "title": "Exportez votre déclaration", "desc": "Téléchargez votre G50 prête à soumettre à la DGIP" }
+      }
+    },
+    "cta": {
+      "title": "Prêt à simplifier vos déclarations?",
+      "subtitle": "Rejoignez les milliers d'entrepreneurs qui font confiance à Matax",
+      "button": "Essayer gratuitement"
+    }
+  },
+  "common": {
+    "arabic": "العربية",
+    "french": "Français",
+    "english": "English",
+    "greeting": "Bonjour, {name} 👋",
+    "welcome": "Bienvenue sur votre espace Matax. Voici un aperçu de votre activité fiscale.",
+    "currency": "DZD",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "networkError": "Erreur réseau.",
+    "reset": "Réinitialiser",
+    "close": "Fermer",
+    "language": "Langue",
+    "months": "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre",
+    "stats": {
+      "calculations": "Calculs ce mois",
+      "declarations": "Déclarations complétées",
+      "timeSaved": "Temps gagné",
+      "accuracy": "Précision fiscale"
+    },
+    "recentActivity": "Activité Récente",
+    "noActivity": "Aucune activité récente à afficher.",
+    "newCalculation": "Commencer un nouveau calcul",
+    "updateNote": "Note de Mise à Jour",
+    "updateDesc": "Les règles de la Loi de Finances 2026 sont désormais appliquées par défaut sur tous vos calculs.",
+    "aiTitle": "Matax AI",
+    "aiDesc": "Notre assistant IA peut analyser vos factures et suggérer le bon taux de TVA selon l'Article 29 de la LF2026.",
+    "aiButton": "Essayer maintenant",
+    "expertTip": "Conseil Expert",
+    "expertTipText": "N'oubliez pas que les entreprises du secteur de la production bénéficient d'un abattement spécifique sur la TVA collectée."
+  },
+  "userDeclarations": {
+    "title": "Mes Déclarations",
+    "subtitle": "Historique de vos soumissions fiscales G50 et CA12.",
+    "newButton": "Nouvelle Déclaration",
+    "history": "Historique",
+    "historyDesc": "Consultez et téléchargez vos archives fiscales.",
+    "empty": "Aucune déclaration",
+    "emptyDesc": "Vous n'avez pas encore généré de déclaration.",
+    "type": "Type",
+    "period": "Période",
+    "status": "Statut",
+    "netAmount": "Montant Net",
+    "actions": "Actions",
+    "archiveNote": "Les archives sont conservées pendant 10 ans conformément à l'Article 22 du Code de Commerce Algérien."
+  },
+  "app": {
+    "title": "Calculateur TVA Algérie",
+    "subtitle": "Conforme à la Loi de Finances 2026 — Art. 28-30 du CID",
+    "description": "Outil pédagogique de calcul de la Taxe sur la Valeur Ajoutée algérienne. Vérifier avec un expert-comptable agréé."
+  },
+  "tabs": {
+    "calculator": "Calculateur TVA",
+    "declaration": "Déclaration TVA"
+  },
+  "modes": {
+    "simple": "Simple",
+    "expert": "Expert",
+    "thesis": "Thèse (Validation)"
+  },
+  "form": {
+    "grossAmount": "Montant Brut (HT)",
+    "grossAmountPlaceholder": "Ex: 1000000",
+    "category": "Catégorie TVA",
+    "categoryNormal": "Normal (19%)",
+    "categoryReduced": "Réduit (9%)",
+    "categoryExempt": "Exonéré (0%)",
+    "sector": "Secteur d'activité",
+    "sectorPlaceholder": "Sélectionner un secteur",
+    "sectorCommerce": "Commerce",
+    "sectorServices": "Services",
+    "sectorProduction": "Production / Industrie",
+    "sectorImport": "Import",
+    "sectorExport": "Export",
+    "regime": "Régime fiscal",
+    "regimeReal": "Régime réel",
+    "regimeSimplified": "Régime simplifié",
+    "regimeForfait": "Régime forfaitaire",
+    "invoiceRef": "Référence facture (optionnel)",
+    "invoiceRefPlaceholder": "Ex: FAC-2026-001",
+    "invoiceDate": "Date facture",
+    "calculate": "Calculer TVA",
+    "calculating": "Calcul en cours..."
+  },
+  "result": {
+    "title": "Résultat du Calcul",
+    "base": "Base imposable",
+    "rate": "Taux TVA",
+    "taxAmount": "Montant TVA",
+    "totalTTC": "Total TTC",
+    "exemptReason": "Raison d'exonération",
+    "article": "Article de référence",
+    "notes": "Notes",
+    "breakdown": "Détail du calcul",
+    "noResult": "Entrez un montant et sélectionnez une catégorie pour voir le résultat."
+  },
+  "declaration": {
+    "title": "Déclaration TVA",
+    "description": "Saisissez vos ventes (TVA collectée) et achats (TVA déductible) pour calculer la position nette de TVA.",
+    "periodType": "Type de période",
+    "monthly": "Mensuelle",
+    "quarterly": "Trimestrielle",
+    "year": "Année",
+    "month": "Mois",
+    "quarter": "Trimestre",
+    "q1": "T1 (Jan-Mar)",
+    "q2": "T2 (Avr-Jun)",
+    "q3": "T3 (Jul-Sep)",
+    "q4": "T4 (Oct-Déc)",
+    "transactions": "Opérations",
+    "addTransaction": "Ajouter une opération",
+    "removeTransaction": "Supprimer",
+    "type": "Type",
+    "sale": "Vente (Collectée)",
+    "purchase": "Achat (Déductible)",
+    "date": "Date",
+    "description": "Description",
+    "descriptionPlaceholder": "Ex: Vente marchandises",
+    "htAmount": "Montant HT (DZD)",
+    "htAmountPlaceholder": "Ex: 1000000",
+    "tvaRate": "Taux TVA",
+    "rate19": "19% (Normal)",
+    "rate9": "9% (Réduit)",
+    "rate0": "0% (Exonéré)",
+    "category": "Catégorie déductibilité",
+    "catStandard": "Standard (100%)",
+    "catVehicle": "Véhicule tourisme (50%)",
+    "catHospitality": "Hôtellerie/Restauration (0%)",
+    "catRealEstate": "Immobilier pro (100%)",
+    "invoiceRef": "Réf. Facture",
+    "invoiceRefPlaceholder": "Ex: FAC-2026-001",
+    "summary": "Résumé de la déclaration",
+    "collectee": "TVA Collectée (Ventes)",
+    "deductible": "TVA Déductible (Achats)",
+    "netPosition": "Position Nette",
+    "toPay": "À PAYER",
+    "credit": "CRÉDIT DE TVA",
+    "zero": "NUL",
+    "salesCount": "Nombre de ventes",
+    "purchasesCount": "Nombre d'achats",
+    "totalSalesHT": "Total Ventes HT",
+    "totalPurchasesHT": "Total Achats HT",
+    "calculateNet": "Calculer la position nette",
+    "calculating": "Calcul en cours...",
+    "exportCsv": "Exporter en CSV (.csv)",
+    "exportExcel": "Exporter en Excel (.xlsx)",
+    "exportCa12": "Imprimer Formulaire CA12 (PDF)",
+    "reset": "Réinitialiser",
+    "deductibleCap": "Plafond Déductible (Art. 33 CID)",
+    "legalTooltip": "Véhicules: 50% max | Hôtellerie/Restauration: 0% | Standard: 100%",
+    "salesAbbr": "V",
+    "purchasesAbbr": "A",
+    "printTitle": "DÉCLARATION TVA — ALGÉRIE",
+    "art33Note": "Article 33 du CID — Droit à déduction",
+    "deductibleDetail": "Détail de la déduction",
+    "grossTVA": "TVA Brute",
+    "capPercent": "Plafond %",
+    "deductibleTVA": "TVA Déductible",
+    "printHeader": "DÉCLARATION DE TVA — ALGÉRIE",
+    "printSubheader": "Période:",
+    "previousCredit": "Crédit à reporter de la période précédente",
+    "previousCreditPlaceholder": "Saisir le montant du crédit à reporter",
+    "tls": "Taxe Locale de Solidarité (TLS)",
+    "tlsRate": "Taux TLS",
+    "tlsAmount": "Montant TLS",
+    "totalToPay": "Total à payer (Global)",
+    "errorNoTransaction": "Veuillez saisir au moins une opération avec un montant valide."
+  },
+  "thesis": {
+    "title": "Mode Validation — Thèse",
+    "description": "Exécution des cas de test officiels DGIP pour validation empirique du moteur de calcul.",
+    "runTests": "Lancer les tests",
+    "testResults": "Résultats des tests",
+    "testId": "N° Test",
+    "input": "Entrée (HT)",
+    "category": "Catégorie",
+    "expected": "Attendu (TVA)",
+    "calculated": "Calculé (TVA)",
+    "variance": "Variance (DZD)",
+    "status": "Statut",
+    "pass": "Validé",
+    "fail": "Échec",
+    "allPassed": "Tous les tests sont validés ! Le moteur de calcul est conforme.",
+    "someFailed": "Certains tests ont échoué. Vérifier les règles applicables.",
+    "exportPdf": "Exporter le rapport PDF",
+    "architecture": "Architecture du moteur de calcul",
+    "legalCitations": "Citations légales par étape",
+    "declarationTests": "Tests Déclaration TVA (TC-06 à TC-08)"
+  },
+  "legal": {
+    "disclaimer": "Outil pédagogique. Conforme à LF 2026. Vérifier avec un expert-comptable agréé.",
+    "art28": "Art. 28 — Taux normal de TVA : 19%",
+    "art29": "Art. 29 — Taux réduit de TVA : 9%",
+    "art30": "Art. 30 — Exonérations de TVA",
+    "art33": "Art. 33 — Droit à déduction et plafonds",
+    "cid": "Code des Impôts Directs et Indirects (CID)"
+  },
+  "wizard": {
+    "title": "Déclaration G50",
+    "subtitle": "Guide étape par étape pour votre déclaration TVA",
+    "reset": "Réinitialiser",
+    "stepOf": "Étape {current} sur {total}",
+    "back": "Précédent",
+    "next": "Suivant",
+    "submit": "Soumettre",
+    "saving": "Enregistrement...",
+    "savedAt": "Enregistré à {time}",
+    "steps": {
+      "period": "Période",
+      "sales": "Ventes (TVA collectée)",
+      "purchases": "Achats (TVA déductible)",
+      "salaries": "Salaires (IRG/CNAS)",
+      "summary": "Résumé"
+    },
+    "period": {
+      "title": "Sélection de la période",
+      "description": "Choisissez la période de déclaration",
+      "type": "Type de période",
+      "monthly": "Mensuel",
+      "quarterly": "Trimestriel",
+      "month": "Mois/Trimestre",
+      "year": "Année",
+      "deadline": "Date limite: 20 du mois suivant",
+      "deadlineInfo": "Les déclarations hors délai sont soumises à des pénalités de 10% + 3%/mois de retard"
+    },
+    "sales": {
+      "title": "Ventes - TVA collectée",
+      "description": "Enregistrez vos ventes soumises à la TVA",
+      "date": "Date",
+      "descriptionCol": "Description",
+      "descriptionPlaceholder": "Ex: Facture client",
+      "amount": "Montant",
+      "rate": "Taux",
+      "invoiceRef": "Référence",
+      "invoiceRefPlaceholder": "Ex: FAC-2026-001",
+      "add": "Ajouter",
+      "tableTitle": "Liste des ventes",
+      "empty": "Aucune vente enregistrée. Cliquez sur Ajouter pour commencer."
+    },
+    "purchases": {
+      "title": "Achats - TVA déductible",
+      "description": "Enregistrez vos achats avec application des règles de déductibilité (Art. 33)",
+      "date": "Date",
+      "descriptionCol": "Description",
+      "descriptionPlaceholder": "Ex: Achat fournisseur",
+      "amount": "Montant",
+      "category": "Catégorie",
+      "rate": "Taux",
+      "invoiceRef": "Référence",
+      "invoiceRefPlaceholder": "Ex: FAC-2026-001",
+      "add": "Ajouter",
+      "tableTitle": "Liste des achats",
+      "deductible": "Déductible",
+      "empty": "Aucun achat enregistré. Cliquez sur Ajouter pour commencer.",
+      "art33Title": "Règles de déductibilité (Art. 33 CID)",
+      "art33Info": "Les véhicules de tourisme sont limités à 50%, l'hébergement/restauration est non déductible"
+    },
+    "salaries": {
+      "title": "Salariés et IRG",
+      "description": "Déclaration des salaires pour le calcul de l'IRG et des charges CNAS",
+      "question": "Avez-vous des salariés à déclarer?",
+      "yes": "Oui, j'ai des salariés",
+      "no": "Non, je n'ai pas de salariés",
+      "addTitle": "Ajouter un salarié",
+      "addDescription": "Entrez le salaire brut mensuel",
+      "employeeName": "Nom du salarié",
+      "employeeNamePlaceholder": "Ex: Ahmed Ben Mohamed",
+      "grossSalary": "Salaire brut (DZD)",
+      "children": "Enfants",
+      "add": "Ajouter",
+      "tableTitle": "Liste des salariés",
+      "netSalary": "Net à payer",
+      "summaryTitle": "Résumé salarial",
+      "totalGross": "Total Brut",
+      "totalIRG": "Total IRG",
+      "cnasEmployee": "CNAS Salarié (9%)",
+      "cnasEmployer": "CNAS Patron (26%)",
+      "totalNet": "Total Net",
+      "noEmployees": "Je n'ai pas de salariés",
+      "importError": "Erreur lors de l'importation CSV",
+      "importFormatError": "Le fichier CSV doit contenir les colonnes 'nom' et 'salaire brut'"
+    },
+    "summary": {
+      "title": "Résumé de la déclaration",
+      "period": "Période",
+      "calculating": "Calcul en cours...",
+      "retry": "Réessayer",
+      "collectee": "TVA Collectée",
+      "deductible": "TVA Déductible",
+      "sales": "ventes",
+      "purchases": "achats",
+      "toPay": "À Payer",
+      "credit": "Crédit",
+      "zero": "Équilibré",
+      "additional": "Paramètres Additionnels",
+      "previousCredit": "Crédit Précédent",
+      "tlsRate": "Taux TLS (%)",
+      "tlsAmount": "Montant TLS",
+      "totalToPay": "Total à Payer",
+      "salarySection": "Section Salaires",
+      "salaryNote": "Inclure dans la déclaration IRG/INPS",
+      "reference": "Référence DGIP",
+      "print": "Imprimer",
+      "export": "Exporter",
+      "ready": "Déclaration Prête",
+      "readyInfo": "Vous pouvez soumettre votre déclaration. Ceci est une simulation à des fins de démonstration.",
+      "generated": "Généré le"
+    }
+  },
+  "ai": {
+    "scanner": {
+      "title": "Télécharger une Facture",
+      "description": "Scannez vos factures physiques pour extraire automatiquement les données fiscales.",
+      "uploadPlaceholder": "Glissez-déposez ou cliquez pour sélectionner une image (JPG, PNG)",
+      "chooseFile": "Choisir un fichier",
+      "changeFile": "Changer",
+      "scanButton": "Lancer l'Analyse IA",
+      "scanning": "Analyse en cours...",
+      "resultsTitle": "Résultats de l'Extraction",
+      "resultsDescription": "Données extraites selon les règles de la LF 2026.",
+      "vendor": "Fournisseur",
+      "date": "Date",
+      "amountHT": "Montant HT",
+      "tvaRate": "Taux TVA",
+      "totalTTC": "Total TTC",
+      "confidence": "Confiance de l'IA",
+      "edit": "Modifier",
+      "addToDeclaration": "Ajouter à la Déclaration",
+      "empty": "Veuillez télécharger et scanner une facture pour voir les résultats.",
+      "success": "Facture analysée avec succès",
+      "error": "Erreur lors de l'analyse"
+    }
+  },
+  "pricing": {
+    "title": "Tarifs simples et transparents",
+    "subtitle": "Choisissez le plan adapté à vos besoins. Aucun engagement, résiliation anytime.",
+    "popular": "Plus populaire",
+    "contact": "Contactez-nous",
+    "features": {
+      "noContract": "Sans engagement",
+      "noContractDesc": "Annulez à tout moment, pas de frais cachés",
+      "algeria": "100% Algérie",
+      "algeriaDesc": "Adapté aux lois fiscales algériennes",
+      "support": "Support local",
+      "supportDesc": "Assistance en arabe et français"
+    }
+  },
+  "annualTax": {
+    "title": "Bilan Annuel (IBS / IRG)",
+    "subtitle": "Calculez automatiquement vos impôts annuels basés sur vos déclarations G50",
+    "steps": {
+      "profile": "Profil de l'entreprise",
+      "profit": "Calcul du Bénéfice",
+      "summary": "Bilan & Impôts (IBS/IRG)"
+    },
+    "profile": {
+      "title": "1. Forme Juridique",
+      "description": "Êtes-vous une entreprise (Personne Morale soumise à l'IBS) ou un entrepreneur individuel (Personne Physique soumise à l'IRG) ?",
+      "morale": "Personne Morale",
+      "moraleDesc": "SARL, EURL, SPA (Soumis à l'IBS)",
+      "physique": "Personne Physique",
+      "physiqueDesc": "Entrepreneur Individuel (Soumis à l'IRG)",
+      "sectorTitle": "2. Secteur d'Activité",
+      "sectorDesc": "Le taux de l'IBS dépend de votre secteur d'activité.",
+      "sectorProduction": "Production / Industrie (19%)",
+      "sectorBTPH": "BTPH & Tourisme (23%)",
+      "sectorServices": "Services & Commerce Général (26%)",
+      "sectorPlaceholder": "Sélectionnez votre secteur"
+    },
+    "profit": {
+      "title": "Bénéfice Auto-Calculé (Basé sur vos G50)",
+      "description": "Nous avons agrégé vos déclarations G50 de l'année {year} pour estimer votre bénéfice net.",
+      "revenue": "Chiffre d'Affaires Total",
+      "expenses": "Achats & Frais (-)",
+      "salaries": "Masse Salariale (-)",
+      "estimatedNet": "Bénéfice Net Estimé :",
+      "manualAdjustment": "Ajustement Manuel",
+      "manualAdjustmentDesc": "Avez-vous d'autres charges non déclarées dans vos G50 (loyer, amortissements) ? Vous pouvez forcer le montant de votre bénéfice final ici. Laissez vide pour utiliser l'estimation automatique.",
+      "finalProfitInput": "Bénéfice Net Final (DZD)",
+      "finalProfit": "Bénéfice Imposable Retenu :"
+    },
+    "summary": {
+      "title": "Bilan Fiscal Annuel {year}",
+      "subtitle": "Voici le récapitulatif de votre déclaration annuelle.",
+      "taxableBase": "Base Imposable",
+      "legalForm": "Forme Juridique",
+      "moraleValue": "Personne Morale (SARL/EURL)",
+      "physiqueValue": "Personne Physique",
+      "ibsRate": "Taux IBS appliqué",
+      "netProfitRetained": "Bénéfice Net Retenu",
+      "totalTaxToPay": "Total {taxName} à payer",
+      "irgBreakdown": "Calculé selon le barème progressif IRG.",
+      "irgBreakdownTitle": "Détail du calcul IRG (Barème Progressif)",
+      "bracket": "Tranche {bracket}",
+      "total": "Total",
+      "download": "Télécharger Liasse Fiscale (G4/G11)"
+    },
+    "nav": "Bilan Annuel",
+    "back": "Retour",
+    "next": "Suivant",
+    "validate": "Valider le Bilan",
+    "validating": "Validation...",
+    "stepOf": "Étape {current} sur {total}"
+  },
+  "penalties": {
+    "lateFiling": "Déclaration hors délai - Pénalités applicables (10% + 3%/mois)",
+    "noSales": "Aucune vente enregistrée pour cette période",
+    "vehicleCap": "Déductibilité véhicules limitée à 50% (Art. 33)",
+    "hospitalityNoDeduct": "Hébergement/restauration non déductible (Art. 33)",
+    "tvaDue": "TVA à payer - Assurez-vous de respecter la date limite",
+    "tvaCredit": "Crédit TVA reportable sur les périodes suivantes"
+  },
+  "footer": {
+    "copyright": "Calculateur TVA Algérie — Loi de Finances 2026",
+    "builtWith": "Outil pédagogique à des fins académiques uniquement",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Confidentialité",
+    "contact": "Contact",
+    "compliance": "Matax Compliance Suite — Plateforme conforme à la Loi de Finances 2026"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "subtitle": "Voici un aperçu de votre situation fiscale.",
+    "totalRevenue": "Chiffre d'Affaires Total (2026)",
+    "taxLiability": "Impôts Estimés",
+    "pendingDeclarations": "Déclarations en Attente",
+    "revenueTitle": "Revenus vs Impôts (DZD)",
+    "revenueDesc": "Aperçu de vos déclarations G50 des 6 derniers mois",
+    "revenue": "Chiffre d'Affaires",
+    "taxes": "Impôts (TVA + IRG)",
+    "deadlines": {
+      "title": "Échéances Fiscales",
+      "desc": "Prochaines dates importantes",
+      "g50Title": "Déclaration G50 Mensuelle",
+      "g50Desc": "Soumettez votre chiffre d'affaires mensuel",
+      "annualTitle": "Bilan Annuel (G4/G11)",
+      "annualDesc": "Clôture de l'exercice fiscal",
+      "g50_current": "G50 (Mois Actuel)",
+      "annual_bilan": "Bilan Annuel (IBS/IRG)",
+      "g50_prev": "G50 (Mois Précédent)",
+      "status": {
+        "pending": "À venir",
+        "action": "Urgent",
+        "completed": "Fait"
+      }
+    },
+    "fiscalInsights": "Aperçus Fiscaux",
+    "insights": {
+      "tva": {
+        "title": "Optimisation TVA",
+        "desc": "Votre crédit de TVA a augmenté de 15% ce mois-ci. Envisagez un remboursement ou un report."
+      },
+      "compliance": {
+        "title": "Conformité G50",
+        "desc": "Toutes vos déclarations mensuelles pour 2026 sont à jour. Excellent travail !"
+      },
+      "digital": {
+        "title": "Télédéclaration",
+        "desc": "L'utilisation du paiement électronique évite les files d'attente et sécurise votre reçu instantanément."
+      }
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "description": "Gérez votre compte et vos préférences.",
+    "tabs": {
+      "general": "Général",
+      "billing": "Facturation"
+    },
+    "profile": {
+      "title": "Profil",
+      "desc": "Informations de votre compte Matax.",
+      "name": "Nom complet",
+      "email": "Email",
+      "save": "Enregistrer les modifications",
+      "success": "Paramètres enregistrés."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "desc": "Choisissez comment vous souhaitez être alerté.",
+      "email": "Alertes par email",
+      "emailDesc": "Rappels G50, mises à jour fiscales",
+      "sms": "Alertes SMS",
+      "smsDesc": "Notifications urgentes d'échéances"
+    },
+    "security": {
+      "title": "Sécurité",
+      "desc": "Protégez votre compte et vos données fiscales.",
+      "twoFactor": "Authentification à deux facteurs (2FA)",
+      "twoFactorDesc": "Sécurité renforcée pour votre espace",
+      "changePassword": "Changer le mot de passe"
+    },
+    "legal": {
+      "title": "Légal & Confidentialité",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
+    },
+    "billing": {
+      "currentPlan": "Forfait actuel",
+      "active": "Actif",
+      "calculations": "Calculs utilisés ce mois",
+      "upgrade": "Passer à Pro",
+      "history": "Historique des paiements",
+      "noTransactions": "Aucune transaction pour le moment.",
+      "plans": {
+        "free": "Gratuit",
+        "pro": "Professionnel",
+        "enterprise": "Entreprise",
+        "popular": "Plus populaire",
+        "current": "Actuel",
+        "cta_contact": "Nous contacter",
+        "cta_upgrade": "Passer à Pro"
+      },
+      "integration": "Fonctionnalité de paiement en cours d'intégration — disponible prochainement."
+    },
+    "data": {
+      "title": "Gestion des Données",
+      "desc": "Exportez ou gérez vos informations personnelles.",
+      "exportTitle": "Exporter mes données",
+      "exportDesc": "Téléchargez une copie de toutes vos données au format JSON.",
+      "exportSuccess": "Exportation réussie",
+      "exportError": "Erreur lors de l'exportation",
+      "exportButton": "Télécharger (JSON)",
+      "deleteTitle": "Supprimer mon compte",
+      "deleteDesc": "Cette action est irréversible et supprimera toutes vos données.",
+      "deleteButton": "Supprimer"
+    }
+  },
+  "terminology": {
+    "ht": {
+      "title": "HT (Hors Taxe)",
+      "desc": "Montant net avant application des taxes."
+    },
+    "tva": {
+      "title": "TVA (Taxe sur la Valeur Ajoutée)",
+      "desc": "Taxe indirecte sur la consommation. Taux en Algérie: 9% (réduit) ou 19% (normal)."
+    },
+    "irg": {
+      "title": "IRG (Impôt sur le Revenu Global)",
+      "desc": "Impôt progressif sur le revenu des personnes physiques."
+    },
+    "cnas": {
+      "title": "CNAS",
+      "desc": "Caisse Nationale des Assurances Sociales des Travailleurs Salariés."
+    },
+    "tap": {
+      "title": "TAP",
+      "desc": "Taxe sur l'Activité Professionnelle."
+    }
+  }
+}

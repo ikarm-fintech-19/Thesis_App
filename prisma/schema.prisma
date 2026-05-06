@@ -1,0 +1,274 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// To switch to PostgreSQL for production:
+// 1. Change provider to "postgresql"
+// 2. Update field types to use @db.Decimal(18,2)
+// See SUPABASE_MIGRATION.md for detailed instructions
+
+generator client {
+  provider = "prisma-client-js"
+  // For PostgreSQL, add: previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// --- AUTH & USER MODELS ---
+
+enum UserRole {
+  CITIZEN
+  ACCOUNTANT
+  ADMIN
+  AUDITOR
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String?
+  company       String?
+  nif           String?   // Numéro d'Identification Fiscale
+  role          UserRole  @default(CITIZEN)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relationships
+  subscription  Subscription?
+  calculations  Calculation[]
+  declarations  Declaration[]
+  auditLogs     AuditLog[]
+  
+  // For Accountants: Clients they manage
+  managedClients TeamMember[] @relation("AccountantClients")
+  // For Businesses: Accountant managing them
+  managedBy      TeamMember[] @relation("ClientAccountant")
+
+  // Phase 1 new relations
+  salaryLines    SalaryLine[]
+  notifications  Notification[]
+  savedTemplates SavedTemplate[]
+}
+
+model TeamMember {
+  id           String   @id @default(cuid())
+  accountantId String
+  clientId     String
+  createdAt    DateTime @default(now())
+
+  accountant   User     @relation("AccountantClients", fields: [accountantId], references: [id])
+  client       User     @relation("ClientAccountant", fields: [clientId], references: [id])
+
+  @@unique([accountantId, clientId])
+}
+
+// --- SUBSCRIPTION MODELS ---
+
+enum BillingCycle {
+  MONTHLY
+  YEARLY
+}
+
+enum PlanTier {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+model Subscription {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  plan            PlanTier     @default(FREE)
+  billingCycle    BillingCycle @default(MONTHLY)
+  startDate       DateTime  @default(now())
+  endDate         DateTime?
+  isActive        Boolean   @default(true)
+  
+  // Usage tracking (reset monthly)
+  calculationsUsed Int      @default(0)
+  declarationsUsed Int      @default(0)
+  lastResetDate   DateTime  @default(now())
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// --- CORE TAX MODELS (Audit Trail) ---
+
+model Calculation {
+  id            String   @id @default(cuid())
+  userId        String?
+  inputData     String   // JSON string of input
+  resultData    String   // JSON string of result
+  mode          String   // SIMPLE, EXPERT, THESIS
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime @default(now())
+
+  user          User?    @relation(fields: [userId], references: [id])
+}
+
+model Declaration {
+  id            String   @id @default(cuid())
+  userId        String
+  periodId      String
+  status        String   @default("DRAFT") // DRAFT, SUBMITTED, VALIDATED, REJECTED
+  draftData     String?  // JSON string of the G50 Wizard state
+  totalCollectee String  // Monetary value as String (app-layer decimal.js)
+  totalDeductible String
+  netTva        String
+  referenceNum  String?  // Mock DGIP reference
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user          User     @relation(fields: [userId], references: [id])
+  period        DeclarationPeriod @relation(fields: [periodId], references: [id])
+  transactions  Transaction[]
+  salaryLines   SalaryLine[]
+}
+
+// --- EXISTING TAX ENGINE MODELS ---
+
+model TaxRule {
+  id          String   @id @default(cuid())
+  year        Int
+  taxType     String   @default("TVA") // TVA, IRG, IBS, etc.
+  category    String   // e.g., "Standard", "Reduced" (for TVA) or "Salary", "BNC" (for IRG)
+  rate        String   // Monetary rate as String (app-layer decimal.js)
+  description String?
+  isActive    Boolean  @default(true)
+  brackets    TaxBracket[]
+}
+
+model TaxBracket {
+  id        String   @id @default(cuid())
+  ruleId    String
+  minAmount String   // Monetary value as String
+  maxAmount String?
+  rate      String   // Percentage as String
+  rule      TaxRule  @relation(fields: [ruleId], references: [id], onDelete: Cascade)
+}
+
+model TaxDeduction {
+  id          String   @id @default(cuid())
+  category    String
+  articleRef  String
+  description String
+  limitAmount String?  // Monetary limit as String
+  limitPct    String?  // Percentage as String
+}
+
+model DeclarationPeriod {
+  id          String   @id @default(cuid())
+  month       Int?
+  quarter     Int?
+  year        Int
+  isClosed    Boolean  @default(false)
+  
+  declarations Declaration[]
+  transactions Transaction[]
+}
+
+model Transaction {
+  id              String   @id @default(cuid())
+  periodId        String
+  declarationId   String?
+  type            String   // SALE, PURCHASE
+  amount          String   // Monetary value as String
+  tvaRate         String   // Percentage as String
+  tvaAmount       String
+  category        String?  // For purchase deductibility
+  isDeductible    Boolean  @default(true)
+  deductibleAmount String
+  description     String?
+  date            DateTime @default(now())
+
+  period          DeclarationPeriod @relation(fields: [periodId], references: [id])
+  declaration     Declaration?      @relation(fields: [declarationId], references: [id])
+}
+
+// --- SALARY & IRG MODELS (Phase 3) ---
+
+model SalaryLine {
+  id              String   @id @default(cuid())
+  userId          String
+  declarationId   String?  // Optional: link to declaration for salary portion
+  employeeName    String
+  grossSalary     String   // Monthly gross as String
+  netSalary       String   // Monthly net as String (calculated)
+  irgAmount       String   // IRG tax amount (calculated)
+  cnasEmployee    String   // CNAS 9% employee portion
+  cnasEmployer    String   // CNAS 26% employer portion
+  familyChildren  Int      @default(0) // Number of children for deduction
+  month           Int
+  year            Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id])
+  declaration     Declaration? @relation(fields: [declarationId], references: [id])
+}
+
+// --- NOTIFICATION MODELS (Phase 2) ---
+
+enum NotificationType {
+  DEADLINE_REMINDER
+  PENALTY_WARNING
+  DECLARATION_CONFIRMATION
+  SYSTEM_ALERT
+}
+
+model Notification {
+  id            String            @id @default(cuid())
+  userId        String
+  type          NotificationType
+  title         String
+  message       String
+  isRead        Boolean           @default(false)
+  scheduledFor  DateTime?         // For scheduled notifications
+  sentAt        DateTime?
+  createdAt     DateTime          @default(now())
+
+  user          User              @relation(fields: [userId], references: [id])
+}
+
+// --- TEMPLATE MODELS ---
+
+model SavedTemplate {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?
+  templateType String   // SALE_RECURRING, PURCHASE_RECURRING, SALARY_TEMPLATE
+  templateData String  // JSON string of template configuration
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+// --- ANALYTICS & AUDIT ---
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  resource  String
+  metadata  String?  // JSON string
+  timestamp DateTime @default(now())
+
+  user      User?    @relation(fields: [userId], references: [id])
+}
+
+model PlatformAnalytics {
+  id              String   @id @default(cuid())
+  date            DateTime @unique @default(now())
+  totalCalculations Int    @default(0)
+  totalUsers      Int      @default(0)
+  activeUsers     Int      @default(0)
+  mrr             String   @default("0") // Monthly recurring revenue as String
+}

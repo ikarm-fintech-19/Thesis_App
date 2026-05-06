@@ -1,0 +1,778 @@
+{
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/next.config.ts": {
+    "mtime": 1768715732.0,
+    "hash": "a0f6d5f34e18c65b3b5ea4280a73286e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/tailwind.config.ts": {
+    "mtime": 1761710854.0,
+    "hash": "d8540179b01d61e5116ad3e288a21207"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/rename.py": {
+    "mtime": 1777930011.0316305,
+    "hash": "1827b99b40db4e243657fe696ae29a6d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/eslint.config.mjs": {
+    "mtime": 1768890021.0,
+    "hash": "ac19e4b067f4dbcde9ae67db96106680"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/e2e_tests.py": {
+    "mtime": 1778015742.6687489,
+    "hash": "0cacfeb1999f9a5027ce1da6a4b5eef0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/postcss.config.mjs": {
+    "mtime": 1761710853.0,
+    "hash": "675899342e765a4d16acd75a53389101"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/next-env.d.ts": {
+    "mtime": 1778029904.7832549,
+    "hash": "2a74d3909800ca5467fa83b0ab4a4890"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/test-db-pooler.js": {
+    "mtime": 1778025068.1151302,
+    "hash": "93b6f2e10044c1bee193bcd84b2d155f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/test-db-pooler-paris.js": {
+    "mtime": 1778025106.3792672,
+    "hash": "34c4c4c288ad09f9ef50625e7335fef1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/run-sql-migration.js": {
+    "mtime": 1778027784.8593712,
+    "hash": "89019c86db652fa63c7cc39fe666f01c"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/test-db-pooler-us.js": {
+    "mtime": 1778025081.6791785,
+    "hash": "4e9836d0eff5addd6c8ca9756e207c17"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/check-users.js": {
+    "mtime": 1778027893.0355744,
+    "hash": "ed8520388fa1d33b51ca5d4fbd0b28fc"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/test-db.js": {
+    "mtime": 1778025011.6589308,
+    "hash": "26f488fa29dc914f1c437bd0094c4357"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/seed-users.js": {
+    "mtime": 1778028207.5322561,
+    "hash": "7a1497b9de9bd1852982e47188d802cd"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scratch/setup-admin.js": {
+    "mtime": 1778027933.0316544,
+    "hash": "3b02b93d781038377d08e1b6debc8410"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/middleware.ts": {
+    "mtime": 1778015413.3327873,
+    "hash": "066b80903d0a1922291d1a4f027326b4"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/hooks/use-mobile.ts": {
+    "mtime": 1777839142.6806226,
+    "hash": "19fe7bb61a4bdf52396798ccd3ec99bc"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/hooks/use-toast.ts": {
+    "mtime": 1768978896.0,
+    "hash": "9ba64fc4134b167b51e5e1070a510a00"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/dashboard/FiscalInsights.tsx": {
+    "mtime": 1778023704.6185865,
+    "hash": "76e170d227cfccff77ee5d589594ef52"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/dashboard/RevenueChart.tsx": {
+    "mtime": 1778023222.4658186,
+    "hash": "9e3e95d185f0deb8837b467658734eb8"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/dashboard/DeadlinesTimeline.tsx": {
+    "mtime": 1778023234.3898208,
+    "hash": "606571f5a2805298001a277c539a3ebc"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/dashboard/Sidebar.tsx": {
+    "mtime": 1778021953.798199,
+    "hash": "2376b324ea5e3abd7584ba3df3e8d853"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/subscription/UsageBanner.tsx": {
+    "mtime": 1778020081.5016003,
+    "hash": "2cdd6fcaebf4e45ba1a93251a575e51f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/subscription/PricingTable.tsx": {
+    "mtime": 1777837445.3051882,
+    "hash": "a02553b2f97ee015770879ac1dd5b640"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/TaxResult.tsx": {
+    "mtime": 1778019550.5793831,
+    "hash": "2a41e568da4fd88baf4b21aac3cb7813"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/ThesisPanel.tsx": {
+    "mtime": 1777935665.6182404,
+    "hash": "ef4fa94c02c9322edbdc0bc509328240"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/DeclarationTab.tsx": {
+    "mtime": 1778023645.0704334,
+    "hash": "5367612d7d7d1f1f0ea99e9a1c04c6a0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/LocaleSwitcher.tsx": {
+    "mtime": 1777924404.6328037,
+    "hash": "230d2eb7947a860f4973cd249bba8d77"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/TaxForm.tsx": {
+    "mtime": 1778019531.7878063,
+    "hash": "6292dc61b7417db522071eb374afaa64"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/ModeToggle.tsx": {
+    "mtime": 1777927437.0283847,
+    "hash": "815d74b5aa4581ff37df09741a46f118"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/AIScanner.tsx": {
+    "mtime": 1777989622.209714,
+    "hash": "c4fe7d106100fb6feeaeff934f5fee23"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/tabs.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "65854b541abbc3c9f39cb075d4cb43ca"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/input.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "a516f41f19d79cbedfb354e893706d87"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/dropdown-menu.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "61ed555c8e1fdeb8556a276a1721c8d4"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/checkbox.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "9de07e415989a8ae7695361a9e5bd5b0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/drawer.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "d2f77e51ad7cefcf112c855235a172dc"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/radio-group.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "42634c5e24aebafa3f4ce9c91960dbfe"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/alert-dialog.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "0a52d56b575340a3297c172f22d797ae"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/sheet.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "638d6ec8d932fb7adbcd6f58ad1d8475"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/avatar.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "19bc4411b724fb504c65550b61a453b1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/slider.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "d72c2e0760fae2d1d586db1f8e2c50f9"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/sidebar.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "9e981c1011ccf51eca1f6cb20fa599fd"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/menubar.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "f3836779da2e4f6a90dd7f2755f4c61e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/alert.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "8e59179ed2f0f6e33320d0081b9782fa"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/input-otp.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "2598c4a03345f4d67397f90c3fbbaddb"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/toast.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "5bd1197d5cb25b2a6ca592850f0d8062"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/accordion.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "6f5ac2a39c951069d52ef56e1375d70a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/command.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "5632786c44eaa58e5110088afcfb48a6"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/scroll-area.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "360243727fcdcb4d509af4516aaa9d0d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/pagination.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "c00a637aa821284c8d400e2b84003e31"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/context-menu.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "ae9a7bdee410df0b5d0380784c3a2d16"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/switch.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "f93349e0eb061fc4e6c055ded4cff087"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/form.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "06437ddc30eab3a60f7a561dbc2970ba"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/breadcrumb.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "14763038175abd2410d97d8166c89480"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/progress.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "d0578ee4fb52d86376172c83fb67a9ba"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/aspect-ratio.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "be7a9b030095db724fb3d9ca4e62293c"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/carousel.tsx": {
+    "mtime": 1777935128.2735891,
+    "hash": "6f65a1b383eeb70c2c6cc04cd546dfda"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/toaster.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "b36ad9f6793e952195dbec2c7dd4c0ee"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/card.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "a1468e2e35dfde14b63b4308cd20d2c2"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/badge.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "8162fc70aeb50791309f57f8f845d533"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/table.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "531bf830b5f3b399abe3fd453157cdb7"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/calendar.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "92c5e0827022c5fc482a151e58467cee"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/collapsible.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "3280feca735918afc1e61fa59ba6e3f3"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/select.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "bc5bd729efe33ebe26ea6aceeb18dded"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/separator.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "07b35dc35f811b26a1ee3982582ba9fb"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/toggle-group.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "a68b5be2c6b0ce6526a95d195b448810"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/chart.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "79030ea8a0db990faf5a06180d40b274"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/popover.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "d7255316c532c766cee7792d775e4d0f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/dialog.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "48a74bc4e6b2a9609c91582cae95730f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/navigation-menu.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "bea6b8a7ef7d7e7d5dc09afe7631fb59"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/textarea.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "04f9af2a78672f7018b16db2bcec5036"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/button.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "7cf5063b66e3ea629115772120bc57e7"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/hover-card.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "a1010352934f4cdf860caa32491a3706"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/sonner.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "6ea1f5a74a5c8a3463d405fcd3099771"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/tooltip.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "9f753bf8201bd05dae554f6808586391"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/label.tsx": {
+    "mtime": 1761710853.0,
+    "hash": "14f124762142b39a666ce10d3b42d28c"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/resizable.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "e6bc37b4f3397d034e51f987d66ebd48"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/toggle.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "df65c0dfce4225ad57a1901b01580f54"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/FiscalTooltip.tsx": {
+    "mtime": 1778029655.2223208,
+    "hash": "e8cfa8836eb828f8b33885cfba1f52c6"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/skeleton.tsx": {
+    "mtime": 1761710854.0,
+    "hash": "ee5017bac14efeda715feaceb488382a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/G50Wizard.tsx": {
+    "mtime": 1778029878.6311588,
+    "hash": "536f57c5d955c5702f7cafe08f266176"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/PenaltyWarningBanner.tsx": {
+    "mtime": 1777921483.9302762,
+    "hash": "917457b0ebdeea67f84eb310a02c1179"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/SalesStep.tsx": {
+    "mtime": 1778029694.814472,
+    "hash": "f4101e7760be88219f0ec88a123ae66d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/PurchasesStep.tsx": {
+    "mtime": 1778029715.40655,
+    "hash": "1b8b20646c7d0427876ce6b81e47196e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/SalariesStep.tsx": {
+    "mtime": 1778029740.270644,
+    "hash": "a96e5bf1426f7d191910213f2c9a7d1f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/SummaryStep.tsx": {
+    "mtime": 1778019035.7477186,
+    "hash": "3a45289b77acc94073bfe6b19be347b9"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/g50/PeriodStep.tsx": {
+    "mtime": 1777929604.291433,
+    "hash": "e5d091adaff7b2587467abfa5888eca1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/layout/Footer.tsx": {
+    "mtime": 1778019083.2682493,
+    "hash": "54dee516c5085c42d0020e1328c87ab2"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/layout/Header.tsx": {
+    "mtime": 1778020804.5428991,
+    "hash": "00b9a0c7c5d00001a1109a6600f866bb"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/layout/Providers.tsx": {
+    "mtime": 1777845384.7628233,
+    "hash": "1051f7c33029d28cd59cde3291b3fda7"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/pwa/PWAProvider.tsx": {
+    "mtime": 1777921936.9951017,
+    "hash": "36f8278c7fc32f76b13e14d09c4a2ed1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/auth/AuthProvider.tsx": {
+    "mtime": 1777992175.6198342,
+    "hash": "9a7e0155f076712e04d8f047fe103e0b"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/auth/ProtectedRoute.tsx": {
+    "mtime": 1778015442.4112046,
+    "hash": "dadb3af5c0fc42829503c23e50af491a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/auth/LoginModal.tsx": {
+    "mtime": 1777930011.0476305,
+    "hash": "7b23a2a3dc2733b4d7ddb20b3556e31b"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/admin/AnalyticsDashboard.tsx": {
+    "mtime": 1777839131.4086092,
+    "hash": "4bc78a09a8f2c162b17c7b19aa9d7d60"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/annual-tax/ProfileStep.tsx": {
+    "mtime": 1778021916.8539371,
+    "hash": "b6a3e9970e372c46156afaafab7ae300"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/annual-tax/TaxSummaryStep.tsx": {
+    "mtime": 1778021952.53419,
+    "hash": "2bf1ae2cb3f1ef2f53b27f595dafc999"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/annual-tax/AnnualTaxWizard.tsx": {
+    "mtime": 1778021914.709922,
+    "hash": "fb89a73150b717912c55f9b4174ba2f6"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/annual-tax/ProfitStep.tsx": {
+    "mtime": 1778022035.2107778,
+    "hash": "3a1fa0c1acd7adad2eeb2dd46ee2ca6a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/page.tsx": {
+    "mtime": 1778019060.6279957,
+    "hash": "161160660164802972c94786e651ddd1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/layout.tsx": {
+    "mtime": 1778018914.8343947,
+    "hash": "81c7f4433f5ac420ee8a0406e584ac01"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/page.tsx": {
+    "mtime": 1778029861.9350975,
+    "hash": "b4bddce8da45cd753627e3eef386c334"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/layout.tsx": {
+    "mtime": 1778018922.5344777,
+    "hash": "af2edf3a2e868bbd99f0818e2619499c"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/team/page.tsx": {
+    "mtime": 1778020087.5935822,
+    "hash": "3564e98361d7684fc8cbc946f2cb543a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/declarations/page.tsx": {
+    "mtime": 1778015465.9789546,
+    "hash": "8652a4bc546e7940b1de6cb66e55c967"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/settings/page.tsx": {
+    "mtime": 1778030083.2999017,
+    "hash": "5408df9b32e4f88bff7c538a28c28481"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/settings/privacy/page.tsx": {
+    "mtime": 1778015456.4536886,
+    "hash": "e1bb566a5f8a8f129d2cca2a2a75e3c4"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/scanner/page.tsx": {
+    "mtime": 1777930011.0516305,
+    "hash": "11dfffc9b7e9c95327b4b8d03e605ba9"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/accountant/page.tsx": {
+    "mtime": 1777928944.560051,
+    "hash": "f1c4d0ea8d214df548ea367fb4dfcd91"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/g50/error.tsx": {
+    "mtime": 1778015482.3566103,
+    "hash": "923d79e3d2478223ef1285f0f136fce3"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/g50/page.tsx": {
+    "mtime": 1777921525.0867145,
+    "hash": "10cd601389944129e770fe5dc572dcb3"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/calculator/page.tsx": {
+    "mtime": 1778020067.333645,
+    "hash": "b4c328b4bc706901a5faf54d0203f473"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/admin/page.tsx": {
+    "mtime": 1777930011.0556307,
+    "hash": "19ab0a7ac1a5e44e2a9764281796f7df"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/dashboard/annual-tax/page.tsx": {
+    "mtime": 1778021628.519927,
+    "hash": "064c9bc1ce2c6697712bd824134a1eeb"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/contact/page.tsx": {
+    "mtime": 1777930011.0556307,
+    "hash": "8fe3e0ef4783e88d3493787c38411554"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/support/page.tsx": {
+    "mtime": 1777930011.0556307,
+    "hash": "c49d57d45fbaff5710bd32087e9cc614"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/(marketing)/layout.tsx": {
+    "mtime": 1777928059.7906833,
+    "hash": "560eb9afa836437c5554ee8fa78f47dd"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/(marketing)/pricing/page.tsx": {
+    "mtime": 1778020083.5335941,
+    "hash": "846157165c81c85b7c91ff67f569e7b1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/route.ts": {
+    "mtime": 1762861470.0,
+    "hash": "bea7bb6c5e8f4a6fad2e9ccc6324ae8a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/user/declarations/route.ts": {
+    "mtime": 1777837595.2120857,
+    "hash": "ffd3c3f40e7a41ad7efd35a1bd9e1740"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/user/delete-account/route.ts": {
+    "mtime": 1777922321.0933611,
+    "hash": "32fc57a48f9431e296ae9fcd1b2f92be"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/user/export-data/route.ts": {
+    "mtime": 1777929709.7434604,
+    "hash": "f16184ef0f87fcb8bdba5a5770a47797"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/salary/route.ts": {
+    "mtime": 1777921689.5924668,
+    "hash": "2fbdbe73bf3649297d161159cd19668f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/salary/import/route.ts": {
+    "mtime": 1777929705.703459,
+    "hash": "cebe42dd444dfb20018e4d31f524819b"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/accountant/clients/route.ts": {
+    "mtime": 1777922342.8051414,
+    "hash": "0129f925db6baa8ceea353c5e3b7df8e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/declaration/export/excel/route.ts": {
+    "mtime": 1777935478.070013,
+    "hash": "b7636668238f3bcad27317121311590f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/declaration/export/csv/route.ts": {
+    "mtime": 1777837579.115813,
+    "hash": "e07d13fa3824c2ac7d98e32bfb8c0f6d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/declaration/calculate/route.ts": {
+    "mtime": 1777935824.8624334,
+    "hash": "6c50fc7d05bda4195d14c4be36c11065"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/declaration/draft/route.ts": {
+    "mtime": 1778017787.4470682,
+    "hash": "cdb28731940e7866b9394ee792014d72"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/declaration/submit/route.ts": {
+    "mtime": 1778017969.4230897,
+    "hash": "41128d09d547c96b73d73198c43e36c1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/tax-rules/versions/route.ts": {
+    "mtime": 1777922348.741084,
+    "hash": "53cefdd7a115106cef4258e97485796f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/calculate/route.ts": {
+    "mtime": 1778020085.573588,
+    "hash": "b16e0582e36ca4d719eadd461d12ce2a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/export-validation/route.ts": {
+    "mtime": 1777838119.149634,
+    "hash": "a06e9fbdf987979bb50d3083f1db7ad0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/auth/login/route.ts": {
+    "mtime": 1777837193.433283,
+    "hash": "00aa70ddbb3e57471733a88e681714d2"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/auth/me/route.ts": {
+    "mtime": 1777837204.6852593,
+    "hash": "66a29c99c505168d48f6a522a485d3a0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/auth/logout/route.ts": {
+    "mtime": 1777837198.3772726,
+    "hash": "9aa12acdf2b77f2976fd167d0d5fe048"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/admin/stats/route.ts": {
+    "mtime": 1777837506.0104625,
+    "hash": "b5e6ea6aeb84cc7b387d5ec07000c14e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/ai/scan/route.ts": {
+    "mtime": 1777838647.4677682,
+    "hash": "7107718fda8b6fb21056a6622f7c9dab"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/calculator/page.tsx": {
+    "mtime": 1778019517.17215,
+    "hash": "3eaa53a8299f7b2b37e6a64c20c40e2c"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/auth/callback/route.ts": {
+    "mtime": 1778024562.0015178,
+    "hash": "451c06361ca3a573500c29baba265f7a"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/legal/page.tsx": {
+    "mtime": 1777930011.0596306,
+    "hash": "5010441aa3f0fbbde48d19b7aebfd70f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/login/page.tsx": {
+    "mtime": 1778020807.2309122,
+    "hash": "7dba74bb2d8386ef8065f09de1708f9b"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/decimal-utils.ts": {
+    "mtime": 1777816834.0,
+    "hash": "8809fcd9e4984ce76ae986355eac53ff"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/auth.ts": {
+    "mtime": 1778015411.3208177,
+    "hash": "8e906c7058c2bea09ba4e514151bf60f"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/ai-store.ts": {
+    "mtime": 1777838687.6798644,
+    "hash": "ab618d4c2e78c5f1f656be5d922e1baa"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/i18n-context.tsx": {
+    "mtime": 1777935117.9295766,
+    "hash": "28e32149e05b87ae88cf1034b8ef71ee"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/declaration-engine.ts": {
+    "mtime": 1777935471.8100054,
+    "hash": "d97433fed79fbac6d944db12b55f6bea"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/utils.ts": {
+    "mtime": 1761710854.0,
+    "hash": "5a6fd53fdcf2be529e9cc0b718fde352"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/rate-limit.ts": {
+    "mtime": 1777929636.8714392,
+    "hash": "217f6a6842a3f10cc87591df6b1eb192"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/ibs-engine.ts": {
+    "mtime": 1778021380.2182615,
+    "hash": "04cdd082c2a3f71efe1c4e97ba05bda7"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/irg-business-engine.ts": {
+    "mtime": 1778021387.958312,
+    "hash": "33884ac71281b8a0e2f0e30eac74896d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/db.ts": {
+    "mtime": 1761710854.0,
+    "hash": "91eb0a5e8e2f120bf0913d91d1a82ecd"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/brand.ts": {
+    "mtime": 1777933939.236148,
+    "hash": "c0886ffeb3dc71787f45b8c34795f63e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/tax-engine.ts": {
+    "mtime": 1777929683.2874517,
+    "hash": "5ac5e64468d32076bd2e4041ebce9aae"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/subscription.ts": {
+    "mtime": 1777837417.1767955,
+    "hash": "2061f68700dc7d26871688d6eb6900c2"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/subscription-enforcement.ts": {
+    "mtime": 1778020079.4256065,
+    "hash": "dfa4c21901772535068d740d15387356"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/pdf-utils.ts": {
+    "mtime": 1778023609.950349,
+    "hash": "3d2c6bf9d17b57dd43e65937f47375dd"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/deductibility-rules.ts": {
+    "mtime": 1777839066.1765273,
+    "hash": "c4543f5d1688282ba7c6d212409c837b"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/schemas/index.ts": {
+    "mtime": 1777920319.3281548,
+    "hash": "1fa25a0fa1a283b20b91292a656c3f88"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/utils/supabase/middleware.ts": {
+    "mtime": 1778024045.7076457,
+    "hash": "9d5f34f9f05e7f977babe98254d4b94e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/utils/supabase/server.ts": {
+    "mtime": 1778024032.2435992,
+    "hash": "991a76df212915f5338dfb82c343cdda"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/utils/supabase/client.ts": {
+    "mtime": 1778024026.4395792,
+    "hash": "2640037b8f240f169be713b2f54f8037"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/tests/irg-business-engine.test.ts": {
+    "mtime": 1778021449.322717,
+    "hash": "80f0577ecaca0517fba829566f3d89c3"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/tests/tax-engine.test.ts": {
+    "mtime": 1778015524.7553244,
+    "hash": "fb87313fd49237ee6b4041f2d4a65bf0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/tests/ibs-engine.test.ts": {
+    "mtime": 1778021448.0747087,
+    "hash": "d63174c62101babf6b5cd84cf515d583"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/prisma/seed.ts": {
+    "mtime": 1777930011.0676305,
+    "hash": "fe8c329bd9d2343759cf92298c81e5da"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/public/sw.js": {
+    "mtime": 1777930011.0676305,
+    "hash": "ae208260d8e1763f897e95512aedc4a4"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/scripts/generate-thesis.js": {
+    "mtime": 1777934230.5885012,
+    "hash": "60415ce394e8846f78f881f3496a9c55"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/supabase/migrations/001_tva_rules.sql": {
+    "mtime": 1777843848.4668093,
+    "hash": "7eafa49c6ed4602fd6b01fb784512e60"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/SUPABASE_MIGRATION.md": {
+    "mtime": 1777818161.0,
+    "hash": "9bc8ecf80b7a4c3206cf5539aabf76c5"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/findings.md": {
+    "mtime": 1777930011.0236306,
+    "hash": "a15f0673423479f4469589bdf10887ac"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/progress.md": {
+    "mtime": 1777930011.0276306,
+    "hash": "3c801153c803ee31cfeb6133348a47c9"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/mock-users.md": {
+    "mtime": 1778028334.0005567,
+    "hash": "2c159fdef6dcaff447939ac33bef8f36"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/graphify-out/converted/thesis_chapters_3_and_5_4191e584.md": {
+    "mtime": 1778030166.3081982,
+    "hash": "7280816b3a4c7e86ade9ded9e5bcf161"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/task_plan.md": {
+    "mtime": 1777930011.0316305,
+    "hash": "2d189fa65ea5cfe1e0ec8ea24f0d8279"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/worklog.md": {
+    "mtime": 1777825324.0,
+    "hash": "cb17d6f7153c2e2f973dffa746adafc0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/prompt.md": {
+    "mtime": 1777848171.627138,
+    "hash": "1f15d682f67ec12fd677451cd0973e45"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/MATAX_ROADMAP.md": {
+    "mtime": 1778023142.757836,
+    "hash": "d452ec8196022f93534e8eea52f015c7"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/AGENTS.md": {
+    "mtime": 1777833844.854693,
+    "hash": "8ee39dcfe68a23b3797b02648930d699"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/app_workflow.md": {
+    "mtime": 1778021383.3822823,
+    "hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/public/robots.txt": {
+    "mtime": 1777930011.0716307,
+    "hash": "abbe8878affad6122e04bf6785c5dda9"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/GN\u00b0 11 (IRG - BIC).pdf": {
+    "mtime": 1778022032.2787569,
+    "hash": "75a97eed084e4a35cd32844490d7847d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/GN\u00b050- SI jibayatic.pdf": {
+    "mtime": 1777847015.7421725,
+    "hash": "cdb14e064ea5c1b0d4ca73d9bb9fd972"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/\u0627\u0644\u0645\u062d\u0627\u0636\u0631\u0629 \u0631\u0642\u0645 01- (IBS) \u0627\u0644\u0645\u062d\u0648\u0631 \u0627\u0644\u062b\u0627\u0644\u062b.pdf": {
+    "mtime": 1778021403.306413,
+    "hash": "6e2888dc8a9e4d27cac8a2c9d19671b1"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/Loi_de_Finances_2026_FR.pdf": {
+    "mtime": 1777930946.2605598,
+    "hash": "6d5f58fc8c9a2fe920a5a8c2d2aa498b"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/GN\u00b0 4 -2025.pdf": {
+    "mtime": 1778021767.7088897,
+    "hash": "6d96f6680c35ce3593b01e551472e441"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/Communiqu\u00e9 g\u00e9n\u00e9ral de la loi de finances 2026.pdf": {
+    "mtime": 1777931082.6527162,
+    "hash": "cc74d45ccc285a0c2aebd1f7d18a44e8"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/GN \u00b008.pdf": {
+    "mtime": 1778021900.6898232,
+    "hash": "f9a9ec2d38a6061b19c3c604f9c2d1c0"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/\u0627\u0644\u0645\u062d\u0627\u0636\u0631\u0629_08_\u0645\u0644\u0621_\u0645\u062e\u062a\u0644\u0641_\u0627\u0644\u062a\u0635\u0631\u064a\u062d\u0627\u062a_\u0627\u0644\u062c\u0628\u0627\u0626\u064a\u0629_02.pdf": {
+    "mtime": 1777931667.2774043,
+    "hash": "8dab9a641886deb53294b8e26ce7074c"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/Articles/Notice_comment_remplir_la_d\u00e9claration_GN\u00b0_4_de_l&#039;imp\u00f4t_sur.pdf": {
+    "mtime": 1778021795.2010818,
+    "hash": "eff25be4dfac9c2e49b9d5e9d479f640"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/icon.png": {
+    "mtime": 1777931212.5968668,
+    "hash": "76d7dc221a4fc8ff163d103e20311bb8"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/test-results/tva_11_mobile.png": {
+    "mtime": 1778015795.1300373,
+    "hash": "133bf93689020534251c41ee2d61dc2d"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/public/logo.svg": {
+    "mtime": 1761710853.0,
+    "hash": "42f46ee1967225126315578016f0f9b6"
+  },
+  "/home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/public/logo.png": {
+    "mtime": 1777931030.5006561,
+    "hash": "76d7dc221a4fc8ff163d103e20311bb8"
+  }
+}
