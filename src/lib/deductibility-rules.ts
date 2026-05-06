@@ -12,8 +12,8 @@ export type DeductibilityCategory = 'standard' | 'vehicle' | 'hospitality' | 're
 
 export const DEDUCTIBILITY_CAPS: Record<DeductibilityCategory, number> = {
   standard: 1.0,       // 100% — General purchases (goods, services, matières premières)
-  vehicle: 0.5,        // 50%  — Passenger vehicles (Art. 33 al. 2 CID)
-  hospitality: 0.0,    // 0%   — Hébergement & restauration (Art. 33 al. 3 CID) — non-deductible
+  vehicle: 0.0,        // 0%  — Passenger vehicles (Art. 30 CTCA) — strictly non-deductible for TVA
+  hospitality: 0.0,    // 0%   — Hébergement & restauration (Art. 30 CTCA) — non-deductible
   real_estate: 1.0,    // 100% — Construction & acquisition de locaux professionnels
   export: 0.0          // 0%   — TVA on exports is not applicable (Art. 30-4° CID)
 }
@@ -37,18 +37,18 @@ export const DEDUCTIBILITY_INFO: DeductibilityInfo[] = [
     labelFr: 'Standard (biens, services, matières premières)',
     labelEn: 'Standard (goods, services, raw materials)',
     labelAr: 'قياسي (بضائع، خدمات، مواد أولية)',
-    articleRef: 'Art. 33-1° du CID',
+    articleRef: 'Art. 28 - Code TVA',
     notes: 'Déductible intégralement dans les conditions normales'
   },
   {
     category: 'vehicle',
-    cap: 0.5,
-    capPercent: '50%',
+    cap: 0.0,
+    capPercent: '0%',
     labelFr: 'Véhicules de tourisme',
     labelEn: 'Passenger vehicles',
     labelAr: 'سيارات الركاب',
-    articleRef: 'Art. 33-2° du CID',
-    notes: 'Déductible à 50% uniquement. Ne concerne pas les véhicules utilitaires.'
+    articleRef: 'Art. 30 - Code TVA',
+    notes: 'Non déductible pour la TVA (sauf si c\'est l\'objet principal de l\'activité).'
   },
   {
     category: 'hospitality',
@@ -57,7 +57,7 @@ export const DEDUCTIBILITY_INFO: DeductibilityInfo[] = [
     labelFr: 'Hébergement & restauration',
     labelEn: 'Hospitality & catering',
     labelAr: 'إقامة ومطاعم',
-    articleRef: 'Art. 33-3° du CID',
+    articleRef: 'Art. 30 - Code TVA',
     notes: 'Non déductible — les frais d\'hébergement et de restauration sont exclus du droit à déduction'
   },
   {

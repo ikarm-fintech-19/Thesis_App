@@ -13,6 +13,7 @@ import { Plus, Trash2, Users, Calculator, Upload } from 'lucide-react'
 import { useState, useRef } from 'react'
 import Decimal from 'decimal.js'
 import { FiscalTooltip } from '@/components/ui/FiscalTooltip'
+import { calculateSingleSalaryIRG } from '@/lib/irg-salaires-engine'
 
 interface SalariesStepProps {
   data: any
@@ -26,48 +27,8 @@ interface SalaryLine {
   familyChildren: number
 }
 
-const IRG_BRACKETS = [
-  { max: 120000, rate: 0 },
-  { max: 360000, rate: 0.20 },
-  { max: 1440000, rate: 0.30 },
-  { max: 3600000, rate: 0.35 },
-  { max: Infinity, rate: 0.35 }
-]
-
 const CNAS_EMPLOYEE_RATE = 0.09
 const CNAS_EMPLOYER_RATE = 0.26
-const FAMILY_DEDUCTION_PER_CHILD = 1000
-
-function calculateIRG(gross: Decimal, children: number): { irg: Decimal; net: Decimal; breakdown: string } {
-  const taxable = gross.sub(FAMILY_DEDUCTION_PER_CHILD * children)
-  if (taxable.lt(0)) {
-    return { irg: new Decimal(0), net: gross, breakdown: 'Exonéré (après déduction familiale)' }
-  }
-  
-  let remaining = taxable.toNumber()
-  let totalTax = 0
-  let previousMax = 0
-  
-  for (const bracket of IRG_BRACKETS) {
-    if (remaining <= 0) break
-    const taxableInBracket = Math.min(remaining, bracket.max - previousMax)
-    if (taxableInBracket > 0) {
-      totalTax += taxableInBracket * bracket.rate
-      remaining -= taxableInBracket
-      previousMax = bracket.max
-    }
-  }
-  
-  const irg = new Decimal(totalTax)
-  const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
-  const net = gross.sub(irg).sub(cnasEmployee)
-  
-  return { 
-    irg, 
-    net,
-    breakdown: `IRG: ${irg.toFixed(0)} DZD + CNAS: ${cnasEmployee.toFixed(0)} DZD`
-  }
-}
 
 export default function SalariesStep({ data, updateData, onPenaltiesChange }: SalariesStepProps) {
   const { t } = useI18n()
@@ -149,253 +110,149 @@ export default function SalariesStep({ data, updateData, onPenaltiesChange }: Sa
     let totalNet = new Decimal(0)
 
     data.salaries.forEach((salary: any) => {
-      const gross = new Decimal(salary.grossSalary)
-      const { irg, net } = calculateIRG(gross, salary.familyChildren)
-      const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
-      const cnasEmployer = gross.mul(CNAS_EMPLOYER_RATE)
-
+      const gross = new Decimal(salary.grossSalary || 0)
+      const { irg, net, cnas } = calculateSingleSalaryIRG(gross)
+      
       totalGross = totalGross.add(gross)
       totalIRG = totalIRG.add(irg)
-      totalCnasEmployee = totalCnasEmployee.add(cnasEmployee)
-      totalCnasEmployer = totalCnasEmployer.add(cnasEmployer)
+      totalCnasEmployee = totalCnasEmployee.add(cnas)
+      totalCnasEmployer = totalCnasEmployer.add(gross.mul(CNAS_EMPLOYER_RATE))
       totalNet = totalNet.add(net)
     })
 
     return { totalGross, totalIRG, totalCnasEmployee, totalCnasEmployer, totalNet }
   }
 
-  const totals = data.salaries.length > 0 ? calculateTotals() : null
+  const totals = calculateTotals()
 
   return (
     <div className="space-y-6">
-      {!hasEmployees && data.salaries.length === 0 ? (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
-              {t('wizard.salaries.title')}
-            </CardTitle>
-            <CardDescription>{t('wizard.salaries.description')}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="text-center py-8">
-              <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-muted-foreground mb-4">{t('wizard.salaries.question')}</p>
-              <div className="flex justify-center gap-4">
-                <Button onClick={() => { setHasEmployees(true); updateData({ salaries: [] }) }}>
-                  {t('wizard.salaries.yes')}
-                </Button>
-                <Button variant="outline" onClick={() => onPenaltiesChange([])}>
-                  {t('wizard.salaries.no')}
-                </Button>
-              </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Users className="h-5 w-5" />
+            {t('wizard.salaries.title')}
+          </CardTitle>
+          <CardDescription>{t('wizard.salaries.description')}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="md:col-span-1">
+              <Label>{t('wizard.salaries.employeeName')}</Label>
+              <Input
+                placeholder="Ex: Mohamed Amine"
+                value={newSalary.employeeName}
+                onChange={(e) => setNewSalary({ ...newSalary, employeeName: e.target.value })}
+              />
             </div>
-          </CardContent>
-        </Card>
-      ) : (
-        <>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                {t('wizard.salaries.addTitle')}
-              </CardTitle>
-              <CardDescription>{t('wizard.salaries.addDescription')}</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                <div className="space-y-1">
-                  <Label className="text-xs">{t('wizard.salaries.employeeName')}</Label>
-                  <Input
-                    placeholder={t('wizard.salaries.employeeNamePlaceholder')}
-                    value={newSalary.employeeName}
-                    onChange={(e) => setNewSalary({ ...newSalary, employeeName: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-xs">{t('wizard.salaries.grossSalary')}</Label>
-                  <Input
-                    type="number"
-                    inputMode="decimal"
-                    placeholder="0"
-                    value={newSalary.grossSalary}
-                    onChange={(e) => setNewSalary({ ...newSalary, grossSalary: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-xs">{t('wizard.salaries.children')}</Label>
-                  <Select
-                    value={String(newSalary.familyChildren)}
-                    onValueChange={(v) => setNewSalary({ ...newSalary, familyChildren: parseInt(v) })}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[0,1,2,3,4,5].map(n => (
-                        <SelectItem key={n} value={String(n)}>{n} {n === 0 ? '' : n === 1 ? 'enfant' : 'enfants'}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="flex items-end gap-2">
-                  <Button onClick={addSalary} className="flex-1">
-                    <Plus className="h-4 w-4 me-2" />
-                    {t('wizard.salaries.add')}
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    onClick={() => fileInputRef.current?.click()}
-                    disabled={importing}
-                  >
-                    {importing ? (
-                      <Calculator className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Upload className="h-4 w-4" />
-                    )}
-                  </Button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept=".csv"
-                    className="hidden"
-                    onChange={handleCSVImport}
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            <div className="md:col-span-1">
+              <Label>{t('wizard.salaries.grossSalary')}</Label>
+              <Input
+                type="number"
+                inputMode="decimal"
+                placeholder="45000"
+                value={newSalary.grossSalary}
+                onChange={(e) => setNewSalary({ ...newSalary, grossSalary: e.target.value })}
+              />
+            </div>
+            <div className="md:col-span-1">
+              <Label>{t('wizard.salaries.children')}</Label>
+              <Input
+                type="number"
+                value={newSalary.familyChildren}
+                onChange={(e) => setNewSalary({ ...newSalary, familyChildren: parseInt(e.target.value) || 0 })}
+              />
+            </div>
+            <div className="flex items-end">
+              <Button onClick={addSalary} className="w-full">
+                <Plus className="h-4 w-4 mr-2" />
+                {t('common.add')}
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center">
+            <div className="text-sm text-muted-foreground italic">
+              * {t('wizard.salaries.ruleNote')}
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="file"
+                accept=".csv"
+                className="hidden"
+                ref={fileInputRef}
+                onChange={handleCSVImport}
+              />
+              <Button variant="outline" size="sm" onClick={() => fileInputRef.current?.click()} disabled={importing}>
+                <Upload className="h-4 w-4 mr-2" />
+                {importing ? t('common.loading') : t('wizard.salaries.import')}
+              </Button>
+            </div>
+          </div>
 
           {data.salaries.length > 0 && (
-            <Card>
-              <CardHeader className="pb-2">
-                <div className="flex justify-between items-center">
-                  <CardTitle className="text-base">{t('wizard.salaries.tableTitle')}</CardTitle>
-                  {totals && (
-                    <div className="flex gap-4 text-sm">
-                      <span>Brut: <span className="font-medium">{totals.totalGross.toFixed(0)} DZD</span></span>
-                      <span><FiscalTooltip term="irg" />: <span className="font-medium">{totals.totalIRG.toFixed(0)} DZD</span></span>
-                      <span>Net: <span className="font-medium">{totals.totalNet.toFixed(0)} DZD</span></span>
-                    </div>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="md:hidden space-y-3">
-                  {data.salaries.map((salary: any, idx: number) => {
+            <div className="rounded-md border">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t('wizard.salaries.table.name')}</TableHead>
+                    <TableHead>{t('wizard.salaries.table.gross')}</TableHead>
+                    <TableHead>{t('wizard.salaries.table.irg')}</TableHead>
+                    <TableHead>{t('wizard.salaries.table.cnas')}</TableHead>
+                    <TableHead>{t('wizard.salaries.table.net')}</TableHead>
+                    <TableHead className="w-[80px]"></TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {data.salaries.map((salary: any, index: number) => {
                     const gross = new Decimal(salary.grossSalary)
-                    const { irg, net } = calculateIRG(gross, salary.familyChildren)
-                    const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
+                    const { irg, net, cnas } = calculateSingleSalaryIRG(gross)
                     
                     return (
-                      <div key={idx} className="bg-card border rounded-lg p-3 relative flex flex-col gap-2 shadow-sm">
-                        <div className="flex justify-between items-start pr-8">
-                          <div>
-                            <div className="font-semibold text-sm">{salary.employeeName}</div>
-                            <div className="text-xs text-muted-foreground flex items-center gap-1">
-                              {salary.familyChildren} {salary.familyChildren <= 1 ? 'enfant' : 'enfants'}
-                            </div>
-                          </div>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 absolute top-2 right-2 text-destructive hover:bg-destructive/10 hover:text-destructive" onClick={() => removeSalary(idx)}>
+                      <TableRow key={index}>
+                        <TableCell className="font-medium">{salary.employeeName}</TableCell>
+                        <TableCell>{gross.toFixed(2)} DZD</TableCell>
+                        <TableCell className="text-red-600 font-medium">-{irg.toFixed(2)}</TableCell>
+                        <TableCell>-{cnas.toFixed(2)}</TableCell>
+                        <TableCell className="font-bold">{net.toFixed(2)} DZD</TableCell>
+                        <TableCell>
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            onClick={() => removeSalary(index)}
+                            className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                          >
                             <Trash2 className="h-4 w-4" />
                           </Button>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2 text-sm mt-1 pt-2 border-t">
-                          <div>
-                            <div className="text-[10px] uppercase text-muted-foreground">Brut</div>
-                            <div className="font-medium">{gross.toFixed(0)} DZD</div>
-                            <div className="text-xs text-red-600 mt-1">IRG: -{irg.toFixed(0)} DZD</div>
-                          </div>
-                          <div>
-                            <div className="text-[10px] uppercase text-muted-foreground">Net</div>
-                            <div className="font-medium text-green-600">{net.toFixed(0)} DZD</div>
-                            <div className="text-xs text-orange-600 mt-1">CNAS: -{cnasEmployee.toFixed(0)} DZD</div>
-                          </div>
-                        </div>
-                      </div>
+                        </TableCell>
+                      </TableRow>
                     )
                   })}
-                </div>
-                <div className="hidden md:block overflow-x-auto">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>{t('wizard.salaries.employeeName')}</TableHead>
-                        <TableHead>{t('wizard.salaries.grossSalary')}</TableHead>
-                        <TableHead>{t('wizard.salaries.children')}</TableHead>
-                        <TableHead><FiscalTooltip term="irg" /></TableHead>
-                        <TableHead><FiscalTooltip term="cnas" /></TableHead>
-                        <TableHead>{t('wizard.salaries.netSalary')}</TableHead>
-                        <TableHead></TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {data.salaries.map((salary: any, idx: number) => {
-                        const gross = new Decimal(salary.grossSalary)
-                        const { irg, net } = calculateIRG(gross, salary.familyChildren)
-                        const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
-                        
-                        return (
-                          <TableRow key={idx}>
-                            <TableCell className="font-medium">{salary.employeeName}</TableCell>
-                            <TableCell>{gross.toFixed(0)} DZD</TableCell>
-                            <TableCell>
-                              <Badge variant="outline">{salary.familyChildren}</Badge>
-                            </TableCell>
-                            <TableCell className="text-red-600">-{irg.toFixed(0)}</TableCell>
-                            <TableCell className="text-orange-600">-{cnasEmployee.toFixed(0)}</TableCell>
-                            <TableCell className="text-green-600 font-medium">{net.toFixed(0)} DZD</TableCell>
-                            <TableCell>
-                              <Button variant="ghost" size="icon" onClick={() => removeSalary(idx)}>
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        )
-                      })}
-                    </TableBody>
-                  </Table>
-                </div>
-
-                {totals && (
-                  <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                    <h4 className="font-medium mb-2">{t('wizard.salaries.summaryTitle')}</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
-                      <div>
-                        <span className="text-muted-foreground">{t('wizard.salaries.totalGross')}</span>
-                        <p className="font-medium">{totals.totalGross.toFixed(0)} DZD</p>
-                      </div>
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-muted-foreground">{t('wizard.salaries.totalIrg')}</span>
-                        <p className="font-medium text-red-600">-{totals.totalIRG.toFixed(0)} DZD</p>
-                      </div>
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-muted-foreground">{t('wizard.salaries.totalCnasEmp')}</span>
-                        <p className="font-medium text-orange-600">-{totals.totalCnasEmployee.toFixed(0)} DZD</p>
-                      </div>
-                      <Separator />
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-muted-foreground">{t('wizard.salaries.totalCnasPat')}</span>
-                        <p className="font-medium">{totals.totalCnasEmployer.toFixed(0)} DZD</p>
-                      </div>
-                      <div className="flex justify-between items-center pt-2">
-                        <span className="font-medium">{t('wizard.salaries.totalNet')}</span>
-                        <p className="font-medium text-green-600">{totals.totalNet.toFixed(0)} DZD</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+                </TableBody>
+              </Table>
+            </div>
           )}
 
-          <div className="flex justify-end">
-            <Button variant="outline" onClick={() => { setHasEmployees(false); updateData({ salaries: [] }) }}>
-              {t('wizard.salaries.noEmployees')}
-            </Button>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t">
+            <div className="p-3 bg-muted/50 rounded-lg">
+              <Label className="text-xs text-muted-foreground">{t('wizard.salaries.totals.gross')}</Label>
+              <p className="text-lg font-bold">{totals.totalGross.toFixed(2)} DZD</p>
+            </div>
+            <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-100 dark:border-red-900/50">
+              <Label className="text-xs text-red-600 dark:text-red-400">{t('wizard.salaries.totals.irg')}</Label>
+              <p className="text-lg font-bold text-red-700 dark:text-red-300">{totals.totalIRG.toFixed(2)} DZD</p>
+            </div>
+            <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-900/50">
+              <Label className="text-xs text-blue-600 dark:text-blue-400">{t('wizard.salaries.totals.cnas')}</Label>
+              <p className="text-lg font-bold text-blue-700 dark:text-blue-300">{totals.totalCnasEmployee.toFixed(2)} DZD</p>
+            </div>
+            <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-900/50">
+              <Label className="text-xs text-green-600 dark:text-green-400">{t('wizard.salaries.totals.net')}</Label>
+              <p className="text-lg font-bold text-green-700 dark:text-green-300">{totals.totalNet.toFixed(2)} DZD</p>
+            </div>
           </div>
-        </>
-      )}
+        </CardContent>
+      </Card>
     </div>
   )
 }

@@ -73,6 +73,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           transactions: [...salesTransactions, ...purchaseTransactions],
+          salaries: data.salaries,
           periodType: data.period.type,
           year: data.period.year,
           month: data.period.month,
@@ -200,7 +201,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
 
           <div className="space-y-4">
             <h4 className="font-medium">{t('wizard.summary.additional')}</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               <div className="space-y-1">
                 <Label className="text-xs">{t('wizard.summary.previousCredit')}</Label>
                 <Input
@@ -226,8 +227,14 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
                 </p>
               </div>
               <div className="space-y-1">
-                <Label className="text-xs">{t('wizard.summary.totalToPay')}</Label>
-                <p className="font-mono font-bold text-lg">
+                <Label className="text-xs">IRG Salaires</Label>
+                <p className="font-mono font-medium text-red-600">
+                  {result?.irg_salaires ? new Decimal(result.irg_salaires).toFixed(2) : '0'} DZD
+                </p>
+              </div>
+              <div className="space-y-1">
+                <Label className="text-xs font-bold text-primary">{t('wizard.summary.totalToPay')}</Label>
+                <p className="font-mono font-bold text-xl text-primary">
                   {result?.total_to_pay ? new Decimal(result.total_to_pay).toFixed(2) : '0'} DZD
                 </p>
               </div>

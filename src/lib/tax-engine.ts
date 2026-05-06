@@ -468,11 +468,11 @@ export const DECLARATION_TEST_CASES: DeclarationTestCase[] = [
       { type: 'PURCHASE', ht_amount: 500000, tva_rate: 0.19, category: 'vehicle' }
     ],
     expectedCollectee: 380000,
-    expectedDeductible: 237500,  // 190000 (standard) + 47500 (vehicle 50% cap)
-    expectedNet: 142500,
+    expectedDeductible: 190000,  // 190000 (standard) + 0 (vehicle 0% cap)
+    expectedNet: 190000,
     expectedPosition: 'A PAYER',
-    description: 'Ventes 2M (19%) + Achats 1M standard + 500k véhicule (50%) → Net 142,500 DZD',
-    articleRef: 'Art. 28 + Art. 33-1° + Art. 33-2° CID'
+    description: 'Ventes 2M (19%) + Achats 1M standard + 500k véhicule (0% déductible) → Net 190,000 DZD',
+    articleRef: 'Art. 28 + Art. 30 CTCA'
   },
   {
     id: 'TC-08',
@@ -485,7 +485,7 @@ export const DECLARATION_TEST_CASES: DeclarationTestCase[] = [
     expectedNet: -190000,
     expectedPosition: 'CREDIT',
     description: 'Export (0%) + Achats 1M (19%, standard) → Crédit -190,000 DZD',
-    articleRef: 'Art. 30-4° + Art. 33-1° CID'
+    articleRef: 'Art. 30-4° + Art. 28 CTCA'
   }
 ]
 
