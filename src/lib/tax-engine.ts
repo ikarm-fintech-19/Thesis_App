@@ -212,7 +212,7 @@ export function calculateTVA(params: {
       {
         category: 'reduced',
         rate: new Decimal('0.09'),
-        condition: { applies_to: ['food', 'pharma', 'transport'], article: 'Art. 29 - Taux réduit 9%' }
+        condition: { applies_to: ['food', 'pharma', 'transport', 'rehabilitation', 'health_accommodation', 'vocational_training'], article: 'Art. 29 - Taux réduit 9% (étendu par Art. 53 LF 2026)' }
       },
       {
         category: 'exempt',
