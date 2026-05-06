@@ -64,7 +64,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const data = await res.json();
     setUser(data.user);
-    router.refresh();
   };
 
   const logout = async () => {

@@ -17,7 +17,8 @@ import {
   ShieldCheck,
   ChevronRight,
   Zap,
-  PieChart
+  PieChart,
+  Briefcase
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -34,6 +35,7 @@ export function Sidebar() {
     { name: t('nav.g50') || 'G50 Mensuel', href: '/dashboard/g50', icon: FileCheck },
     { name: t('annualTax.nav') || 'Bilan Annuel', href: '/dashboard/annual-tax', icon: PieChart },
     { name: t('nav.myTeam'), href: '/dashboard/team', icon: Users, roles: ['ACCOUNTANT', 'ADMIN'] },
+    { name: t('nav.myClients') || 'Mes Clients', href: '/dashboard/accountant', icon: Briefcase, roles: ['ACCOUNTANT', 'ADMIN'] },
 
     { name: t('nav.settings'), href: '/dashboard/settings', icon: Settings },
     { name: t('nav.adminConsole'), href: '/dashboard/admin', icon: ShieldCheck, roles: ['ADMIN'] },

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAuth } from './AuthProvider';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -23,6 +24,7 @@ export function LoginModal({ trigger }: { trigger?: React.ReactNode }) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export function LoginModal({ trigger }: { trigger?: React.ReactNode }) {
       await login(email, password);
       toast.success('Bienvenue sur ' + BRAND.name);
       setOpen(false);
+      router.push('/dashboard');
     } catch (error: any) {
       toast.error(error.message || 'Échec de la connexion');
     } finally {
@@ -50,6 +53,7 @@ export function LoginModal({ trigger }: { trigger?: React.ReactNode }) {
       await login(demoEmail, demoPass);
       toast.success(`Connecté en tant que ${role.toUpperCase()}`);
       setOpen(false);
+      router.push('/dashboard');
     } catch (error: any) {
       toast.error(error.message);
     } finally {

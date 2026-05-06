@@ -7,7 +7,8 @@ const JWT_SECRET = process.env.JWT_SECRET || 'development-secret-fallback';
 const PUBLIC_ROUTES = ['/', '/login', '/pricing', '/contact', '/legal', '/support', '/api/auth/login', '/api/auth/register', '/api/calculate'];
 const PROTECTED_DASHBOARD = '/dashboard';
 const PROTECTED_API = '/api/';
-const ADMIN_ROUTE = '/admin';
+const ADMIN_ROUTE = '/dashboard/admin';
+const ADMIN_API_ROUTE = '/api/admin';
 
 async function getVerifiedPayload(token: string): Promise<any | null> {
   try {
@@ -26,13 +27,13 @@ export async function middleware(request: NextRequest) {
   const isPublicRoute = PUBLIC_ROUTES.some(route => path === route || path.startsWith(route + '/'));
   const isApiRoute = path.startsWith(PROTECTED_API);
   const isDashboardRoute = path.startsWith(PROTECTED_DASHBOARD);
-  const isAdminRoute = path.startsWith(ADMIN_ROUTE);
+  const isAdminRoute = path.startsWith(ADMIN_ROUTE) || path.startsWith(ADMIN_API_ROUTE);
 
   if (isPublicRoute) {
     return NextResponse.next();
   }
 
-  let payload = null;
+  let payload: any = null;
   if (token) {
     payload = await getVerifiedPayload(token);
   }
@@ -46,7 +47,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  if (isAdminRoute && payload.role !== 'ADMIN') {
+  if (isAdminRoute && payload?.role !== 'ADMIN') {
     if (isApiRoute) {
       return NextResponse.json({ error: 'Forbidden - Admin only' }, { status: 403 });
     }
@@ -59,9 +60,14 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/dashboard/:path*',
-    '/admin/:path*',
     '/api/user/:path*',
     '/api/declaration/:path*',
     '/api/calculate/:path*',
+    '/api/accountant/:path*',
+    '/api/admin/:path*',
+    '/api/salary/:path*',
+    '/api/ai/:path*',
+    '/api/export-validation/:path*',
+    '/api/tax-rules/:path*',
   ],
 };

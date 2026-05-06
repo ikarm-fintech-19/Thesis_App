@@ -26,7 +26,7 @@ export function Footer() {
           </div>
           <div className="flex gap-8 text-sm font-semibold text-muted-foreground">
             <Link href="/legal" className="hover:text-primary transition-all duration-200 hover:underline underline-offset-4">{t('footer.terms')}</Link>
-            <Link href="/dashboard/settings/privacy" className="hover:text-primary transition-all duration-200 hover:underline underline-offset-4">{t('footer.privacy')}</Link>
+            <Link href="/legal" className="hover:text-primary transition-all duration-200 hover:underline underline-offset-4">{t('footer.privacy')}</Link>
             <Link href="/contact" className="hover:text-primary transition-all duration-200 hover:underline underline-offset-4">{t('footer.contact')}</Link>
           </div>
         </div>

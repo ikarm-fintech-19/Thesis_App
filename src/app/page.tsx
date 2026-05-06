@@ -65,7 +65,7 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href="/dashboard">
+                <Link href="/login">
                   {t('landing.hero.cta')}
                   <ArrowRight className="ms-2 h-5 w-5" />
                 </Link>
@@ -138,7 +138,7 @@ export default function LandingPage() {
             {t('landing.cta.subtitle')}
           </p>
           <Button size="lg" variant="secondary" asChild>
-            <Link href="/dashboard">
+            <Link href="/login">
               {t('landing.cta.button')}
             </Link>
           </Button>
