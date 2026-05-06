@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     });
     
     // Return a more descriptive error if it's a database connection issue
-    if (error.message?.includes('DATABASE_URL') || error.code === 'P2002' || error.code === 'P1001') {
+    if (error.message?.includes('DATABASE_URL') || error.code === 'P1001' || error.code === 'P1002' || error.code === 'P1003') {
       return NextResponse.json({ 
         error: 'Database connection error. Please check environment variables.',
         details: process.env.NODE_ENV === 'development' ? error.message : undefined

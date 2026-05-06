@@ -221,7 +221,7 @@ export async function POST(request: NextRequest) {
       code: error.code
     })
     
-    if (error.message?.includes('DATABASE_URL') || error.code?.startsWith('P')) {
+    if (error.message?.includes('DATABASE_URL') || error.code === 'P1001' || error.code === 'P1002' || error.code === 'P1003') {
       return NextResponse.json({ 
         error: 'Database connection error. Please check environment variables.',
         details: process.env.NODE_ENV === 'development' ? error.message : undefined
