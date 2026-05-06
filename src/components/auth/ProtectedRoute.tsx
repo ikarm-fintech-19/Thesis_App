@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from './AuthProvider';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { AuthUser } from '@/lib/auth';
 
@@ -13,18 +13,19 @@ interface ProtectedRouteProps {
 export function ProtectedRoute({ children, requiredRole }: ProtectedRouteProps) {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
     if (!loading && !user) {
       setIsRedirecting(true);
-      const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/dashboard';
+      const currentPath = pathname || '/dashboard';
       router.push('/login?redirect=' + encodeURIComponent(currentPath));
     } else if (!loading && user && requiredRole && !requiredRole.includes(user.role)) {
       setIsRedirecting(true);
       router.push('/dashboard');
     }
-  }, [user, loading, router, requiredRole]);
+  }, [user, loading, router, requiredRole, pathname]);
 
   if (loading || !user || isRedirecting) {
     return (

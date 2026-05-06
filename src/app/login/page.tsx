@@ -17,7 +17,8 @@ function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get('redirect') || '/dashboard';
+  const rawRedirect = searchParams.get('redirect');
+  const redirect = rawRedirect?.startsWith('/') ? rawRedirect : '/dashboard';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +30,7 @@ function LoginForm() {
     try {
       await login(email, password);
       toast.success('Bienvenue sur ' + BRAND.name);
+      router.refresh();
       router.push(redirect);
     } catch (error: any) {
       toast.error(error.message || 'Échec de la connexion');
@@ -50,6 +52,7 @@ function LoginForm() {
         role === 'admin' ? 'admin123' : role === 'expert' ? 'expert123' : 'user123';
       await login(demoEmail, demoPass);
       toast.success(`Connecté en tant que ${role.toUpperCase()}`);
+      router.refresh();
       router.push(redirect);
     } catch (error: any) {
       toast.error(error.message);

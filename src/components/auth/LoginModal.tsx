@@ -33,6 +33,7 @@ export function LoginModal({ trigger }: { trigger?: React.ReactNode }) {
       await login(email, password);
       toast.success('Bienvenue sur ' + BRAND.name);
       setOpen(false);
+      router.refresh();
       router.push('/dashboard');
     } catch (error: any) {
       toast.error(error.message || 'Échec de la connexion');
@@ -53,6 +54,7 @@ export function LoginModal({ trigger }: { trigger?: React.ReactNode }) {
       await login(demoEmail, demoPass);
       toast.success(`Connecté en tant que ${role.toUpperCase()}`);
       setOpen(false);
+      router.refresh();
       router.push('/dashboard');
     } catch (error: any) {
       toast.error(error.message);
