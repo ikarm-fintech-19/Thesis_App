@@ -214,8 +214,20 @@ export async function POST(request: NextRequest) {
         metadata: result.metadata
       }
     })
-  } catch (error) {
-    console.error('TVA calculation error:', error)
+  } catch (error: any) {
+    console.error('TVA Calculation API Error:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code
+    })
+    
+    if (error.message?.includes('DATABASE_URL') || error.code?.startsWith('P')) {
+      return NextResponse.json({ 
+        error: 'Database connection error. Please check environment variables.',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      }, { status: 500 })
+    }
+
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

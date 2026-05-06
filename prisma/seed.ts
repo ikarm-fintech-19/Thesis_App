@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client'
-import crypto from 'crypto'
+import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
-// Helper for mock hashing
-function hashPassword(password: string) {
-  return crypto.createHash('sha256').update(password).digest('hex')
+// Helper for bcrypt hashing
+async function hashPassword(password: string) {
+  return bcrypt.hash(password, 12)
 }
 
 async function main() {
@@ -32,7 +32,7 @@ async function main() {
     data: {
       email: 'admin@matax.dz',
       name: 'Admin Matax',
-      passwordHash: hashPassword('admin123'),
+      passwordHash: await hashPassword('admin123'),
       role: 'ADMIN',
       subscription: {
         create: {
@@ -49,7 +49,7 @@ async function main() {
       name: 'Ahmed Compta',
       company: 'Cabinet Ahmed & Co',
       nif: '123456789012345',
-      passwordHash: hashPassword('expert123'),
+      passwordHash: await hashPassword('expert123'),
       role: 'ACCOUNTANT',
       subscription: {
         create: {
@@ -64,7 +64,7 @@ async function main() {
     data: {
       email: 'user@matax.dz',
       name: 'Mohamed User',
-      passwordHash: hashPassword('user123'),
+      passwordHash: await hashPassword('user123'),
       role: 'CITIZEN',
       subscription: {
         create: {

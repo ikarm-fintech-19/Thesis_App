@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       include: { subscription: true },
     });
 
-    if (!user || !comparePassword(password, user.passwordHash)) {
+    if (!user || !(await comparePassword(password, user.passwordHash))) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
 
@@ -30,8 +30,21 @@ export async function POST(req: Request) {
     await setSession(authUser as any);
 
     return NextResponse.json({ user: authUser });
-  } catch (error) {
-    console.error('Login error:', error);
+  } catch (error: any) {
+    console.error('Login API Error:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code
+    });
+    
+    // Return a more descriptive error if it's a database connection issue
+    if (error.message?.includes('DATABASE_URL') || error.code === 'P2002' || error.code === 'P1001') {
+      return NextResponse.json({ 
+        error: 'Database connection error. Please check environment variables.',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      }, { status: 500 });
+    }
+
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
