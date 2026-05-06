@@ -204,6 +204,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
               <div className="space-y-1">
                 <Label className="text-xs">{t('wizard.summary.previousCredit')}</Label>
                 <Input
+                  inputMode="decimal"
                   value={data.previousCredit}
                   onChange={(e) => updateData({ previousCredit: e.target.value })}
                   className="font-mono"
@@ -212,6 +213,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
               <div className="space-y-1">
                 <Label className="text-xs">{t('wizard.summary.tlsRate')}</Label>
                 <Input
+                  inputMode="decimal"
                   value={data.tlsRate}
                   onChange={(e) => updateData({ tlsRate: e.target.value })}
                   className="font-mono"
@@ -255,20 +257,21 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
           <Separator />
 
           <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">{t('wizard.summary.reference')}:</span>
-              <code className="bg-muted px-2 py-1 rounded text-sm font-mono">{mockRef}</code>
-              <Button variant="ghost" size="icon" onClick={() => navigator.clipboard.writeText(mockRef)}>
+            <div className="flex items-center gap-2 w-full md:w-auto overflow-hidden">
+              <span className="text-sm text-muted-foreground whitespace-nowrap">{t('wizard.summary.reference')}:</span>
+              <code className="bg-muted px-2 py-1 rounded text-sm font-mono truncate max-w-[150px] sm:max-w-none">{mockRef}</code>
+              <Button variant="ghost" size="icon" className="shrink-0" onClick={() => navigator.clipboard.writeText(mockRef)}>
                 <Copy className="h-4 w-4" />
               </Button>
             </div>
-            <div className="flex gap-2">
-              <Button variant="outline" onClick={() => window.print()}>
+            <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+              <Button variant="outline" className="w-full sm:w-auto" onClick={() => window.print()}>
                 <Printer className="h-4 w-4 me-2" />
                 {t('wizard.summary.print')}
               </Button>
               <Button 
                 variant="outline"
+                className="w-full sm:w-auto"
                 onClick={() => {
                   const exportData = {
                     metadata: {

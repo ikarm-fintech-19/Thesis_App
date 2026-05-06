@@ -134,6 +134,7 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
               </Label>
               <Input
                 type="number"
+                inputMode="decimal"
                 placeholder="0"
                 value={newPurchase.ht_amount}
                 onChange={(e) => setNewPurchase({ ...newPurchase, ht_amount: e.target.value })}
@@ -161,6 +162,7 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
               </Label>
               <Input
                 type="number"
+                inputMode="decimal"
                 value={newPurchase.tva_rate}
                 onChange={(e) => setNewPurchase({ ...newPurchase, tva_rate: e.target.value })}
               />
@@ -201,62 +203,104 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
             </div>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{t('wizard.purchases.date')}</TableHead>
-                  <TableHead>{t('wizard.purchases.description')}</TableHead>
-                  <TableHead><FiscalTooltip term="ht" /></TableHead>
-                  <TableHead><FiscalTooltip term="tva" /></TableHead>
-                  <TableHead>{t('wizard.purchases.category')}</TableHead>
-                  <TableHead>{t('wizard.purchases.invoiceRef')}</TableHead>
-                  <TableHead><FiscalTooltip term="tva" /> / Déd.</TableHead>
-                  <TableHead></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.purchases.map((purchase: any, idx: number) => {
-                  const ht = new Decimal(purchase.ht_amount)
-                  const rate = new Decimal(purchase.tva_rate || 0)
-                  const grossTva = ht.mul(rate).div(100)
-                  
-                  let deductibility = new Decimal(1)
-                  if (purchase.category === 'vehicle') deductibility = new Decimal(0.5)
-                  if (purchase.category === 'hospitality') deductibility = new Decimal(0)
-                  const deductibleTva = grossTva.mul(deductibility)
-                  
-                  return (
-                    <TableRow key={idx}>
-                      <TableCell>{purchase.date}</TableCell>
-                      <TableCell>{purchase.description}</TableCell>
-                      <TableCell>{ht.toFixed(2)}</TableCell>
-                      <TableCell>{rate.toString()}%</TableCell>
-                      <TableCell>
-                        <Badge variant={purchase.category === 'vehicle' || purchase.category === 'hospitality' ? 'destructive' : 'secondary'}>
+            <div className="md:hidden space-y-3">
+              {data.purchases.map((purchase: any, idx: number) => {
+                const ht = new Decimal(purchase.ht_amount)
+                const rate = new Decimal(purchase.tva_rate || 0)
+                const grossTva = ht.mul(rate).div(100)
+                
+                let deductibility = new Decimal(1)
+                if (purchase.category === 'vehicle') deductibility = new Decimal(0.5)
+                if (purchase.category === 'hospitality') deductibility = new Decimal(0)
+                const deductibleTva = grossTva.mul(deductibility)
+                
+                return (
+                  <div key={idx} className="bg-card border rounded-lg p-3 relative flex flex-col gap-2 shadow-sm">
+                    <div className="flex justify-between items-start pr-8">
+                      <div>
+                        <div className="font-semibold text-sm">{purchase.date}</div>
+                        <div className="text-xs text-muted-foreground">{purchase.description || t('wizard.purchases.noDescription', { defaultValue: 'N/A' })}</div>
+                        <Badge variant={purchase.category === 'vehicle' || purchase.category === 'hospitality' ? 'destructive' : 'secondary'} className="mt-1">
                           {categories.find(c => c.value === purchase.category)?.label || purchase.category}
                         </Badge>
-                      </TableCell>
-                      <TableCell>{purchase.invoice_ref}</TableCell>
-                      <TableCell>
-                        <div className="flex flex-col">
-                          <span className="font-medium text-blue-600 dark:text-blue-400">
-                            {grossTva.toFixed(2)}
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            {deductibleTva.toFixed(2)} ({getDeductibleLabel(purchase.category)})
-                          </span>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <Button variant="ghost" size="icon" onClick={() => removePurchase(idx)}>
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
+                      </div>
+                      <Button variant="ghost" size="icon" className="h-8 w-8 absolute top-2 right-2 text-destructive hover:bg-destructive/10 hover:text-destructive" onClick={() => removePurchase(idx)}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-sm mt-1 pt-2 border-t">
+                      <div>
+                        <div className="text-[10px] uppercase text-muted-foreground"><FiscalTooltip term="ht" /></div>
+                        <div className="font-medium">{ht.toFixed(2)} DZD</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] uppercase text-muted-foreground"><FiscalTooltip term="tva" /> ({rate.toString()}%)</div>
+                        <div className="font-medium">{grossTva.toFixed(2)} DZD</div>
+                        <div className="text-xs text-blue-600 dark:text-blue-400">Déd: {deductibleTva.toFixed(2)}</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+            <div className="hidden md:block overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t('wizard.purchases.date')}</TableHead>
+                    <TableHead>{t('wizard.purchases.description')}</TableHead>
+                    <TableHead><FiscalTooltip term="ht" /></TableHead>
+                    <TableHead><FiscalTooltip term="tva" /></TableHead>
+                    <TableHead>{t('wizard.purchases.category')}</TableHead>
+                    <TableHead>{t('wizard.purchases.invoiceRef')}</TableHead>
+                    <TableHead><FiscalTooltip term="tva" /> / Déd.</TableHead>
+                    <TableHead></TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {data.purchases.map((purchase: any, idx: number) => {
+                    const ht = new Decimal(purchase.ht_amount)
+                    const rate = new Decimal(purchase.tva_rate || 0)
+                    const grossTva = ht.mul(rate).div(100)
+                    
+                    let deductibility = new Decimal(1)
+                    if (purchase.category === 'vehicle') deductibility = new Decimal(0.5)
+                    if (purchase.category === 'hospitality') deductibility = new Decimal(0)
+                    const deductibleTva = grossTva.mul(deductibility)
+                    
+                    return (
+                      <TableRow key={idx}>
+                        <TableCell>{purchase.date}</TableCell>
+                        <TableCell>{purchase.description}</TableCell>
+                        <TableCell>{ht.toFixed(2)}</TableCell>
+                        <TableCell>{rate.toString()}%</TableCell>
+                        <TableCell>
+                          <Badge variant={purchase.category === 'vehicle' || purchase.category === 'hospitality' ? 'destructive' : 'secondary'}>
+                            {categories.find(c => c.value === purchase.category)?.label || purchase.category}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{purchase.invoice_ref}</TableCell>
+                        <TableCell>
+                          <div className="flex flex-col">
+                            <span className="font-medium text-blue-600 dark:text-blue-400">
+                              {grossTva.toFixed(2)}
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                              {deductibleTva.toFixed(2)} ({getDeductibleLabel(purchase.category)})
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Button variant="ghost" size="icon" onClick={() => removePurchase(idx)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       )}

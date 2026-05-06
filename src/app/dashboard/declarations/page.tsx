@@ -57,59 +57,110 @@ export default function DeclarationsPage() {
               <p className="text-xs text-muted-foreground mt-1">{t('userDeclarations.emptyDesc')}</p>
             </div>
           ) : (
-            <div className="relative w-full overflow-auto">
-              <table className="w-full caption-bottom text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="h-10 px-2 text-left font-medium text-muted-foreground">{t('userDeclarations.type')}</th>
-                    <th className="h-10 px-2 text-left font-medium text-muted-foreground">{t('userDeclarations.period')}</th>
-                    <th className="h-10 px-2 text-left font-medium text-muted-foreground">{t('userDeclarations.status')}</th>
-                    <th className="h-10 px-2 text-right font-medium text-muted-foreground">{t('userDeclarations.netAmount')}</th>
-                    <th className="h-10 px-2 text-right font-medium text-muted-foreground">{t('userDeclarations.actions')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {declarations.map((d) => (
-                    <tr key={d.id} className="border-b transition-colors hover:bg-muted/50">
-                      <td className="p-2 align-middle">
-                        <div className="flex items-center gap-2">
-                          <FileText className="h-4 w-4 text-primary" />
-                          <span className="font-medium">{d.type}</span>
+            <>
+              {/* Mobile View: Stacked Cards */}
+              <div className="md:hidden space-y-4">
+                {declarations.map((d) => (
+                  <div key={d.id} className="bg-card border rounded-lg p-4 space-y-3 shadow-sm">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-center gap-2">
+                        <FileText className="h-4 w-4 text-primary" />
+                        <span className="font-medium">{d.type}</span>
+                      </div>
+                      <Badge variant="secondary" className="text-[10px]">
+                        {d.status}
+                      </Badge>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t">
+                      <div>
+                        <div className="text-[10px] uppercase text-muted-foreground">{t('userDeclarations.period')}</div>
+                        <div className="font-mono text-xs">{d.period}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-[10px] uppercase text-muted-foreground">{t('userDeclarations.netAmount')}</div>
+                        <div className="font-mono font-medium">
+                          {Number(d.netAmount).toLocaleString(locale === 'ar' ? 'ar-DZ' : 'fr-DZ')} DZD
                         </div>
-                      </td>
-                      <td className="p-2 align-middle font-mono text-xs">{d.period}</td>
-                      <td className="p-2 align-middle">
-                        <Badge variant="secondary" className="text-[10px]">
-                          {d.status}
-                        </Badge>
-                      </td>
-                      <td className="p-2 align-middle text-right font-mono font-medium">
-                        {Number(d.netAmount).toLocaleString(locale === 'ar' ? 'ar-DZ' : 'fr-DZ')} DZD
-                      </td>
-                      <td className="p-2 align-middle text-right">
-                        <div className="flex items-center justify-end gap-2">
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="h-8 w-8 p-0"
-                            onClick={() => {
-                              const headers = [t('userDeclarations.type'), t('userDeclarations.period'), t('userDeclarations.status'), t('userDeclarations.netAmount')];
-                              const rows = [[d.type, d.period, d.status, d.netAmount]];
-                              downloadCSV(headers, rows, `declaration-${d.id}`);
-                            }}
-                          >
-                            <Download className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </td>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-end gap-2 pt-2 border-t">
+                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="h-8 w-8 p-0"
+                        onClick={() => {
+                          const headers = [t('userDeclarations.type'), t('userDeclarations.period'), t('userDeclarations.status'), t('userDeclarations.netAmount')];
+                          const rows = [[d.type, d.period, d.status, d.netAmount]];
+                          downloadCSV(headers, rows, `declaration-${d.id}`);
+                        }}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop View: Table */}
+              <div className="hidden md:block relative w-full overflow-auto">
+                <table className="w-full caption-bottom text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="h-10 px-2 text-left font-medium text-muted-foreground">{t('userDeclarations.type')}</th>
+                      <th className="h-10 px-2 text-left font-medium text-muted-foreground">{t('userDeclarations.period')}</th>
+                      <th className="h-10 px-2 text-left font-medium text-muted-foreground">{t('userDeclarations.status')}</th>
+                      <th className="h-10 px-2 text-right font-medium text-muted-foreground">{t('userDeclarations.netAmount')}</th>
+                      <th className="h-10 px-2 text-right font-medium text-muted-foreground">{t('userDeclarations.actions')}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {declarations.map((d) => (
+                      <tr key={d.id} className="border-b transition-colors hover:bg-muted/50">
+                        <td className="p-2 align-middle">
+                          <div className="flex items-center gap-2">
+                            <FileText className="h-4 w-4 text-primary" />
+                            <span className="font-medium">{d.type}</span>
+                          </div>
+                        </td>
+                        <td className="p-2 align-middle font-mono text-xs">{d.period}</td>
+                        <td className="p-2 align-middle">
+                          <Badge variant="secondary" className="text-[10px]">
+                            {d.status}
+                          </Badge>
+                        </td>
+                        <td className="p-2 align-middle text-right font-mono font-medium">
+                          {Number(d.netAmount).toLocaleString(locale === 'ar' ? 'ar-DZ' : 'fr-DZ')} DZD
+                        </td>
+                        <td className="p-2 align-middle text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                              <Eye className="h-4 w-4" />
+                            </Button>
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="h-8 w-8 p-0"
+                              onClick={() => {
+                                const headers = [t('userDeclarations.type'), t('userDeclarations.period'), t('userDeclarations.status'), t('userDeclarations.netAmount')];
+                                const rows = [[d.type, d.period, d.status, d.netAmount]];
+                                downloadCSV(headers, rows, `declaration-${d.id}`);
+                              }}
+                            >
+                              <Download className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
           )}
         </CardContent>
       </Card>

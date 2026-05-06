@@ -173,15 +173,15 @@ export default function G50Wizard() {
           <h1 className="text-2xl font-bold">{t('wizard.title')}</h1>
           <p className="text-muted-foreground">{t('wizard.subtitle')}</p>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="text-xs text-muted-foreground flex items-center gap-1">
+        <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+          <div className="text-xs text-muted-foreground flex items-center gap-1 bg-muted px-2 py-1 rounded-md">
             {isSaving ? (
               <>{t('wizard.saving')}</>
             ) : lastSaved ? (
               <><Save className="h-3 w-3" /> {t('wizard.savedAt', { time: lastSaved.toLocaleTimeString() })}</>
-            ) : null}
+            ) : <span className="opacity-0">Placeholder</span>}
           </div>
-          <Button variant="outline" size="sm" onClick={resetDraft}>
+          <Button variant="outline" size="sm" onClick={resetDraft} className="shrink-0">
             <RotateCcw className="h-4 w-4 me-2" />
             {t('wizard.reset')}
           </Button>
@@ -224,23 +224,24 @@ export default function G50Wizard() {
 
           <Separator className="my-4" />
 
-          <div className="flex justify-between">
+          <div className="flex flex-col-reverse sm:flex-row justify-between gap-3 mt-6">
             <Button
               variant="outline"
               onClick={goBack}
               disabled={currentStep === 0}
+              className="w-full sm:w-auto"
             >
               <ChevronLeft className="h-4 w-4 me-2" />
               {t('wizard.back')}
             </Button>
 
             {currentStep === steps.length - 1 ? (
-              <Button onClick={handleSubmit} disabled={isSubmitting}>
+              <Button onClick={handleSubmit} disabled={isSubmitting} className="w-full sm:w-auto">
                 <CheckCircle2 className="h-4 w-4 me-2" />
                 {isSubmitting ? '...' : t('wizard.submit')}
               </Button>
             ) : (
-              <Button onClick={goNext}>
+              <Button onClick={goNext} className="w-full sm:w-auto">
                 {t('wizard.next')}
                 <ChevronRight className="h-4 w-4 ms-2" />
               </Button>

@@ -86,7 +86,8 @@ export default function ProfitStep({ data, updateData }: ProfitStepProps) {
           <Label htmlFor="customProfit">{t('annualTax.profit.finalProfitInput') || 'Bénéfice Net Final (DZD)'}</Label>
           <Input 
             id="customProfit"
-            type="number" 
+            type="number"
+            inputMode="decimal"
             placeholder={grossProfit.toString()}
             value={data.customProfit || ''}
             onChange={(e) => handleCustomProfit(e.target.value)}

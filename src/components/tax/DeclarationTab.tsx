@@ -407,6 +407,7 @@ export function DeclarationTab() {
               <Label className="text-sm font-bold text-primary">{t('declaration.year')}</Label>
               <Input
                 type="number"
+                inputMode="decimal"
                 value={year}
                 onChange={(e) => setYear(parseInt(e.target.value) || new Date().getFullYear())}
                 min={2000}
@@ -459,6 +460,7 @@ export function DeclarationTab() {
               <div className="relative">
                 <Input
                   type="number"
+                  inputMode="decimal"
                   value={previousCredit}
                   onChange={(e) => setPreviousCredit(e.target.value)}
                   placeholder={t('declaration.previousCreditPlaceholder')}
@@ -571,6 +573,7 @@ export function DeclarationTab() {
                     <TableCell>
                       <Input
                         type="number"
+                        inputMode="decimal"
                         value={row.ht_amount}
                         onChange={(e) => updateRow(row.id, 'ht_amount', e.target.value)}
                         placeholder={t('declaration.htAmountPlaceholder')}

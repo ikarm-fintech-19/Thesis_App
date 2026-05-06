@@ -68,7 +68,7 @@ export function LoginModal({ trigger }: { trigger?: React.ReactNode }) {
       <DialogTrigger asChild>
         {trigger || <Button variant="outline">Connexion</Button>}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] w-full h-[100dvh] sm:h-auto sm:rounded-xl rounded-none border-0 sm:border flex flex-col justify-center sm:block p-6">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-primary flex items-center gap-2">
             <Lock className="w-6 h-6" />

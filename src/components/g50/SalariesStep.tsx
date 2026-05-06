@@ -216,6 +216,7 @@ export default function SalariesStep({ data, updateData, onPenaltiesChange }: Sa
                   <Label className="text-xs">{t('wizard.salaries.grossSalary')}</Label>
                   <Input
                     type="number"
+                    inputMode="decimal"
                     placeholder="0"
                     value={newSalary.grossSalary}
                     onChange={(e) => setNewSalary({ ...newSalary, grossSalary: e.target.value })}
@@ -280,44 +281,81 @@ export default function SalariesStep({ data, updateData, onPenaltiesChange }: Sa
                 </div>
               </CardHeader>
               <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>{t('wizard.salaries.employeeName')}</TableHead>
-                      <TableHead>{t('wizard.salaries.grossSalary')}</TableHead>
-                      <TableHead>{t('wizard.salaries.children')}</TableHead>
-                      <TableHead><FiscalTooltip term="irg" /></TableHead>
-                      <TableHead><FiscalTooltip term="cnas" /></TableHead>
-                      <TableHead>{t('wizard.salaries.netSalary')}</TableHead>
-                      <TableHead></TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {data.salaries.map((salary: any, idx: number) => {
-                      const gross = new Decimal(salary.grossSalary)
-                      const { irg, net } = calculateIRG(gross, salary.familyChildren)
-                      const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
-                      
-                      return (
-                        <TableRow key={idx}>
-                          <TableCell className="font-medium">{salary.employeeName}</TableCell>
-                          <TableCell>{gross.toFixed(0)} DZD</TableCell>
-                          <TableCell>
-                            <Badge variant="outline">{salary.familyChildren}</Badge>
-                          </TableCell>
-                          <TableCell className="text-red-600">-{irg.toFixed(0)}</TableCell>
-                          <TableCell className="text-orange-600">-{cnasEmployee.toFixed(0)}</TableCell>
-                          <TableCell className="text-green-600 font-medium">{net.toFixed(0)} DZD</TableCell>
-                          <TableCell>
-                            <Button variant="ghost" size="icon" onClick={() => removeSalary(idx)}>
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      )
-                    })}
-                  </TableBody>
-                </Table>
+                <div className="md:hidden space-y-3">
+                  {data.salaries.map((salary: any, idx: number) => {
+                    const gross = new Decimal(salary.grossSalary)
+                    const { irg, net } = calculateIRG(gross, salary.familyChildren)
+                    const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
+                    
+                    return (
+                      <div key={idx} className="bg-card border rounded-lg p-3 relative flex flex-col gap-2 shadow-sm">
+                        <div className="flex justify-between items-start pr-8">
+                          <div>
+                            <div className="font-semibold text-sm">{salary.employeeName}</div>
+                            <div className="text-xs text-muted-foreground flex items-center gap-1">
+                              {salary.familyChildren} {salary.familyChildren <= 1 ? 'enfant' : 'enfants'}
+                            </div>
+                          </div>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 absolute top-2 right-2 text-destructive hover:bg-destructive/10 hover:text-destructive" onClick={() => removeSalary(idx)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 text-sm mt-1 pt-2 border-t">
+                          <div>
+                            <div className="text-[10px] uppercase text-muted-foreground">Brut</div>
+                            <div className="font-medium">{gross.toFixed(0)} DZD</div>
+                            <div className="text-xs text-red-600 mt-1">IRG: -{irg.toFixed(0)} DZD</div>
+                          </div>
+                          <div>
+                            <div className="text-[10px] uppercase text-muted-foreground">Net</div>
+                            <div className="font-medium text-green-600">{net.toFixed(0)} DZD</div>
+                            <div className="text-xs text-orange-600 mt-1">CNAS: -{cnasEmployee.toFixed(0)} DZD</div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+                <div className="hidden md:block overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>{t('wizard.salaries.employeeName')}</TableHead>
+                        <TableHead>{t('wizard.salaries.grossSalary')}</TableHead>
+                        <TableHead>{t('wizard.salaries.children')}</TableHead>
+                        <TableHead><FiscalTooltip term="irg" /></TableHead>
+                        <TableHead><FiscalTooltip term="cnas" /></TableHead>
+                        <TableHead>{t('wizard.salaries.netSalary')}</TableHead>
+                        <TableHead></TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {data.salaries.map((salary: any, idx: number) => {
+                        const gross = new Decimal(salary.grossSalary)
+                        const { irg, net } = calculateIRG(gross, salary.familyChildren)
+                        const cnasEmployee = gross.mul(CNAS_EMPLOYEE_RATE)
+                        
+                        return (
+                          <TableRow key={idx}>
+                            <TableCell className="font-medium">{salary.employeeName}</TableCell>
+                            <TableCell>{gross.toFixed(0)} DZD</TableCell>
+                            <TableCell>
+                              <Badge variant="outline">{salary.familyChildren}</Badge>
+                            </TableCell>
+                            <TableCell className="text-red-600">-{irg.toFixed(0)}</TableCell>
+                            <TableCell className="text-orange-600">-{cnasEmployee.toFixed(0)}</TableCell>
+                            <TableCell className="text-green-600 font-medium">{net.toFixed(0)} DZD</TableCell>
+                            <TableCell>
+                              <Button variant="ghost" size="icon" onClick={() => removeSalary(idx)}>
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {totals && (
                   <div className="mt-4 p-4 bg-muted/50 rounded-lg">

@@ -157,53 +157,101 @@ export default function AccountantClientsPage() {
       </div>
 
       <Card>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>{t('accountant.client', { defaultValue: 'Client' })}</TableHead>
-              <TableHead>{t('accountant.entreprise', { defaultValue: 'Entreprise' })}</TableHead>
-              <TableHead>{t('accountant.nif', { defaultValue: 'NIF' })}</TableHead>
-              <TableHead>{t('accountant.declarations', { defaultValue: 'Déclarations' })}</TableHead>
-              <TableHead>{t('accountant.derniereActivite', { defaultValue: 'Dernière activité' })}</TableHead>
-              <TableHead></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+        <>
+          <div className="md:hidden space-y-4">
             {filteredClients.length === 0 ? (
-              <TableRow>
-                <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
-                  {t('accountant.noClients', { defaultValue: 'Aucun client trouvé' })}
-                </TableCell>
-              </TableRow>
+              <div className="text-center py-8 text-muted-foreground bg-muted/20 rounded-lg">
+                {t('accountant.noClients', { defaultValue: 'Aucun client trouvé' })}
+              </div>
             ) : (
               filteredClients.map((client) => (
-                <TableRow key={client.id}>
-                  <TableCell>
+                <div key={client.id} className="bg-card border rounded-lg p-4 space-y-3 shadow-sm">
+                  <div className="flex justify-between items-start">
                     <div>
                       <p className="font-medium">{client.name}</p>
                       <p className="text-sm text-muted-foreground">{client.email}</p>
                     </div>
-                  </TableCell>
-                  <TableCell>{client.company}</TableCell>
-                  <TableCell>
-                    <code className="text-xs bg-muted px-2 py-1 rounded">{client.nif}</code>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">{client.declarationsCount}</Badge>
-                  </TableCell>
-                  <TableCell className="text-muted-foreground text-sm">
-                    {client.lastActivity}
-                  </TableCell>
-                  <TableCell>
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 shrink-0">
                       <FileText className="h-4 w-4" />
                     </Button>
-                  </TableCell>
-                </TableRow>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t">
+                    <div>
+                      <div className="text-[10px] uppercase text-muted-foreground">{t('accountant.entreprise', { defaultValue: 'Entreprise' })}</div>
+                      <div className="font-medium">{client.company}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-[10px] uppercase text-muted-foreground">{t('accountant.nif', { defaultValue: 'NIF' })}</div>
+                      <code className="text-xs bg-muted px-2 py-1 rounded">{client.nif}</code>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t">
+                    <div>
+                      <div className="text-[10px] uppercase text-muted-foreground">{t('accountant.declarations', { defaultValue: 'Déclarations' })}</div>
+                      <Badge variant="outline">{client.declarationsCount}</Badge>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-[10px] uppercase text-muted-foreground">{t('accountant.derniereActivite', { defaultValue: 'Dernière activité' })}</div>
+                      <div className="text-muted-foreground text-xs">{client.lastActivity}</div>
+                    </div>
+                  </div>
+                </div>
               ))
             )}
-          </TableBody>
-        </Table>
+          </div>
+          
+          <div className="hidden md:block">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{t('accountant.client', { defaultValue: 'Client' })}</TableHead>
+                  <TableHead>{t('accountant.entreprise', { defaultValue: 'Entreprise' })}</TableHead>
+                  <TableHead>{t('accountant.nif', { defaultValue: 'NIF' })}</TableHead>
+                  <TableHead>{t('accountant.declarations', { defaultValue: 'Déclarations' })}</TableHead>
+                  <TableHead>{t('accountant.derniereActivite', { defaultValue: 'Dernière activité' })}</TableHead>
+                  <TableHead></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {filteredClients.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
+                      {t('accountant.noClients', { defaultValue: 'Aucun client trouvé' })}
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  filteredClients.map((client) => (
+                    <TableRow key={client.id}>
+                      <TableCell>
+                        <div>
+                          <p className="font-medium">{client.name}</p>
+                          <p className="text-sm text-muted-foreground">{client.email}</p>
+                        </div>
+                      </TableCell>
+                      <TableCell>{client.company}</TableCell>
+                      <TableCell>
+                        <code className="text-xs bg-muted px-2 py-1 rounded">{client.nif}</code>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline">{client.declarationsCount}</Badge>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground text-sm">
+                        {client.lastActivity}
+                      </TableCell>
+                      <TableCell>
+                        <Button variant="ghost" size="sm">
+                          <FileText className="h-4 w-4" />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </>
       </Card>
 
       <div className="grid md:grid-cols-3 gap-4">

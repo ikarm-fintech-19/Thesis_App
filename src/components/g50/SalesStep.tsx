@@ -88,6 +88,7 @@ export default function SalesStep({ data, updateData, onPenaltiesChange }: Sales
               </Label>
               <Input
                 type="number"
+                inputMode="decimal"
                 placeholder="0"
                 value={newSale.ht_amount}
                 onChange={(e) => setNewSale({ ...newSale, ht_amount: e.target.value })}
@@ -99,6 +100,7 @@ export default function SalesStep({ data, updateData, onPenaltiesChange }: Sales
               </Label>
               <Input
                 type="number"
+                inputMode="decimal"
                 value={newSale.tva_rate}
                 onChange={(e) => setNewSale({ ...newSale, tva_rate: e.target.value })}
               />
@@ -140,47 +142,79 @@ export default function SalesStep({ data, updateData, onPenaltiesChange }: Sales
             </div>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{t('wizard.sales.date')}</TableHead>
-                  <TableHead>{t('wizard.sales.description')}</TableHead>
-                  <TableHead>
-                    <FiscalTooltip term="ht" />
-                  </TableHead>
-                  <TableHead>{t('wizard.sales.rate')}</TableHead>
-                  <TableHead>
-                    <FiscalTooltip term="tva" />
-                  </TableHead>
-                  <TableHead></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.sales.map((sale: any, idx: number) => {
-                  const ht = new Decimal(sale.ht_amount)
-                  const rate = new Decimal(sale.tva_rate.replace('%', ''))
-                  const tva = ht.mul(rate).div(100)
-                  return (
-                    <TableRow key={idx}>
-                      <TableCell>{sale.date}</TableCell>
-                      <TableCell>{sale.description}</TableCell>
-                      <TableCell>{ht.toFixed(2)}</TableCell>
-                      <TableCell>
-                        <Badge variant={rate.toNumber() === 19 ? 'default' : 'secondary'}>
-                          {rate.toString()}%
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{tva.toFixed(2)}</TableCell>
-                      <TableCell>
-                        <Button variant="ghost" size="icon" onClick={() => removeSale(idx)}>
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
+            <div className="md:hidden space-y-3">
+              {data.sales.map((sale: any, idx: number) => {
+                const ht = new Decimal(sale.ht_amount)
+                const rate = new Decimal(sale.tva_rate.replace('%', ''))
+                const tva = ht.mul(rate).div(100)
+                return (
+                  <div key={idx} className="bg-card border rounded-lg p-3 relative flex flex-col gap-2 shadow-sm">
+                    <div className="flex justify-between items-start pr-8">
+                      <div>
+                        <div className="font-semibold text-sm">{sale.date}</div>
+                        <div className="text-xs text-muted-foreground">{sale.description || t('wizard.sales.noDescription', { defaultValue: 'N/A' })}</div>
+                      </div>
+                      <Button variant="ghost" size="icon" className="h-8 w-8 absolute top-2 right-2 text-destructive hover:bg-destructive/10 hover:text-destructive" onClick={() => removeSale(idx)}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-sm mt-1 pt-2 border-t">
+                      <div>
+                        <div className="text-[10px] uppercase text-muted-foreground"><FiscalTooltip term="ht" /></div>
+                        <div className="font-medium">{ht.toFixed(2)} DZD</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] uppercase text-muted-foreground"><FiscalTooltip term="tva" /> ({rate.toString()}%)</div>
+                        <div className="font-medium">{tva.toFixed(2)} DZD</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+            <div className="hidden md:block overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t('wizard.sales.date')}</TableHead>
+                    <TableHead>{t('wizard.sales.description')}</TableHead>
+                    <TableHead>
+                      <FiscalTooltip term="ht" />
+                    </TableHead>
+                    <TableHead>{t('wizard.sales.rate')}</TableHead>
+                    <TableHead>
+                      <FiscalTooltip term="tva" />
+                    </TableHead>
+                    <TableHead></TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {data.sales.map((sale: any, idx: number) => {
+                    const ht = new Decimal(sale.ht_amount)
+                    const rate = new Decimal(sale.tva_rate.replace('%', ''))
+                    const tva = ht.mul(rate).div(100)
+                    return (
+                      <TableRow key={idx}>
+                        <TableCell>{sale.date}</TableCell>
+                        <TableCell>{sale.description}</TableCell>
+                        <TableCell>{ht.toFixed(2)}</TableCell>
+                        <TableCell>
+                          <Badge variant={rate.toNumber() === 19 ? 'default' : 'secondary'}>
+                            {rate.toString()}%
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{tva.toFixed(2)}</TableCell>
+                        <TableCell>
+                          <Button variant="ghost" size="icon" onClick={() => removeSale(idx)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       )}
