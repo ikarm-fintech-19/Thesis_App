@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'Matax',
   webDir: 'out',
   server: {
-    url: 'https://glistening-lolly-c73284.netlify.app', 
+    url: 'https://matax-demo.netlify.app/', 
     cleartext: true
   },
   plugins: {
