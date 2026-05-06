@@ -1,20 +1,26 @@
 # 👤 Matax Test User Credentials
 
-Use these accounts to test different perspectives of the Matax platform. All accounts are connected to the live Supabase database.
+Use these accounts to test different perspectives of the **Matax RegTech Platform**. All accounts are pre-seeded in the live Supabase database and accessible via the **Quick Login** buttons on the login page.
 
-| Role | Email | Password | Access Level |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin@matax.dz` | `admin_password_2026` | Full platform control & analytics |
-| **Citizen** | `citizen@matax.dz` | `citizen_password_2026` | G50 Wizard, AI Scanner, Personal Dashboard |
-| **Accountant** | `accountant@matax.dz` | `accountant_password_2026` | Multi-client management, advanced reports |
-| **Auditor** | `auditor@matax.dz` | `auditor_password_2026` | Compliance verification & tax audit view |
+## 🔑 Demo Credentials
 
-## 🧪 Testing Scenarios
-1. **G50 Workflow:** Log in as **Citizen** to test the declaration wizard.
-2. **Management:** Log in as **Accountant** to see how professionals manage multiple NIFs.
-3. **Compliance:** Log in as **Auditor** to verify the fiscal integrity of submitted declarations.
-4. **Analytics:** Log in as **Admin** to view global trends and MRR charts.
+| Role | Email | Password | Access Level | Primary Features |
+| :--- | :--- | :--- | :--- | :--- |
+| **Admin** | `admin@matax.dz` | `admin123` | **Full Platform Control** | Analytics, MRR Charts, User Management |
+| **Accountant** | `expert@compta.dz` | `expert123` | **Professional View** | Multi-client NIFs, Audit Reports, PRO Features |
+| **Citizen** | `user@matax.dz` | `user123` | **Personal View** | G50 Wizard, AI Scanner, Personal Dashboard |
+
+## 🧪 Quick Test Scenarios
+
+1.  **Fiscal Compliance (G50):** Log in as **Citizen** to complete a G50 declaration using the interactive wizard.
+2.  **Intelligent Extraction:** Use the **AI Scanner** (as Citizen or Accountant) to extract tax data from a sample invoice image.
+3.  **Professional Auditing:** Log in as **Accountant** to see how professional cabinets manage complex tax portfolios.
+4.  **Strategic Overview:** Log in as **Admin** to monitor platform growth, active users, and financial health in the executive dashboard.
 
 ---
-> [!NOTE]
-> These accounts are for the **Supabase Test Phase**. Data is hosted in the Paris region for maximum demo performance.
+
+> [!IMPORTANT]
+> **Environment Sync:** These accounts require the `DATABASE_URL` and `JWT_SECRET` to be correctly configured in your environment (Local or Netlify).
+
+> [!TIP]
+> **Quick Access:** On the [Login Page](https://glistening-lolly-c73284.netlify.app/login), use the dedicated role icons at the bottom for one-click demo access without typing.
