@@ -49,7 +49,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
     setError(null)
 
     try {
-      const salesTransactions = data.sales.map((s: any) => ({
+      const salesTransactions = (data.sales || []).map((s: any) => ({
         type: 'SALE',
         ht_amount: s.ht_amount,
         tva_rate: s.tva_rate,
@@ -58,7 +58,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
         date: s.date
       }))
 
-      const purchaseTransactions = data.purchases.map((p: any) => ({
+      const purchaseTransactions = (data.purchases || []).map((p: any) => ({
         type: 'PURCHASE',
         ht_amount: p.ht_amount,
         tva_rate: p.tva_rate,
