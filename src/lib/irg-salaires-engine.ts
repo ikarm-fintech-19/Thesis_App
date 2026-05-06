@@ -22,16 +22,21 @@ export const MONTHLY_IRG_BRACKETS: IRGSalairesBracket[] = [
 /**
  * Calculates IRG Salaires for a single employee
  * @param grossSalary Gross salary before CNAS
- * @returns { irg: Decimal, net: Decimal, cnas: Decimal }
+ * @returns { irg: Decimal, net: Decimal, cnas: Decimal, details: any }
  */
-export function calculateSingleIRG(grossSalary: number | string | Decimal): {
-  gross: Decimal;
+export function calculateSingleSalaryIRG(grossSalary: number | string | Decimal): {
+  irg: Decimal;
+  net: Decimal;
   cnas: Decimal;
-  taxable: Decimal;
-  irgBrut: Decimal;
-  abatement: Decimal;
-  irgNet: Decimal;
-  netSalary: Decimal;
+  details: {
+    gross: Decimal;
+    cnas: Decimal;
+    taxable: Decimal;
+    irgBrut: Decimal;
+    abatement: Decimal;
+    irgNet: Decimal;
+    netSalary: Decimal;
+  };
 } {
   const gross = new Decimal(String(grossSalary));
   
@@ -41,7 +46,6 @@ export function calculateSingleIRG(grossSalary: number | string | Decimal): {
 
   // 2. Calculate IRG Brut based on progressive brackets
   let irgBrut = new Decimal(0);
-  let remaining = taxable;
 
   for (const bracket of MONTHLY_IRG_BRACKETS) {
     if (taxable.lte(bracket.min)) break;
@@ -64,12 +68,8 @@ export function calculateSingleIRG(grossSalary: number | string | Decimal): {
   if (abatement.gt(irgBrut)) abatement = irgBrut;
 
   // 4. Special Additional Abatement for 30,000 - 35,000 range
-  // To avoid threshold effects (Simplified formula)
   if (taxable.gt(30000) && taxable.lte(35000)) {
-    // There's a specific coefficient to bridge the gap smoothly
-    // For this engine, we'll use the official logic where it's zeroed or heavily reduced
-    // In practice, salaries <= 30k are exempt, and 30k-35k have a double abatement
-    // We'll apply an extra 50% reduction on the remaining tax for this range
+    // Bridges the gap smoothly between exempt and taxable
     const extraAbatement = irgBrut.sub(abatement).mul(0.5);
     abatement = abatement.add(extraAbatement);
   }
@@ -78,13 +78,18 @@ export function calculateSingleIRG(grossSalary: number | string | Decimal): {
   const netSalary = taxable.sub(irgNet).toDecimalPlaces(2);
 
   return {
-    gross,
-    cnas,
-    taxable,
-    irgBrut,
-    abatement,
-    irgNet,
-    netSalary,
+    irg: irgNet,
+    net: netSalary,
+    cnas: cnas,
+    details: {
+      gross,
+      cnas,
+      taxable,
+      irgBrut,
+      abatement,
+      irgNet,
+      netSalary,
+    }
   };
 }
 
@@ -103,11 +108,11 @@ export function calculateTotalIRG(salaries: any[]): {
   let totalNet = new Decimal(0);
 
   for (const s of salaries) {
-    const res = calculateSingleIRG(s.grossSalary || 0);
-    totalGross = totalGross.add(res.gross);
+    const res = calculateSingleSalaryIRG(s.grossSalary || 0);
+    totalGross = totalGross.add(res.details.gross);
     totalCnas = totalCnas.add(res.cnas);
-    totalIRG = totalIRG.add(res.irgNet);
-    totalNet = totalNet.add(res.netSalary);
+    totalIRG = totalIRG.add(res.irg);
+    totalNet = totalNet.add(res.net);
   }
 
   return {
