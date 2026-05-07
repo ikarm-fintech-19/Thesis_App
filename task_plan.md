@@ -3,11 +3,54 @@
 > **Goal:** Evolve the Matax TVA calculator from thesis prototype into a production-ready, monetizable Algerian RegTech SaaS platform that empowers non-expert taxpayers to file G50 declarations independently.
 
 ## Current Phase
-Phase 6 — Compliance, Scale & Advanced Features (COMPLETE)
+**BUG FIX PHASE — G50 Calculation Critical Priority**
 
 ---
 
-## Platform State Assessment (As of 2026-05-03)
+## 🔴 CRITICAL: G50 Calculation Must Work
+
+The G50 declaration is the core feature. All bugs below are blocking thesis validation and production readiness.
+
+### G50 Bug Fix Priorities (CRITICAL)
+
+| # | Bug | File | Fix Required |
+|---|-----|------|--------------|
+| 1 | **IRG brackets WRONG** | `irg-salaires-engine.ts:13-19` | Fix to monthly: 0-20k(0%), 20k-40k(23%), 40k-80k(27%), 80k-160k(30%), 160k-320k(33%), 320k+(35%) |
+| 2 | **Abatement cap WRONG** | `irg-salaires-engine.ts:79-81` | Change max from 2,500 to 2,000 DZD |
+| 3 | **Family deduction NOT implemented** | `irg-salaires-engine.ts` | Add 1,000 DZD/child, max 3 children |
+| 4 | **Mobile server URL WRONG** | `capacitor.config.ts:8` | Change from netlify to actual API server |
+| 5 | **No local fallback** | `SummaryStep.tsx` | Add local calculation if API fails |
+| 6 | **TLS rate inconsistency** | Multiple files | Align to 1.5% (standard for GN°50) |
+
+---
+
+## G50 Fix Implementation Plan
+
+### FIX-1: IRG Engine (CRITICAL)
+- [ ] Fix monthly brackets per GN° 11 (0-20k:0%, 20k-40k:23%, 40k-80k:27%, 80k-160k:30%, 160k-320k:33%, 320k+:35%)
+- [ ] Fix abatement cap (min: 1,500, max: 2,000 DZD per LF 2026)
+- [ ] Implement family deduction (1,000 × children, max 3)
+- [ ] Add per-employee IRG breakdown in response
+- [ ] Verify calculation with test cases
+
+### FIX-2: G50 Wizard Calculation (CRITICAL)
+- [ ] Fix `/api/declaration/calculate` to use corrected IRG engine
+- [ ] Fix TVA collectée/déductible/net calculation
+- [ ] Add local fallback calculation in `SummaryStep.tsx`
+- [ ] Test full G50 flow: period → sales → purchases → salaries → summary
+
+### FIX-3: Mobile App (CRITICAL)
+- [ ] Update `capacitor.config.ts` server URL
+- [ ] Add offline-first local calculation
+- [ ] Test on Android device/emulator
+
+### FIX-4: UI Consistency
+- [ ] Align TLS rate to 1.5% everywhere (GN°50 standard rate)
+- [ ] Add error recovery UI when calculation fails
+
+---
+
+## Platform State Assessment (As of 2026-05-07)
 
 ### ✅ What's Built & Working
 | Feature | Status | Notes |
@@ -211,39 +254,44 @@ Phase 6 — Compliance, Scale & Advanced Features (COMPLETE)
 
 ---
 
-## Key Questions
+## Key Questions (Answered)
 
-1. **Which payment gateway for Algeria?** CIB/EDAHABIA or Stripe with currency conversion?
-2. **Supabase vs. Clerk for auth?** Supabase keeps everything in one ecosystem; Clerk is more feature-rich.
-3. **When to deploy publicly?** After Phase 3 (complete G50) or Phase 4 (production infra)?
-4. **Thesis deadline?** Determines which phases are MVP vs. post-thesis.
-5. **Target user for beta?** Accountants (power users) or auto-entrepreneurs (volume users)?
-6. **IRG 2026 brackets confirmed?** Need official Loi de Finances 2026 rates.
+| Question | Answer | Source |
+|----------|--------|--------|
+| IRG brackets monthly or annual? | **Monthly** | GN° 11 (IRG Salaires) — brackets apply to MONTHLY taxable income |
+| Abatement cap max? | **2,000 DZD** | LF 2026 (Art. 104 CID) — changed from 2,500 to 2,000 |
+| Family deduction? | **1,000 × children, max 3** | GN° 11 — 3,000 DZD max total deduction |
+| TLS rate default? | **1.5%** | GN° 50 — standard rate for most businesses |
+| IRG test cases needed? | See TC-09 to TC-12 | Below |
 
-## Decisions Made
+---
 
-| Decision | Rationale |
-|----------|-----------|
-| Keep monolith architecture | Pre-revenue; speed > architecture; split at >1000 concurrent users |
-| Pure calculation functions | Testable, portable, no side effects — thesis-critical |
-| decimal.js for all math | Zero tolerance for floating-point errors in financial software |
-| Mock auth first | Speed to demo > security for thesis presentation |
-| SQLite → PostgreSQL migration path | Zero-config dev, production-ready migration documented |
-| Freemium pricing (999 DZD/mo) | Below Sage/ERP, above free — natural upgrade pressure |
-| Phase ordering: Features → Infra → Revenue | Prove value first, then scale, then monetize |
+## IRG Test Cases (Monthly, based on GN° 11)
+
+| ID | Gross Monthly | CNAS 9% | Taxable | IRG Brackets | Expected IRG |
+|----|---------------|---------|---------|--------------|-------------|
+| TC-09 | 30,000 | 2,700 | 27,300 | ≤30k → exempt | 0 DZD |
+| TC-10 | 35,000 | 3,150 | 31,850 | ≤30k exempt, 30k-35k smoothing | ~126 DZD |
+| TC-11 | 50,000 | 4,500 | 45,500 | 20k-40k: 23% | ~3,565 DZD |
+| TC-12 | 80,000 | 7,200 | 72,800 | 20k-40k + 40k-80k | ~10,756 DZD |
+| TC-13 | 150,000 | 13,500 | 136,500 | 20k-40k + 40k-80k + 80k-136.5k | ~24,255 DZD |
+
+---
 
 ## Errors Encountered
 
 | Error | Attempt | Resolution |
 |-------|---------|------------|
-| Server component errors with next-themes | 1 | Refactored to Providers.tsx client wrapper |
-| Float precision in declarations | 1 | Wrapped with decimal.js in declaration-engine.ts |
-| E2E test failures (missing nav elements) | 2 | Added Header component with all required links |
-| Tax engine crash on malformed input | 1 | Added input validation in calculateTVA() |
+| IRG brackets wrong | 1 | Fix to monthly: 0-20k, 20k-40k, etc. |
+| Abatement cap 2,500 | 1 | Change to 2,000 per LF 2026 |
+| Family deduction missing | 1 | Add 1,000 × children, max 3 |
+| Mobile server wrong | 1 | Change netlify URL to real API |
+| No fallback calculation | 1 | Add local calculation in SummaryStep |
+
+---
 
 ## Notes
-- Update phase status as you progress: pending → in_progress → complete
-- Re-read this plan before major decisions (attention manipulation)
-- Log ALL errors — they help avoid repetition
-- Never repeat a failed action — mutate your approach instead
-- **Priority:** Phases 1-3 are thesis-critical; Phases 4-6 are startup-critical
+- G50 is the CORE feature — must work correctly
+- IRG calculation must match GN° 11 exactly
+- All fixes must be verified with test cases before moving on
+- **Priority: G50 Fix → Test → Mobile Fix → UI Consistency**

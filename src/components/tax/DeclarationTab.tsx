@@ -128,7 +128,7 @@ export function DeclarationTab() {
     createEmptyRow(),
   ])
   const [previousCredit, setPreviousCredit] = useState<string>('0')
-  const [tlsRate, setTlsRate] = useState<string>('0.03')
+  const [tlsRate, setTlsRate] = useState<string>('0.015')
   const [result, setResult] = useState<DeclarationResult | null>(null)
   const [isCalculating, setIsCalculating] = useState(false)
   const [error, setError] = useState<string | null>(null)

@@ -2,7 +2,37 @@
 
 > Research discoveries, architecture analysis, and strategic decisions for platform evolution.
 
-**Last Updated:** 2026-05-04 (ALL PHASES COMPLETE)
+**Last Updated:** 2026-05-07 (Bug Analysis Phase)
+
+---
+
+## 🐛 Critical Bugs Found
+
+### 1. G50 Calculation Failure (WEB + CAPACITOR MOBILE)
+**Root Cause:** The `/api/declaration/calculate` API is being called by both G50Wizard and SummaryStep, but the calculation logic has multiple issues:
+
+| Issue | Location | Impact |
+|-------|----------|--------|
+| IRG brackets mismatch | `irg-salaires-engine.ts:13-19` vs task_plan | Wrong tax brackets used |
+| Family deduction (1,000 DZD/child, max 3) NOT IMPLEMENTED | `irg-salaires-engine.ts` | Incorrect IRG for employees with children |
+| Missing per-employee IRG details in response | `/api/declaration/calculate/route.ts` | Summary step can't show breakdown |
+| Mobile app points to netlify (static), not API server | `capacitor.config.ts:8` | All API calls fail on mobile |
+
+### 2. Mock Calculation Showing in UI
+**Root Cause:** No mock detection — if API returns error, UI shows "Calculation failed" or empty state. There's no fallback to local calculation engine.
+
+### 3. IRG Bracket Values (2026 vs current)
+Current engine uses: 0-20k, 20k-40k, 40k-80k, 80k-160k, 160k-320k, 320k+ (MONTHLY)
+Task plan specifies: 0-120k, 120k-360k, 360k-1.44M, 1.44M-3.6M, 3.6M+ (need to verify if monthly or annual)
+
+### 4. TLS Rate Inconsistency
+- G50Wizard: default `tlsRate: '0.015'` (1.5%)
+- DeclarationTab: default `tlsRate: '0.03'` (3%) in select
+
+### 5. Deductibility Categories
+Available: `standard`, `vehicle`, `hospitality`, `real_estate`, `export`
+UI uses: `standard` (default), `vehicle`, `hospitality`, `real_estate`
+Category for unknown values → returns 0 (safe default, but confusing UX)
 
 ---
 

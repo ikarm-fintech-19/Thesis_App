@@ -5,15 +5,18 @@ const config: CapacitorConfig = {
   appName: 'Matax',
   webDir: 'out',
   server: {
-    url: 'https://matax-demo.netlify.app/', 
+    url: process.env.CAPACITOR_SERVER_URL || 'http://localhost:3000',
     cleartext: true
   },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,
-      backgroundColor: "#1e3a8a", // Matax Blue
+      backgroundColor: "#1e3a8a",
       showSpinner: true,
     },
+  },
+  android: {
+    backgroundColor: "#ffffff"
   }
 };
 

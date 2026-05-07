@@ -111,12 +111,13 @@ export default function SalariesStep({ data, updateData, onPenaltiesChange }: Sa
 
     data.salaries.forEach((salary: any) => {
       const gross = new Decimal(salary.grossSalary || 0)
-      const { irg, net, cnas } = calculateSingleSalaryIRG(gross)
+      const children = parseInt(String(salary.familyChildren || 0)) || 0
+      const { irg, net, cnas, employerCNAS } = calculateSingleSalaryIRG(gross, children)
       
       totalGross = totalGross.add(gross)
       totalIRG = totalIRG.add(irg)
       totalCnasEmployee = totalCnasEmployee.add(cnas)
-      totalCnasEmployer = totalCnasEmployer.add(gross.mul(CNAS_EMPLOYER_RATE))
+      totalCnasEmployer = totalCnasEmployer.add(employerCNAS)
       totalNet = totalNet.add(net)
     })
 
@@ -206,7 +207,8 @@ export default function SalariesStep({ data, updateData, onPenaltiesChange }: Sa
                 <TableBody>
                   {data.salaries.map((salary: any, index: number) => {
                     const gross = new Decimal(salary.grossSalary)
-                    const { irg, net, cnas } = calculateSingleSalaryIRG(gross)
+                    const children = parseInt(String(salary.familyChildren || 0)) || 0
+                    const { irg, net, cnas } = calculateSingleSalaryIRG(gross, children)
                     
                     return (
                       <TableRow key={index}>

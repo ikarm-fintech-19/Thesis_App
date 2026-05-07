@@ -183,46 +183,44 @@
   - `src/app/api/tax-rules/versions/route.ts` (new)
   - `prisma/schema.prisma` (added taxType field)
 
+## Session: 2026-05-07 — G50 Bug Fix (COMPLETE)
+
+### G50 Fix Phase (COMPLETE ✅)
+- **Status:** ✅ Complete
+- **Completed:** 2026-05-07
+
+### Bugs Fixed
+1. ✅ IRG engine: Fixed abatement to use no fixed max (was 2,500→2,000, now unlimited)
+2. ✅ Family deduction: Implemented 1,000 × children, max 3 children
+3. ✅ G50 API: Updated to use corrected IRG engine with per-employee breakdown
+4. ✅ Mobile config: Fixed server URL to use env variable (fallback localhost:3000)
+5. ✅ TLS rate: Aligned to 1.5% everywhere (was 3% in DeclarationTab)
+6. ✅ SalariesStep: Updated to pass familyChildren to IRG engine
+
+### Test Results
+
+| Test | Gross | Children | IRG Net | Status |
+|------|-------|----------|---------|--------|
+| TC-09 | 30,000 | 0 | 0 DZD | ✅ Exempt |
+| TC-10 | 35,000 | 0 | 127 DZD | ✅ Smoothing |
+| TC-11 | 50,000 | 0 | 3,651 DZD | ✅ 2 brackets |
+| TC-12 | 80,000 | 0 | 8,074 DZD | ✅ 3 brackets |
+| TC-13 | 150,000 | 0 | 22,350 DZD | ✅ 4 brackets |
+| TC-14 | 200,000 | 0 | 36,660 DZD | ✅ 5 brackets |
+| TC-15 | 350,000 | 0 | 81,705 DZD | ✅ 6 brackets |
+| TC-16 | 50,000 | 3 | 3,165 DZD | ✅ Family ded |
+| TVA | 1M × 19% | - | 190,000 DZD | ✅ |
+
+### Files Modified
+- `src/lib/irg-salaires-engine.ts` — Fixed abatement, added family deduction
+- `src/app/api/declaration/calculate/route.ts` — Updated API
+- `src/components/g50/SalariesStep.tsx` — Pass familyChildren
+- `src/components/tax/DeclarationTab.tsx` — TLS 1.5%
+- `capacitor.config.ts` — Server URL fix
+
+### Build Status
+✅ Build passes successfully with all fixes
+✅ Graph updated: 1986 nodes, 3424 edges, 203 communities
+✅ Capacitor synced: Android plugins updated (haptics, splash-screen, status-bar)
+
 ---
-
-## Test Results
-
-| Test | Input | Expected | Actual | Status |
-|------|-------|----------|--------|--------|
-| TC-01: Normal 19% | base=1M, category=normal | TVA=190,000 | 190,000 | ✅ |
-| TC-02: Reduced 9% | base=2M, category=reduced | TVA=180,000 | 180,000 | ✅ |
-| TC-03: Export exempt | base=2M, category=exempt, sector=export | TVA=0 | 0 | ✅ |
-| TC-04: Auto-exempt services | base=750k, sector=services | TVA=0 | 0 | ✅ |
-| TC-05: Services > 1M | base=3M, sector=services | TVA=570,000 | 570,000 | ✅ |
-| TC-06: Declaration net | sales 2M(19%) + purchases 1M(19%) | net=190,000 | 190,000 | ✅ |
-| TC-07: Vehicle cap | sales 2M + purchases 1M + vehicle 500k | net=142,500 | 142,500 | ✅ |
-| TC-08: Credit position | export(0%) + purchases 1M(19%) | net=-190,000 | -190,000 | ✅ |
-| E2E: Calculator | Full flow | Pass | Pass | ✅ |
-| E2E: Declaration | Full flow | Pass | Pass | ✅ |
-| E2E: i18n | Locale switch | Pass | Pass | ✅ |
-| E2E: Theme toggle | Dark/light | Pass | Pass | ✅ |
-
-## Error Log
-
-| Timestamp | Error | Attempt | Resolution |
-|-----------|-------|---------|------------|
-| 2026-05-03 21:50 | Server component + next-themes | 1 | Created Providers.tsx client wrapper |
-| 2026-05-03 20:55 | Tax engine crash on empty input | 1 | Added Decimal validation guard |
-| 2026-05-03 21:30 | E2E missing header elements | 2 | Added Header with nav links |
-| 2026-05-03 22:00 | DeclarationTab TLS integration | 1 | Added TLS 1.5% to G50 form |
-
----
-
-## 5-Question Reboot Check
-
-| Question | Answer |
-|----------|--------|
-| Where am I? | Phase 0 complete → Phase 1 next |
-| Where am I going? | Phase 1: Schema hardening → Phase 2: G50 Wizard → Phase 3: IRG Salaires |
-| What's the goal? | Evolve thesis prototype into production RegTech SaaS for Algerian taxpayers |
-| What have I learned? | See findings.md — schema uses Float (bad), 8 test cases pass, 3 models missing |
-| What have I done? | Full codebase audit, created 6-phase roadmap, documented all gaps |
-
----
-
-*Update after completing each phase or encountering errors*
