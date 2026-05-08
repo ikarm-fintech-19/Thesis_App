@@ -29,6 +29,16 @@ export async function POST(request: NextRequest) {
       tlsRate = '0.015' 
     } = body;
 
+    if (!transactions || !Array.isArray(transactions)) {
+      throw new Error('Invalid transactions data');
+    }
+    if (!salaries || !Array.isArray(salaries)) {
+      throw new Error('Invalid salaries data');
+    }
+    if (!year || !month) {
+      throw new Error('Missing period information');
+    }
+
     const previousCreditVal = toDecimal(previousCredit);
     const tlsRateVal = toDecimal(tlsRate);
 
@@ -108,7 +118,11 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
-    console.error('Declaration Calculation Error:', error);
+    console.error('Declaration Calculation Error:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      bodyKeys: Object.keys(body),
+    });
     return NextResponse.json({ 
       error: 'Calculation failed', 
       detail: error instanceof Error ? error.message : 'Unknown error' 

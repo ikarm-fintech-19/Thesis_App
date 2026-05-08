@@ -82,9 +82,18 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
         })
       })
 
-      if (!response.ok) throw new Error('Calculation failed')
+      let json
+      try {
+        json = await response.json()
+      } catch {
+        const text = await response.text().catch(() => 'unreadable')
+        throw new Error(`Calculation failed: invalid JSON (status ${response.status}). Response: ${text.substring(0, 200)}`)
+      }
       
-      const json = await response.json()
+      if (!response.ok) {
+        throw new Error(`Calculation failed (${response.status}): ${json.detail || json.error || 'Unknown error'}`)
+      }
+
       setResult(json.data)
       updateData({ result: json.data })
       
