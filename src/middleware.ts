@@ -4,7 +4,7 @@ import { jwtVerify } from 'jose';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'development-secret-fallback';
 
-const PUBLIC_ROUTES = ['/', '/login', '/pricing', '/contact', '/legal', '/support', '/api/auth/login', '/api/auth/register', '/api/calculate'];
+const PUBLIC_ROUTES = ['/', '/login', '/pricing', '/contact', '/legal', '/support', '/api/auth/login', '/api/auth/register', '/api/calculate', '/api/declaration/calculate'];
 const PROTECTED_DASHBOARD = '/dashboard';
 const PROTECTED_API = '/api/';
 const ADMIN_ROUTE = '/dashboard/admin';
