@@ -23,9 +23,10 @@ const categories = [
   { value: 'goods', label: 'Marchandises', deductible: '100%' },
   { value: 'materials', label: 'Matières premières', deductible: '100%' },
   { value: 'equipment', label: 'Équipements', deductible: '100%' },
-  { value: 'vehicle', label: 'Véhicules', deductible: '50% (Art. 33)' },
+  { value: 'vehicle', label: 'Véhicules de tourisme (< 7 places)', deductible: '0% (Art. 30 LF 2026)' },
+  { value: 'vehicle_large', label: 'Véhicules ≥ 7 places', deductible: '50% (Art. 30 LF 2026)' },
   { value: 'services', label: 'Services', deductible: '100%' },
-  { value: 'hospitality', label: 'Hébergement/Restauration', deductible: '0% (Art. 33)' }
+  { value: 'hospitality', label: 'Hébergement/Restauration', deductible: '0% (Art. 30 LF 2026)' }
 ]
 
 export default function PurchasesStep({ data, updateData, onPenaltiesChange }: PurchasesStepProps) {
@@ -63,9 +64,12 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
       penalties.push({ type: 'MISSING_INVOICE', message: t('penalties.missingInvoice'), severity: 'warning' as const })
     }
     const hasVehicle = purchases.some(p => p.category === 'vehicle')
-    const hasHospitality = purchases.some(p => p.category === 'hospitality')
+    const hasVehicleLarge = purchases.some(p => p.category === 'vehicle_large')
     
     if (hasVehicle) {
+      penalties.push({ type: 'VEHICLE_NO_DEDUCT', message: t('penalties.vehicleNoDeduct'), severity: 'warning' as const })
+    }
+    if (hasVehicleLarge) {
       penalties.push({ type: 'VEHICLE_CAP', message: t('penalties.vehicleCap'), severity: 'warning' as const })
     }
     if (hasHospitality) {
@@ -81,7 +85,8 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
       const grossTva = ht.mul(rate).div(100)
       
       let deductibility = new Decimal(1)
-      if (purchase.category === 'vehicle') deductibility = new Decimal(0.5)
+      if (purchase.category === 'vehicle') deductibility = new Decimal(0)
+      if (purchase.category === 'vehicle_large') deductibility = new Decimal(0.5)
       if (purchase.category === 'hospitality') deductibility = new Decimal(0)
       
       const deductibleTva = grossTva.mul(deductibility)
@@ -210,7 +215,8 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
                 const grossTva = ht.mul(rate).div(100)
                 
                 let deductibility = new Decimal(1)
-                if (purchase.category === 'vehicle') deductibility = new Decimal(0.5)
+                if (purchase.category === 'vehicle') deductibility = new Decimal(0)
+                if (purchase.category === 'vehicle_large') deductibility = new Decimal(0.5)
                 if (purchase.category === 'hospitality') deductibility = new Decimal(0)
                 const deductibleTva = grossTva.mul(deductibility)
                 
@@ -220,7 +226,7 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
                       <div>
                         <div className="font-semibold text-sm">{purchase.date}</div>
                         <div className="text-xs text-muted-foreground">{purchase.description || t('wizard.purchases.noDescription', { defaultValue: 'N/A' })}</div>
-                        <Badge variant={purchase.category === 'vehicle' || purchase.category === 'hospitality' ? 'destructive' : 'secondary'} className="mt-1">
+                        <Badge variant={purchase.category === 'vehicle' || purchase.category === 'hospitality' ? 'destructive' : purchase.category === 'vehicle_large' ? 'default' : 'secondary'} className="mt-1">
                           {categories.find(c => c.value === purchase.category)?.label || purchase.category}
                         </Badge>
                       </div>
@@ -264,7 +270,8 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
                     const grossTva = ht.mul(rate).div(100)
                     
                     let deductibility = new Decimal(1)
-                    if (purchase.category === 'vehicle') deductibility = new Decimal(0.5)
+                    if (purchase.category === 'vehicle') deductibility = new Decimal(0)
+                    if (purchase.category === 'vehicle_large') deductibility = new Decimal(0.5)
                     if (purchase.category === 'hospitality') deductibility = new Decimal(0)
                     const deductibleTva = grossTva.mul(deductibility)
                     

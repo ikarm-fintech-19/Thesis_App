@@ -472,7 +472,8 @@
   "penalties": {
     "lateFiling": "Déclaration hors délai - Pénalités applicables (10% + 3%/mois)",
     "noSales": "Aucune vente enregistrée pour cette période",
-    "vehicleCap": "Déductibilité véhicules limitée à 50% (Art. 33)",
+    "vehicleNoDeduct": "Véhicules de tourisme (< 7 places) non déductibles (Art. 30 LF 2026)",
+    "vehicleCap": "Déductibilité véhicules ≥ 7 places limitée à 50% (Art. 30 LF 2026)",
     "hospitalityNoDeduct": "Hébergement/restauration non déductible (Art. 33)",
     "tvaDue": "TVA à payer - Assurez-vous de respecter la date limite",
     "tvaCredit": "Crédit TVA reportable sur les périodes suivantes"

@@ -376,7 +376,8 @@
   "penalties": {
     "lateFiling": "Late filing - Penalties apply (10% + 3%/month)",
     "noSales": "No sales recorded for this period",
-    "vehicleCap": "Vehicle deductibility limited to 50% (Art. 33)",
+    "vehicleNoDeduct": "Passenger vehicles (< 7 seats) not deductible (Art. 30 LF 2026)",
+    "vehicleCap": "Vehicles ≥ 7 seats deductibility limited to 50% (Art. 30 LF 2026)",
     "hospitalityNoDeduct": "Hospitality not deductible (Art. 33)",
     "tvaDue": "TVA to pay - Ensure you meet the deadline",
     "tvaCredit": "TVA credit carryforward to next periods"

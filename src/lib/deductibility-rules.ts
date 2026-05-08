@@ -8,12 +8,17 @@
 
 import { Decimal } from './decimal-utils'
 
-export type DeductibilityCategory = 'standard' | 'vehicle' | 'hospitality' | 'real_estate' | 'export'
+export type DeductibilityCategory = 'standard' | 'goods' | 'materials' | 'equipment' | 'vehicle' | 'vehicle_large' | 'hospitality' | 'real_estate' | 'export' | 'services'
 
 export const DEDUCTIBILITY_CAPS: Record<DeductibilityCategory, number> = {
-  standard: 1.0,       // 100% — General purchases (goods, services, matières premières)
-  vehicle: 0.0,        // 0%  — Passenger vehicles (Art. 30 CTCA) — strictly non-deductible for TVA
-  hospitality: 0.0,    // 0%   — Hébergement & restauration (Art. 30 CTCA) — non-deductible
+  standard: 1.0,       // 100% — General purchases
+  goods: 1.0,          // 100% — Marchandises
+  materials: 1.0,      // 100% — Matières premières
+  equipment: 1.0,       // 100% — Équipements
+  services: 1.0,       // 100% — Services
+  vehicle: 0.0,         // 0%   — Véhicules de tourisme < 7 places (Art. 30 LF 2026)
+  vehicle_large: 0.5,    // 50%  — Véhicules ≥ 7 places assises (Art. 30 LF 2026)
+  hospitality: 0.0,    // 0%   — Hébergement & restauration (Art. 30 LF 2026) — non-deductible
   real_estate: 1.0,    // 100% — Construction & acquisition de locaux professionnels
   export: 0.0          // 0%   — TVA on exports is not applicable (Art. 30-4° CID)
 }
@@ -41,14 +46,64 @@ export const DEDUCTIBILITY_INFO: DeductibilityInfo[] = [
     notes: 'Déductible intégralement dans les conditions normales'
   },
   {
+    category: 'goods',
+    cap: 1.0,
+    capPercent: '100%',
+    labelFr: 'Marchandises',
+    labelEn: 'Goods / Merchandise',
+    labelAr: 'بضائع',
+    articleRef: 'Art. 28 CID',
+    notes: 'Déductible intégralement'
+  },
+  {
+    category: 'materials',
+    cap: 1.0,
+    capPercent: '100%',
+    labelFr: 'Matières premières',
+    labelEn: 'Raw materials',
+    labelAr: 'مواد أولية',
+    articleRef: 'Art. 28 CID',
+    notes: 'Déductible intégralement'
+  },
+  {
+    category: 'equipment',
+    cap: 1.0,
+    capPercent: '100%',
+    labelFr: 'Équipements',
+    labelEn: 'Equipment',
+    labelAr: 'تجهيزات',
+    articleRef: 'Art. 28 CID',
+    notes: 'Déductible intégralement'
+  },
+  {
+    category: 'services',
+    cap: 1.0,
+    capPercent: '100%',
+    labelFr: 'Services',
+    labelEn: 'Services',
+    labelAr: 'خدمات',
+    articleRef: 'Art. 28 CID',
+    notes: 'Déductible intégralement'
+  },
+  {
     category: 'vehicle',
     cap: 0.0,
     capPercent: '0%',
-    labelFr: 'Véhicules de tourisme',
-    labelEn: 'Passenger vehicles',
-    labelAr: 'سيارات الركاب',
-    articleRef: 'Art. 30 - Code TVA',
-    notes: 'Non déductible pour la TVA (sauf si c\'est l\'objet principal de l\'activité).'
+    labelFr: 'Véhicules de tourisme (< 7 places)',
+    labelEn: 'Passenger vehicles (< 7 seats)',
+    labelAr: 'سيارات الركاب (< 7 مقاعد)',
+    articleRef: 'Art. 30 LF 2026',
+    notes: 'Non déductible — véhicules de tourisme et de transport de personnes (≤ 6 places assises)'
+  },
+  {
+    category: 'vehicle_large',
+    cap: 0.5,
+    capPercent: '50%',
+    labelFr: 'Véhicules ≥ 7 places assises',
+    labelEn: 'Vehicles with ≥ 7 seats',
+    labelAr: 'مركبات ≥ 7 مقاعد',
+    articleRef: 'Art. 30 LF 2026',
+    notes: 'Déductible à 50% — véhicules à 7 places assises et plus'
   },
   {
     category: 'hospitality',
@@ -78,7 +133,7 @@ export const DEDUCTIBILITY_INFO: DeductibilityInfo[] = [
     labelEn: 'Exports',
     labelAr: 'عمليات التصدير',
     articleRef: 'Art. 30-4° du CID',
-    notes: 'La TVA sur les exportations n\'est pas applicable (taux 0%)'
+    notes: 'La TVA sur les exports n\'est pas applicable (taux 0%)'
   }
 ]
 
