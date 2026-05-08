@@ -110,13 +110,13 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
     } finally {
       setLoading(false)
     }
-  }, [data, onPenaltiesChange, t])
+  }, [data, onPenaltiesChange, t, updateData])
 
   useEffect(() => {
     if (initialized.current) return
     initialized.current = true
     calculateDeclaration()
-  }, [])
+  }, [calculateDeclaration])
 
   if (loading) {
     return (
@@ -134,7 +134,7 @@ export default function SummaryStep({ data, updateData, onPenaltiesChange }: Sum
       <Card className="border-destructive">
         <CardContent className="py-8 text-center">
           <AlertCircle className="h-8 w-8 mx-auto mb-4 text-destructive" />
-          <p className="text-destructive">{error}</p>
+          <p className="text-destructive font-mono text-sm mb-2">{error}</p>
           <Button onClick={calculateDeclaration} className="mt-4">
             {t('wizard.summary.retry')}
           </Button>

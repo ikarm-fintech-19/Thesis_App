@@ -99,7 +99,7 @@ export function calculateSingleSalaryIRG(grossSalary: number | string | Decimal,
     abatement = irgBrut.sub(smoothedIrg);
   }
 
-  const irgNet = irgBrut.sub(abatement).toDecimalPlaces(0);
+  const irgNet = Decimal.max(irgBrut.sub(abatement), new Decimal(0)).toDecimalPlaces(0);
   const netSalary = taxable.sub(irgNet).toDecimalPlaces(2);
 
   return {

@@ -65,6 +65,7 @@ export default function PurchasesStep({ data, updateData, onPenaltiesChange }: P
     }
     const hasVehicle = purchases.some(p => p.category === 'vehicle')
     const hasVehicleLarge = purchases.some(p => p.category === 'vehicle_large')
+    const hasHospitality = purchases.some(p => p.category === 'hospitality')
     
     if (hasVehicle) {
       penalties.push({ type: 'VEHICLE_NO_DEDUCT', message: t('penalties.vehicleNoDeduct'), severity: 'warning' as const })

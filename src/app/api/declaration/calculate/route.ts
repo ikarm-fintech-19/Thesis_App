@@ -6,8 +6,12 @@ import { getDeductibilityCap } from '@/lib/deductibility-rules';
 const toDecimal = (val: any) => {
   if (val === null || val === undefined || val === '') return new Decimal(0);
   try {
-    return new Decimal(String(val).replace(/,/g, '.'));
+    // Handle percentages (e.g. "19%") and comma decimals (e.g. "19,5")
+    const cleanVal = String(val).replace('%', '').replace(/,/g, '.').trim();
+    if (cleanVal === '') return new Decimal(0);
+    return new Decimal(cleanVal);
   } catch {
+    console.warn(`Failed to parse value to Decimal: ${val}`);
     return new Decimal(0);
   }
 };
@@ -17,8 +21,9 @@ const parseRate = (rate: Decimal) => {
 };
 
 export async function POST(request: NextRequest) {
+  let body: any = {};
   try {
-    const body = await request.json();
+    body = await request.json();
     const { 
       transactions = [], 
       salaries = [], 
@@ -118,10 +123,14 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
-    console.error('Declaration Calculation Error:', {
+    console.error('Declaration Calculation ERROR DETECTED:', {
       message: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
-      bodyKeys: Object.keys(body),
+      body: body ? {
+        ...body,
+        transactions: body.transactions?.length,
+        salaries: body.salaries?.length
+      } : 'null'
     });
     return NextResponse.json({ 
       error: 'Calculation failed', 
