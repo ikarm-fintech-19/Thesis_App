@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Decimal } from '@/lib/decimal-utils';
-import { calculateTotalIRG } from '@/lib/irg-salaires-engine';
-import { getDeductibilityCap } from '@/lib/deductibility-rules';
+import { calculateDeclarationTVA } from '@/lib/engines/tva';
+import { calculateTotalIRG } from '@/lib/engines/irg';
+import { BaseTransaction } from '@/lib/engines/types';
 
 const toDecimal = (val: any) => {
   if (val === null || val === undefined || val === '') return new Decimal(0);
   try {
-    // Handle percentages (e.g. "19%") and comma decimals (e.g. "19,5")
     const cleanVal = String(val).replace('%', '').replace(/,/g, '.').trim();
     if (cleanVal === '') return new Decimal(0);
     return new Decimal(cleanVal);
@@ -27,19 +27,13 @@ export async function POST(request: NextRequest) {
     const { 
       transactions = [], 
       salaries = [], 
-      periodType = 'monthly', 
+      periodType = 'MONTHLY', 
       year, 
       month, 
       previousCredit = 0, 
       tlsRate = '0.015' 
     } = body;
 
-    if (!transactions || !Array.isArray(transactions)) {
-      throw new Error('Invalid transactions data');
-    }
-    if (!salaries || !Array.isArray(salaries)) {
-      throw new Error('Invalid salaries data');
-    }
     if (!year || !month) {
       throw new Error('Missing period information');
     }
@@ -47,91 +41,68 @@ export async function POST(request: NextRequest) {
     const previousCreditVal = toDecimal(previousCredit);
     const tlsRateVal = toDecimal(tlsRate);
 
-    let totalSalesHT = new Decimal(0);
-    let totalPurchasesHT = new Decimal(0);
-    let totalCollectee = new Decimal(0);
-    let totalDeductible = new Decimal(0);
+    // Prepare transactions for the TVA engine
+    const tvaInput: BaseTransaction[] = (transactions || []).map((t: any) => ({
+      ...t,
+      ht_amount: toDecimal(t.ht_amount),
+      tva_rate: parseRate(toDecimal(t.tva_rate))
+    }));
 
-    const breakdown = (transactions || []).map((t: any, idx: number) => {
-      const ht = toDecimal(t.ht_amount);
-      const rate = parseRate(toDecimal(t.tva_rate));
-      const grossTva = ht.mul(rate).toDecimalPlaces(2);
-      
-      const cap = new Decimal(String(getDeductibilityCap(t.category)));
-      const deductibleTva = grossTva.mul(cap).toDecimalPlaces(2);
-      const articleRef = t.type === 'SALE' ? 'Art. 28 CID' : 'Art. 33 CID';
-
-      if (t.type === 'SALE') {
-        totalSalesHT = totalSalesHT.add(ht);
-        totalCollectee = totalCollectee.add(grossTva);
-      } else {
-        totalPurchasesHT = totalPurchasesHT.add(ht);
-        totalDeductible = totalDeductible.add(deductibleTva);
-      }
-
-      return {
-        id: `tx-${idx + 1}`,
-        ...t,
-        ht_amount: ht.toString(),
-        tva_rate: rate.toString(),
-        gross_tva: grossTva.toString(),
-        deductible_cap: cap.toString(),
-        deductible_tva: deductibleTva.toString(),
-        articleRef
-      };
-    });
-
+    // Run Engines
+    const tvaResult = calculateDeclarationTVA(tvaInput, previousCreditVal, tlsRateVal);
+    
     const cleanedSalaries = (salaries || []).map((s: any) => ({
       employeeName: s.employeeName || s.name || 'Employee',
-      grossSalary: toDecimal(s.grossSalary).toString(),
+      grossSalary: toDecimal(s.grossSalary),
       familyChildren: s.familyChildren || s.children || 0
     }));
     const irgResult = calculateTotalIRG(cleanedSalaries);
 
-    const netTva = totalCollectee.sub(totalDeductible).sub(previousCreditVal);
-    const position = netTva.gt(0) ? 'A PAYER' : netTva.lt(0) ? 'CREDIT' : 'ZERO';
-    const tlsAmount = totalSalesHT.mul(tlsRateVal).toDecimalPlaces(2);
-    const tvaToPay = netTva.gt(0) ? netTva : new Decimal(0);
-    const totalToPay = tvaToPay.add(tlsAmount).add(irgResult.totalIRG);
+    // Final Total Calculation
+    const totalToPay = tvaResult.total_to_pay.add(irgResult.totalIRG);
 
+    // Build standard response
     const result = {
-      collectee: totalCollectee.toString(),
-      deductible: totalDeductible.toString(),
-      previous_credit: previousCreditVal.toString(),
-      tls_amount: tlsAmount.toString(),
-      tls_rate: tlsRateVal.toString(),
+      ...tvaResult,
       irg_salaires: irgResult.totalIRG.toString(),
-      net: netTva.abs().toString(),
-      net_raw: netTva.toString(),
       total_to_pay: totalToPay.toString(),
-      position,
-      sales_count: (transactions || []).filter((t: any) => t.type === 'SALE').length,
-      purchases_count: (transactions || []).filter((t: any) => t.type === 'PURCHASE').length,
       salaries_count: (salaries || []).length,
-      total_sales_ht: totalSalesHT.toString(),
-      total_purchases_ht: totalPurchasesHT.toString(),
       period: { label: `${periodType} ${month}/${year}` },
-      breakdown,
       irg_details: {
         total_gross: irgResult.totalGross.toString(),
         total_cnas: irgResult.totalCnas.toString(),
         total_employer_cnas: irgResult.totalEmployerCNAS.toString(),
         total_net_salaries: irgResult.totalNet.toString(),
-        employees: irgResult.employees
-      }
+        employees: irgResult.employees.map(e => ({
+          ...e,
+          gross: e.gross.toString(),
+          irg: e.irg.toString(),
+          cnas: e.cnas.toString(),
+          net: e.net.toString(),
+          familyDeduction: e.familyDeduction.toString()
+        }))
+      },
+      // Keep string versions for frontend compatibility
+      collectee: tvaResult.collectee.toString(),
+      deductible: tvaResult.deductible.toString(),
+      previous_credit: tvaResult.previous_credit.toString(),
+      tls_amount: tvaResult.tls_amount.toString(),
+      net: tvaResult.net.toString(),
+      total_sales_ht: tvaResult.total_sales_ht.toString(),
+      total_purchases_ht: tvaResult.total_purchases_ht.toString(),
+      breakdown: tvaResult.breakdown.map(b => ({
+        ...b,
+        ht_amount: b.ht_amount.toString(),
+        tva_rate: b.tva_rate.toString(),
+        gross_tva: b.gross_tva.toString(),
+        deductible_cap: b.deductible_cap.toString(),
+        deductible_tva: b.deductible_tva.toString()
+      }))
     };
 
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
-    console.error('Declaration Calculation ERROR DETECTED:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-      body: body ? {
-        ...body,
-        transactions: body.transactions?.length,
-        salaries: body.salaries?.length
-      } : 'null'
-    });
+    console.error('Declaration Calculation ERROR:', error);
     return NextResponse.json({ 
       error: 'Calculation failed', 
       detail: error instanceof Error ? error.message : 'Unknown error' 

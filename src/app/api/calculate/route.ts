@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
-import { calculateTVA } from '@/lib/tax-engine'
+import { calculateSingleTVA } from '@/lib/engines/tva'
 import { getSession } from '@/lib/auth'
 import { SUBSCRIPTION_PLANS } from '@/lib/subscription'
 
@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
     } : null
 
     // 4. Perform Calculation
-    const result = calculateTVA({
+    const result = calculateSingleTVA({
       base,
       category,
       sector: sector || 'production',

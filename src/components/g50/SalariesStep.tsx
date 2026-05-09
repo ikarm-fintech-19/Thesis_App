@@ -13,7 +13,7 @@ import { Plus, Trash2, Users, Calculator, Upload } from 'lucide-react'
 import { useState, useRef } from 'react'
 import Decimal from 'decimal.js'
 import { FiscalTooltip } from '@/components/ui/FiscalTooltip'
-import { calculateSingleSalaryIRG } from '@/lib/irg-salaires-engine'
+import { calculateSingleSalaryIRG } from '@/lib/engines/irg'
 
 interface SalariesStepProps {
   data: any

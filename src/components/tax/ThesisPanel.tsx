@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useI18n } from '@/lib/i18n-context'
-import { runThesisValidation, TVACalculationResult, THESIS_TEST_CASES, DECLARATION_TEST_CASES } from '@/lib/tax-engine'
-import { calculateDeclaration } from '@/lib/declaration-engine'
+import { runThesisValidation, THESIS_TEST_CASES, DECLARATION_TEST_CASES } from '@/lib/engines/thesis-validator'
+import { calculateDeclarationTVA } from '@/lib/engines/tva'
 import { formatCurrency, calculateVariance } from '@/lib/decimal-utils'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -82,16 +82,11 @@ export function ThesisPanel({ dbRule }: { dbRule: TaxRuleRow | null }) {
 
     // Run declaration tests (TC-06 to TC-08)
     const declTestResults = DECLARATION_TEST_CASES.map(tc => {
-      const result = calculateDeclaration({
-        transactions: tc.transactions.map(tx => ({
-          ...tx,
-          date: '2026-01-15',
-          description: tc.id,
-        })),
-        periodType: 'MONTHLY',
-        year: 2026,
-        month: 1
-      })
+      const result = calculateDeclarationTVA(tc.transactions.map(tx => ({
+        ...tx,
+        date: '2026-01-15',
+        description: tc.id,
+      })), 0, 0.015) // Standard TLS rate 1.5%
 
       const netVariance = new Decimal(tc.expectedNet).minus(result.net).abs().toDecimalPlaces(2)
 

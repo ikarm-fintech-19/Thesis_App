@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useI18n } from '@/lib/i18n-context'
-import { TVACategory } from '@/lib/tax-engine'
+import { TVACategory } from '@/lib/engines/tva'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'

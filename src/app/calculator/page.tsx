@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react'
 import { I18nProvider, useI18n } from '@/lib/i18n-context'
-import { TVACalculationResult, TVACategory } from '@/lib/tax-engine'
+import { TVACalculationResult, TVACategory } from '@/lib/engines/tva'
 import { LocaleSwitcher } from '@/components/tax/LocaleSwitcher'
 import { ModeToggle, UIMode } from '@/components/tax/ModeToggle'
 import { TaxForm } from '@/components/tax/TaxForm'
@@ -117,8 +117,8 @@ function AppContent() {
     } catch {
       setError('Network error. Using fallback calculation.')
       // Fallback: calculate client-side
-      const { calculateTVA } = await import('@/lib/tax-engine')
-      const fallbackResult = calculateTVA({
+      const { calculateSingleTVA } = await import('@/lib/engines/tva')
+      const fallbackResult = calculateSingleTVA({
         base: params.base,
         category: params.category,
         sector: params.sector

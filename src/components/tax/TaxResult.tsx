@@ -1,7 +1,7 @@
 'use client'
 
 import { useI18n } from '@/lib/i18n-context'
-import { TVACalculationResult } from '@/lib/tax-engine'
+import { TVACalculationResult } from '@/lib/engines/tva'
 import { formatCurrency } from '@/lib/decimal-utils'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

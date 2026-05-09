@@ -3,7 +3,7 @@
 import React from 'react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { AlertCircle, Clock } from 'lucide-react'
-import { isClaimValid } from '@/lib/tax-engine'
+import { isClaimValid } from '@/lib/engines/tva'
 
 interface RefundWarningBannerProps {
   declarationYear: number

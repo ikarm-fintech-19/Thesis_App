@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { runThesisValidation, DECLARATION_TEST_CASES } from '@/lib/tax-engine'
-import { calculateDeclaration } from '@/lib/declaration-engine'
+import { runThesisValidation, DECLARATION_TEST_CASES } from '@/lib/engines/thesis-validator'
+import { calculateDeclarationTVA } from '@/lib/engines/tva'
 
 export async function GET() {
   try {
@@ -55,16 +55,11 @@ export async function GET() {
     ]
 
     const declRows = DECLARATION_TEST_CASES.map(tc => {
-      const result = calculateDeclaration({
-        transactions: tc.transactions.map(tx => ({
-          ...tx,
-          date: '2026-01-15',
-          description: tc.id,
-        })),
-        periodType: 'MONTHLY',
-        year: 2026,
-        month: 1
-      })
+      const result = calculateDeclarationTVA(tc.transactions.map(tx => ({
+        ...tx,
+        date: '2026-01-15',
+        description: tc.id,
+      })), 0, 0.015) // Standard TLS rate 1.5%
 
       const netVariance = result.net.minus(tc.expectedNet).abs().toDecimalPlaces(2)
       const pass = netVariance.isZero()
