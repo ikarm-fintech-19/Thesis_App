@@ -21,7 +21,10 @@
     "helpText": "Besoin d'aide avec la Loi de Finances 2026 ?",
     "contactExpert": "Contacter un expert",
     "logout": "Déconnexion",
-    "regtech": "Plateforme de Conformité RegTech"
+    "regtech": "Plateforme de Conformité RegTech",
+    "dividends": "Dividendes",
+    "foreignWithholding": "Retenue Étrangère",
+    "myClients": "Mes Clients"
   },
   "landing": {
     "hero": {
@@ -160,6 +163,26 @@
     "notes": "Notes",
     "breakdown": "Détail du calcul",
     "noResult": "Entrez un montant et sélectionnez une catégorie pour voir le résultat."
+  },
+  "accountant": {
+    "title": "Mes Clients",
+    "subtitle": "Gérez vos clients et leurs déclarations",
+    "addClient": "Ajouter un client",
+    "addClientTitle": "Nouveau client",
+    "email": "Email",
+    "name": "Nom",
+    "company": "Entreprise",
+    "nif": "NIF",
+    "search": "Rechercher un client...",
+    "noClients": "Aucun client trouvé",
+    "client": "Client",
+    "entreprise": "Entreprise",
+    "declarations": "Déclarations",
+    "derniereActivite": "Dernière activité",
+    "totalClients": "Clients actifs",
+    "totalDeclarations": "Déclarations",
+    "typeDeclaration": "Type principal",
+    "add": "Ajouter"
   },
   "declaration": {
     "title": "Déclaration TVA",

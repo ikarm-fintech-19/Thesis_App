@@ -1,29 +1,31 @@
 {
   "nav": {
-    "dashboard": "لوحة القيادة",
+    "dashboard": "لوحة التحكم",
     "logout": "تسجيل الخروج",
     "regtech": "منصة الامتثال RegTech",
     "home": "الرئيسية",
-    "calculator": "الحاسبة",
-    "declarations": "التصريحات",
+    "calculator": "حاسبة الضريبة (TVA)",
+    "declarations": "إدارة التصريحات",
     "pricing": "الأسعار",
     "contact": "اتصل بنا",
     "legal": "إشعارات قانونية",
     "overview": "نظرة عامة",
     "newCalculation": "حساب جديد",
-    "aiScanner": "ماسح الذكاء الاصطناعي",
+    "aiScanner": "ماسح الفواتير الذكي",
     "myDeclarations": "تصريحاتي",
-    "g50": "تصريح G50",
+    "g50": "تصريح G50 الشهري",
     "myTeam": "فريقي",
     "billing": "الفواتير",
     "settings": "الإعدادات",
     "adminConsole": "لوحة الإدارة",
-    "assistance": "المساعدة",
-    "helpText": "هل تحتاج إلى مساعدة في قانون المالية 2026؟",
-    "contactExpert": "اتصل بخبير",
-    "tfpc": "رسم التكوين/التمهين",
+    "assistance": "الدعم الفني",
+    "helpText": "هل تحتاج مساعدة في قانون المالية 2026؟",
+    "contactExpert": "تحدث مع خبير",
+    "tfpc": "رسم التكوين والتمهين (TFPC)",
     "dividends": "توزيع الأرباح",
-    "foreignWithholding": "الاحتجاز الأجنبي"
+    "foreignWithholding": "الاحتجاز الضريبي الأجنبي",
+    "myClients": "زبائني",
+    "regtech": "منصة Matax للامتثال الضريبي"
   },
   "landing": {
     "hero": {
@@ -119,7 +121,7 @@
     "description": "أداة تعليمية لحساب ضريبة القيمة المضافة الجزائرية. يجب التحقق مع محاسب معتمد."
   },
   "tabs": {
-    "calculator": "حاسبة TVA",
+    "calculator": "حاسبة الضريبة (TVA)",
     "declaration": "إقرار TVA"
   },
   "modes": {
@@ -162,6 +164,26 @@
     "notes": "ملاحظات",
     "breakdown": "تفاصيل الحساب",
     "noResult": "أدخل مبلغاً واختر فئة لرؤية النتائج."
+  },
+  "accountant": {
+    "title": "زبائني",
+    "subtitle": "إدارة زبائنك وتصريحاتهم الضريبية",
+    "addClient": "إضافة زبون",
+    "addClientTitle": "زبون جديد",
+    "email": "البريد الإلكتروني",
+    "name": "الاسم",
+    "company": "الشركة",
+    "nif": "الرقم التعريفي الجبائي (NIF)",
+    "search": "بحث عن زبون...",
+    "noClients": "لم يتم العثور على أي زبون",
+    "client": "الزبون",
+    "entreprise": "المؤسسة",
+    "declarations": "التصريحات",
+    "derniereActivite": "آخر نشاط",
+    "totalClients": "الزبائن النشطون",
+    "totalDeclarations": "إجمالي التصريحات",
+    "typeDeclaration": "نوع التصريح الرئيسي",
+    "add": "إضافة"
   },
   "declaration": {
     "title": "إقرار TVA",

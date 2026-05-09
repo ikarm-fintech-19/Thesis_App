@@ -21,7 +21,10 @@
     "adminConsole": "Admin Console",
     "assistance": "Assistance",
     "helpText": "Need help with 2026 Finance Law?",
-    "contactExpert": "Contact an expert"
+    "contactExpert": "Contact an expert",
+    "dividends": "Dividends",
+    "foreignWithholding": "Foreign Withholding",
+    "myClients": "My Clients"
   },
   "landing": {
     "hero": {
@@ -160,6 +163,26 @@
     "notes": "Notes",
     "breakdown": "Calculation Breakdown",
     "noResult": "Enter an amount and select a category to see results."
+  },
+  "accountant": {
+    "title": "My Clients",
+    "subtitle": "Manage your clients and their tax declarations",
+    "addClient": "Add a Client",
+    "addClientTitle": "New Client",
+    "email": "Email",
+    "name": "Name",
+    "company": "Company",
+    "nif": "NIF",
+    "search": "Search for a client...",
+    "noClients": "No clients found",
+    "client": "Client",
+    "entreprise": "Company",
+    "declarations": "Declarations",
+    "derniereActivite": "Last Activity",
+    "totalClients": "Active Clients",
+    "totalDeclarations": "Total Declarations",
+    "typeDeclaration": "Principal Type",
+    "add": "Add"
   },
   "declaration": {
     "title": "TVA Declaration",
