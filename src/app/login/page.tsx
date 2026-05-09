@@ -139,7 +139,8 @@ function LoginForm() {
                 size="sm"
                 onClick={() => quickLogin('user')}
                 disabled={loading}
-                className="flex flex-col h-auto py-3 gap-1 hover:border-primary/40"
+                title="Accès rapide en tant qu'utilisateur (Citoyen)"
+                className="flex flex-col h-auto py-3 gap-1 hover:border-primary/40 card-interactive"
               >
                 <User className="h-4 w-4" />
                 <span className="text-[10px]">Citoyen</span>
@@ -149,7 +150,8 @@ function LoginForm() {
                 size="sm"
                 onClick={() => quickLogin('expert')}
                 disabled={loading}
-                className="flex flex-col h-auto py-3 gap-1 hover:border-primary/40"
+                title="Accès rapide en tant qu'expert-comptable"
+                className="flex flex-col h-auto py-3 gap-1 hover:border-primary/40 card-interactive"
               >
                 <Briefcase className="h-4 w-4" />
                 <span className="text-[10px]">Expert</span>
@@ -159,7 +161,8 @@ function LoginForm() {
                 size="sm"
                 onClick={() => quickLogin('admin')}
                 disabled={loading}
-                className="flex flex-col h-auto py-3 gap-1 hover:border-primary/40"
+                title="Accès rapide en tant qu'administrateur"
+                className="flex flex-col h-auto py-3 gap-1 hover:border-primary/40 card-interactive"
               >
                 <ShieldCheck className="h-4 w-4" />
                 <span className="text-[10px]">Admin</span>

@@ -48,7 +48,7 @@ async function verifyG50Scenario() {
   console.log(`- TOTAL PAYABLE: ${totalPayable.toFixed(2)} DZD`);
 
   // Assertions
-  const expectedTotal = new Decimal(114000).add(5223).add(20000); 
+  const expectedTotal = new Decimal(114000).add(10185).add(20000); 
   if (totalPayable.equals(expectedTotal)) {
     console.log('\n✅ VERIFICATION SUCCESSFUL: Calculation matches law benchmarks.');
   } else {

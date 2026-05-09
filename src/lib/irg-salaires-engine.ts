@@ -20,7 +20,7 @@ export const FAMILY_DEDUCTION_MAX_CHILDREN = 3;
 export const FAMILY_DEDUCTION_MAX_TOTAL = FAMILY_DEDUCTION_PER_CHILD * FAMILY_DEDUCTION_MAX_CHILDREN;
 
 export const ABATEMENT_MIN = 1500;
-export const ABATEMENT_MAX = 10000; // No real cap - 40% of higher IRG = higher abatement
+export const ABATEMENT_MAX = 2500;
 export const ABATEMENT_RATE = 0.40;
 
 export function calculateSingleSalaryIRG(grossSalary: number | string | Decimal, familyChildren: number = 0): {

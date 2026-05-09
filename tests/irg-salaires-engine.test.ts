@@ -27,13 +27,13 @@ describe('IRG Salaires Engine (LF 2026)', () => {
     expect(result.irg.toNumber()).toBe(3651);
   });
 
-  it('should respect maximum abatement limit (10,000 DZD)', () => {
+  it('should respect maximum abatement limit (2,500 DZD)', () => {
     const result = calculateSingleSalaryIRG(new Decimal(150000));
     // Gross: 150,000 | CNAS: 13,500 | Taxable: 136,500
     // IRG Brut = 32,350
-    // Abatement: 32,350 * 40% = 12,940 → capped at 10,000
-    // IRG Net = 32,350 - 10,000 = 22,350
-    expect(result.irg.toNumber()).toBe(22350);
+    // Abatement: 32,350 * 40% = 12,940 → capped at 2,500
+    // IRG Net = 32,350 - 2,500 = 29,850
+    expect(result.irg.toNumber()).toBe(29850);
   });
 
   it('should aggregate multiple salaries correctly', () => {

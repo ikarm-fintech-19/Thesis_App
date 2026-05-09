@@ -107,7 +107,7 @@ export function Header() {
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9 rounded-lg">
+                <Button variant="ghost" size="icon" className="h-9 w-9 rounded-lg" aria-label={t('common.menu')}>
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
