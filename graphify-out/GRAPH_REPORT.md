@@ -1,12 +1,12 @@
-# Graph Report - Thesis_App  (2026-05-08)
+# Graph Report - Thesis_App  (2026-05-09)
 
 ## Corpus Check
-- 199 files · ~173,592 words
+- 200 files · ~180,971 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1991 nodes · 3426 edges · 142 communities detected
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 88 edges (avg confidence: 0.79)
+- 1996 nodes · 3432 edges · 154 communities detected
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 89 edges (avg confidence: 0.79)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -113,7 +113,6 @@
 - [[_COMMUNITY_Community 100|Community 100]]
 - [[_COMMUNITY_Community 101|Community 101]]
 - [[_COMMUNITY_Community 102|Community 102]]
-- [[_COMMUNITY_Community 103|Community 103]]
 - [[_COMMUNITY_Community 104|Community 104]]
 - [[_COMMUNITY_Community 105|Community 105]]
 - [[_COMMUNITY_Community 106|Community 106]]
@@ -148,10 +147,23 @@
 - [[_COMMUNITY_Community 135|Community 135]]
 - [[_COMMUNITY_Community 136|Community 136]]
 - [[_COMMUNITY_Community 137|Community 137]]
-- [[_COMMUNITY_Community 156|Community 156]]
-- [[_COMMUNITY_Community 157|Community 157]]
-- [[_COMMUNITY_Community 191|Community 191]]
-- [[_COMMUNITY_Community 195|Community 195]]
+- [[_COMMUNITY_Community 138|Community 138]]
+- [[_COMMUNITY_Community 139|Community 139]]
+- [[_COMMUNITY_Community 140|Community 140]]
+- [[_COMMUNITY_Community 141|Community 141]]
+- [[_COMMUNITY_Community 142|Community 142]]
+- [[_COMMUNITY_Community 143|Community 143]]
+- [[_COMMUNITY_Community 144|Community 144]]
+- [[_COMMUNITY_Community 145|Community 145]]
+- [[_COMMUNITY_Community 146|Community 146]]
+- [[_COMMUNITY_Community 147|Community 147]]
+- [[_COMMUNITY_Community 148|Community 148]]
+- [[_COMMUNITY_Community 149|Community 149]]
+- [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_Community 169|Community 169]]
+- [[_COMMUNITY_Community 170|Community 170]]
+- [[_COMMUNITY_Community 204|Community 204]]
+- [[_COMMUNITY_Community 208|Community 208]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 98 edges
@@ -166,110 +178,110 @@
 10. `useAuth()` - 28 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `verifyG50Scenario()` --calls--> `getDeductibilityCap()`  [INFERRED]
+  scratch/audit-g50.ts → src/lib/deductibility-rules.ts
+- `test()` --calls--> `calculateTotalIRG()`  [INFERRED]
+  scratch/test-api.ts → src/lib/irg-salaires-engine.ts
 - `handleRunTests()` --calls--> `runThesisValidation()`  [INFERRED]
   /home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/tax/ThesisPanel.tsx → src/lib/tax-engine.ts
 - `handleCSVImport()` --calls--> `Alert()`  [INFERRED]
   src/components/g50/SalariesStep.tsx → /home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/components/ui/alert.tsx
-- `ThesisPanel()` --calls--> `useI18n()`  [INFERRED]
-  src/components/tax/ThesisPanel.tsx → /home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/i18n-context.tsx
-- `DeclarationTab()` --calls--> `useI18n()`  [INFERRED]
-  src/components/tax/DeclarationTab.tsx → /home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/i18n-context.tsx
-- `ModeToggle()` --calls--> `useI18n()`  [INFERRED]
-  src/components/tax/ModeToggle.tsx → /home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/lib/i18n-context.tsx
+- `GET()` --calls--> `getSession()`  [INFERRED]
+  /home/dev-lab/Documents/AppProject/IWantToGrowToPayTaxes/tva-calculator-workspace/src/app/api/accountant/clients/route.ts → src/lib/auth.ts
 
 ## Hyperedges (group relationships)
 - **Marketing Mode Skill Suite** — skills_marketing_mode_SKILL, skills_marketing_mode_mode_prompt, skills_marketing_mode_README [INFERRED 0.80]
 - **agent-browser CLI Dependencies** — agent_browser_cli, rust, nodejs, npm [EXTRACTED 1.00]
 
-## Communities (196 total, 44 thin omitted)
+## Communities (209 total, 49 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
-Nodes (40): useAuth(), LoginModal(), ProtectedRoute(), DashboardLayout(), Sidebar(), useIsMobile(), SettingsPage(), UsageBanner() (+32 more)
-
-### Community 1 - "Community 1"
-Cohesion: 0.06
-Nodes (31): GET(), POST(), GET(), DELETE(), GET(), POST(), GET(), calculateIRG() (+23 more)
-
-### Community 2 - "Community 2"
-Cohesion: 0.05
 Nodes (48): _collect_shapes(), _collect_shapes_from_slide(), _detect_overlaps(), extract_text_inventory(), _is_cjk(), _is_valid_shape(), _layout_font_size(), main() (+40 more)
 
-### Community 3 - "Community 3"
+### Community 1 - "Community 1"
 Cohesion: 0.05
 Nodes (42): BM25, detect_domain(), _load_csv(), Lowercase, split, remove punctuation, filter short words, Build BM25 index from documents, Score all documents against query, Load CSV and return list of dicts, Core search function using BM25 (+34 more)
 
-### Community 4 - "Community 4"
+### Community 2 - "Community 2"
 Cohesion: 0.07
 Nodes (55): check_conversion(), check_docx(), check_pdf(), check_run_hint_style(), check_toc_has_content(), _detect_language(), docx_has_toc_field(), find_toc_field_boundaries() (+47 more)
 
-### Community 5 - "Community 5"
+### Community 3 - "Community 3"
 Cohesion: 0.09
 Nodes (47): analyzeChartImage(), analyzeMultipleStocks(), analyzeStock(), buildDashboardPrompt(), buildReportPrompt(), extractVerdict(), detectMarket(), fetchGlobalMacro() (+39 more)
 
-### Community 6 - "Community 6"
+### Community 4 - "Community 4"
 Cohesion: 0.08
 Nodes (49): check_file(), convert_blueprint(), error(), extract_image(), extract_table(), extract_text(), form_fill(), _load_json_arg() (+41 more)
 
-### Community 7 - "Community 7"
-Cohesion: 0.08
-Nodes (21): POST(), toDecimal(), POST(), RefundWarningBanner(), GET(), calculateDeclaration(), getCategoryArticleRef(), getPeriodLabel() (+13 more)
+### Community 5 - "Community 5"
+Cohesion: 0.12
+Nodes (20): checkPenalties(), handlePeriodChange(), addSalary(), calculateIRG(), calculateTotals(), handleCSVImport(), removeSalary(), calculateTfpc() (+12 more)
 
-### Community 8 - "Community 8"
-Cohesion: 0.13
-Nodes (20): checkPenalties(), handlePeriodChange(), addPurchase(), checkPenalties(), getDeductibleLabel(), removePurchase(), calculateTfpc(), handleSubmit() (+12 more)
-
-### Community 9 - "Community 9"
-Cohesion: 0.07
-Nodes (38): _best_font_for_char(), content_sanitize(), content_sanitize_cli(), env_check(), env_fix(), font_fallback(), _has_glyph(), install_font_fallback() (+30 more)
-
-### Community 10 - "Community 10"
+### Community 6 - "Community 6"
 Cohesion: 0.11
 Nodes (32): check_blank_pages(), check_colors(), check_content_fill_ratio(), check_cover_bleed(), check_font_embedding(), check_formula_overflow(), check_helvetica_in_cjk(), check_last_page_fill() (+24 more)
 
-### Community 11 - "Community 11"
+### Community 7 - "Community 7"
 Cohesion: 0.06
 Nodes (6): cn(), cn(), cn(), Checkbox(), HoverCard(), cn()
 
-### Community 12 - "Community 12"
+### Community 8 - "Community 8"
+Cohesion: 0.07
+Nodes (36): _best_font_for_char(), check_missing_glyphs(), _classify_lines(), code_sanitize(), convert_latex(), _fallback_symbols(), _find_tectonic(), font_check() (+28 more)
+
+### Community 9 - "Community 9"
 Cohesion: 0.08
 Nodes (19): CharacterProfile, ConsistencyChecker, ConsistencyIssue, main(), Load all character profiles from the project, Check character mentions in content for inconsistencies, Represents a consistency issue found in the story, Check for inconsistent character relationships (+11 more)
 
-### Community 13 - "Community 13"
+### Community 10 - "Community 10"
 Cohesion: 0.08
 Nodes (34): auto_fit_columns(), Auto-fit column widths based on DATA content (not header).     Headers that exce, _aggregate(), cell_ref(), _check_charts(), cmd(), cmd_audit(), cmd_chart_verify() (+26 more)
 
-### Community 14 - "Community 14"
-Cohesion: 0.08
-Nodes (33): _classify_lines(), cmd(), code_sanitize(), convert_html(), convert_latex(), _fallback_symbols(), _find_tectonic(), _human_size() (+25 more)
+### Community 11 - "Community 11"
+Cohesion: 0.11
+Nodes (13): handleTabChange(), loadDbRule(), I18nProvider(), useI18n(), PrivacySettingsPage(), SettingsPage(), DeclarationTab(), ModeToggle() (+5 more)
 
-### Community 15 - "Community 15"
+### Community 12 - "Community 12"
+Cohesion: 0.12
+Nodes (16): GET(), DELETE(), GET(), POST(), GET(), calculateIRG(), POST(), getSession() (+8 more)
+
+### Community 13 - "Community 13"
+Cohesion: 0.08
+Nodes (33): cmd(), convert_html(), env_check(), env_fix(), main(), Output, _probe_chromium(), _probe_cmd() (+25 more)
+
+### Community 14 - "Community 14"
 Cohesion: 0.08
 Nodes (18): main(), Extract character names from explicit character markers, Find mentions of known characters in content, Parse a chapter/scene file for timeline events, Analyze entire project and build timeline, Represents a single event in the story timeline, Group events by their timepoint, Group events by character appearance (+10 more)
 
-### Community 16 - "Community 16"
+### Community 15 - "Community 15"
 Cohesion: 0.08
 Nodes (17): BaseSchemaValidator, Run all validation checks and return True if all pass., Validate that all XML files are well-formed., Base validator with common validation logic for document files., Validate that namespace prefixes in Ignorable attributes are declared., Validate that specific IDs are unique according to OOXML requirements., Validate that all .rels files properly reference files and that all files are re, Validate that all content files are properly declared in [Content_Types].xml. (+9 more)
 
-### Community 17 - "Community 17"
+### Community 16 - "Community 16"
 Cohesion: 0.09
 Nodes (27): HTMLParser, _best_generic(), check_html(), check_pdf(), check_tex(), _contrast_ratio(), _extract_color(), _has_generic() (+19 more)
 
-### Community 18 - "Community 18"
+### Community 17 - "Community 17"
 Cohesion: 0.09
 Nodes (16): DocxXMLEditor, Add RSID and optionally enable track revisions and update fields in settings.xml, Get the next available change ID by checking all tracked change elements., Ensure w16du namespace is declared on the root element., Ensure w16cex namespace is declared on the root element., Ensure w14 namespace is declared on the root element., Inject RSID, author, and date attributes into DOM nodes where applicable., Replace node with automatic attribute injection. (+8 more)
 
-### Community 19 - "Community 19"
+### Community 18 - "Community 18"
 Cohesion: 0.11
 Nodes (25): check_blank_pages(), check_cover_overflow(), check_font_fallback(), check_heading_levels(), check_image_aspect_ratio(), check_image_overflow(), check_line_spacing(), check_shading_type() (+17 more)
 
+### Community 19 - "Community 19"
+Cohesion: 0.18
+Nodes (15): addClient(), addPurchase(), checkPenalties(), getDeductibleLabel(), removePurchase(), addSale(), checkPenalties(), removeSale() (+7 more)
+
 ### Community 20 - "Community 20"
-Cohesion: 0.16
-Nodes (16): addClient(), addSalary(), calculateIRG(), calculateTotals(), handleCSVImport(), removeSalary(), addSale(), checkPenalties() (+8 more)
+Cohesion: 0.15
+Nodes (8): handleUpgrade(), handleInvite(), handleRemove(), Badge(), CardDescription(), CardFooter(), cn(), Skeleton()
 
 ### Community 21 - "Community 21"
-Cohesion: 0.15
-Nodes (8): handleUpgrade(), handleFileChange(), handleScan(), Badge(), CardDescription(), CardFooter(), cn(), Skeleton()
+Cohesion: 0.16
+Nodes (17): useIsMobile(), DropdownMenu(), Sheet(), SheetClose(), SheetDescription(), SheetFooter(), SheetHeader(), SheetOverlay() (+9 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.1
@@ -277,55 +289,55 @@ Nodes (14): _create_line_tracking_parser(), Recursively extract all text content
 
 ### Community 23 - "Community 23"
 Cohesion: 0.08
-Nodes (19): apply_chart_colors(), apply_pie_colors(), create_bar_chart(), create_line_chart(), create_pie_chart(), font_caption(), get_active_style(), normalize_cell_value() (+11 more)
+Nodes (19): apply_chart_colors(), apply_pie_colors(), copy_style(), create_bar_chart(), create_line_chart(), create_pie_chart(), get_active_style(), normalize_cell_value() (+11 more)
 
 ### Community 24 - "Community 24"
-Cohesion: 0.18
-Nodes (12): handleTabChange(), loadDbRule(), LegalPage(), I18nProvider(), DeclarationTab(), ModeToggle(), ThesisPanel(), Alert() (+4 more)
+Cohesion: 0.14
+Nodes (10): handleCustomProfit(), LoginModal(), handleSubmit(), calculateDividends(), handleSubmit(), quickLogin(), handleFileChange(), handleScan() (+2 more)
 
 ### Community 25 - "Community 25"
 Cohesion: 0.12
-Nodes (8): goBack(), goNext(), handleSubmit(), resetDraft(), useI18n(), PrivacySettingsPage(), formatCurrency(), isExempt()
+Nodes (13): Document, Add people.xml relationship to document.xml.rels if not already present., Check if a relationship with given target exists., Check if an override with given part name exists., Ensure word/_rels/document.xml.rels has comment relationships., Ensure [Content_Types].xml has comment content types., Manages comments in unpacked Word documents., Clean up temporary directory on deletion. (+5 more)
 
 ### Community 26 - "Community 26"
 Cohesion: 0.12
-Nodes (13): Document, Add people.xml relationship to document.xml.rels if not already present., Check if a relationship with given target exists., Check if an override with given part name exists., Ensure word/_rels/document.xml.rels has comment relationships., Ensure [Content_Types].xml has comment content types., Manages comments in unpacked Word documents., Clean up temporary directory on deletion. (+5 more)
-
-### Community 27 - "Community 27"
-Cohesion: 0.12
 Nodes (20): _call_zai(), improve_description(), main(), Run `z-ai chat -p` with the prompt and return the text response., Call z-ai to improve the description based on eval results., find_project_root(), main(), Run the full eval set and return results. (+12 more)
 
-### Community 28 - "Community 28"
-Cohesion: 0.13
-Nodes (9): handleCustomProfit(), handleSubmit(), calculateDividends(), handleSubmit(), quickLogin(), Accordion(), AccordionItem(), AccordionTrigger() (+1 more)
-
-### Community 29 - "Community 29"
+### Community 27 - "Community 27"
 Cohesion: 0.13
 Nodes (18): BaseHTTPRequestHandler, build_run(), embed_file(), find_runs(), _find_runs_recursive(), generate_html(), get_mime_type(), _kill_port() (+10 more)
 
-### Community 30 - "Community 30"
+### Community 28 - "Community 28"
 Cohesion: 0.13
 Nodes (12): _generate_hex_id(), Add a single comment to comments.xml., Add a single comment to commentsExtended.xml., Add a single comment to commentsIds.xml., Add a single comment to commentsExtensible.xml., Generate XML for comment range start., Generate XML for comment range end with reference run.          Note: w:rsidR is, Generate XML for comment reference run.          Note: w:rsidR is automatically (+4 more)
 
-### Community 31 - "Community 31"
+### Community 29 - "Community 29"
 Cohesion: 0.19
 Nodes (15): calculateTax(), calculateTTC(), calculateVariance(), formatCurrency(), parseInput(), generateG50PDF(), addRow(), createEmptyRow() (+7 more)
 
-### Community 32 - "Community 32"
+### Community 30 - "Community 30"
+Cohesion: 0.16
+Nodes (13): goBack(), goNext(), handleSubmit(), resetDraft(), fetchDraft(), goBack(), goNext(), handleSubmit() (+5 more)
+
+### Community 31 - "Community 31"
 Cohesion: 0.15
 Nodes (19): add_toc_placeholders(), _detect_toc_styles(), _ensure_hyperlink_style(), _ensure_toc_styles(), _extract_headings_from_docx(), _fix_fld_char_structure(), _fix_heading_outline_levels(), _fix_update_fields() (+11 more)
 
-### Community 33 - "Community 33"
+### Community 32 - "Community 32"
 Cohesion: 0.23
 Nodes (16): addBackground(), addElements(), applyEmphasisFont(), calculateWidthCompensation(), checkCharCount(), checkElementBounds(), checkMinFontSize(), checkTextOverlaps() (+8 more)
 
-### Community 34 - "Community 34"
+### Community 33 - "Community 33"
 Cohesion: 0.11
 Nodes (19): form_annotate(), form_check_bbox(), form_validate(), get_bounding_box_messages(), _normalise_fields_json(), Transform bounding box from image coordinates to PDF coordinates., Accept both the current sheet-based schema and the legacy flat schema.      Curr, Fill a PDF by adding text annotations (FreeText) defined in fields.json. (+11 more)
 
-### Community 35 - "Community 35"
+### Community 34 - "Community 34"
 Cohesion: 0.14
 Nodes (17): apply_palette(), detect_style(), get_palette(), _infer_from_scene(), list_available(), _match_style_keywords(), xlsx skill — Palette System (Style-First Theme Engine) =========================, Step 1: Match explicit style keywords. Returns style name or None. (+9 more)
+
+### Community 35 - "Community 35"
+Cohesion: 0.12
+Nodes (6): downloadCSV(), downloadJSON(), calculateForeignWithholding(), calculateIBS(), calculateRdAllocation(), calculateIRGBusiness()
 
 ### Community 36 - "Community 36"
 Cohesion: 0.33
@@ -352,243 +364,271 @@ Cohesion: 0.14
 Nodes (10): _condense_xml(), _generate_rsid(), _pack_document(), Initialize with required RSID and optional author.          Args:             xm, Strip unnecessary whitespace from XML, preserving text content., Generate random 8-character hex RSID., Initialize with path to unpacked Word document directory.         Automatically, Pack an unpacked directory back into a .docx file. (+2 more)
 
 ### Community 42 - "Community 42"
-Cohesion: 0.18
-Nodes (9): BaseSchemaValidator, PPTXSchemaValidator, Check if a value has the general structure of a UUID., Validate that sldLayoutId elements in slide masters reference valid slide layout, Validator for PowerPoint presentation XML files against XSD schemas., Validate that each slide has exactly one slideLayout reference., Validate that each notesSlide file is referenced by only one slide., Run all validation checks and return True if all pass. (+1 more)
+Cohesion: 0.23
+Nodes (5): useAuth(), ProtectedRoute(), DashboardLayout(), Sidebar(), UsageBanner()
 
 ### Community 43 - "Community 43"
-Cohesion: 0.17
-Nodes (15): generate_flow_svg(), generate_generative_svg(), generate_grid_svg(), generate_noise_svg(), generate_ordered_texture_svg(), generate_supergraphic_svg(), _random_bezier_path(), Generate a single flowing bézier curve across the canvas. (+7 more)
+Cohesion: 0.23
+Nodes (7): POST(), calculateDeclaration(), getCategoryArticleRef(), getPeriodLabel(), calculateDeductibleTVA(), getDeductibilityCap(), getDeductibilityInfo()
 
 ### Community 44 - "Community 44"
-Cohesion: 0.15
-Nodes (15): audit_palette(), compile_blueprint(), derive_intent(), generate_continuous_flow_svg(), _generate_data_driven_svg(), generate_unified_svg(), main(), palette_to_css() (+7 more)
+Cohesion: 0.18
+Nodes (9): BaseSchemaValidator, PPTXSchemaValidator, Check if a value has the general structure of a UUID., Validate that sldLayoutId elements in slide masters reference valid slide layout, Validator for PowerPoint presentation XML files against XSD schemas., Validate that each slide has exactly one slideLayout reference., Validate that each notesSlide file is referenced by only one slide., Run all validation checks and return True if all pass. (+1 more)
 
 ### Community 45 - "Community 45"
 Cohesion: 0.21
 Nodes (5): RootLayout(), AuthProvider(), Footer(), Providers(), Toaster()
 
 ### Community 46 - "Community 46"
-Cohesion: 0.17
-Nodes (4): calculateForeignWithholding(), calculateIBS(), calculateRdAllocation(), calculateIRGBusiness()
+Cohesion: 0.27
+Nodes (9): RefundWarningBanner(), GET(), calculateTVA(), checkAutoExemption(), getApplicableBracket(), isClaimValid(), parseBrackets(), parseDeductions() (+1 more)
 
 ### Community 47 - "Community 47"
-Cohesion: 0.21
-Nodes (7): Generate detailed word-level differences using git word diff., Validator for tracked changes in Word documents., Generate word diff using git with character-level precision., Remove tracked changes authored by Z.AI from the XML root., Main validation method that returns True if valid, False otherwise., Extract text content from Word XML, preserving paragraph structure.          Emp, RedliningValidator
+Cohesion: 0.15
+Nodes (14): audit_cascade_palette(), audit_palette(), _cascade_to_css(), _cascade_to_reportlab(), _contrast_ratio(), generate_cascade_palette(), Strict audit: mode-specific S/L bounds + WCAG contrast checks.     Returns list, WCAG 2.1 relative luminance from hex color. (+6 more)
 
 ### Community 48 - "Community 48"
+Cohesion: 0.22
+Nodes (4): calculateSingleSalaryIRG(), calculateTotalIRG(), verifyG50Scenario(), test()
+
+### Community 49 - "Community 49"
 Cohesion: 0.15
 Nodes (13): _classify_field(), _current_value(), _extra_props(), form_info(), _gather_fields(), Walk the AcroForm field tree iteratively and return a flat list., Return structured JSON describing every form field (pikepdf + check_fillable)., Map a PDF field type token to a human label. (+5 more)
 
-### Community 49 - "Community 49"
-Cohesion: 0.21
-Nodes (12): _parse_align(), _parse_grid_area(), _prevent_orphan_chars(), Prevent orphan characters at end of paragraphs.     Replace the last space/break, Lightweight markdown → HTML for Glass Canvas. Handles paragraphs, headers, bold,, Parse grid_area from component JSON.     Accepts two formats:       - Array:  [r, Parse align from component JSON.     Format: "vertical / horizontal" where each, Wrap a rendered component in a .grid-item div with grid positioning. (+4 more)
-
 ### Community 50 - "Community 50"
-Cohesion: 0.18
-Nodes (12): audit_cascade_palette(), _cascade_to_css(), _cascade_to_reportlab(), _contrast_ratio(), generate_cascade_palette(), WCAG 2.1 relative luminance from hex color., WCAG contrast ratio between two hex colors., Generate a role-based palette cascade where every color is derived from one (+4 more)
+Cohesion: 0.21
+Nodes (7): Generate detailed word-level differences using git word diff., Validator for tracked changes in Word documents., Generate word diff using git with character-level precision., Remove tracked changes authored by Z.AI from the XML root., Main validation method that returns True if valid, False otherwise., Extract text content from Word XML, preserving paragraph structure.          Emp, RedliningValidator
 
 ### Community 51 - "Community 51"
+Cohesion: 0.19
+Nodes (13): compile_blueprint(), derive_intent(), generate_continuous_flow_svg(), generate_generative_svg(), generate_unified_svg(), main(), palette_to_css(), Auto-derive design intent from document title/description.     Scans for theme k (+5 more)
+
+### Community 52 - "Community 52"
+Cohesion: 0.3
+Nodes (7): clearSession(), comparePassword(), hashPassword(), setSession(), signToken(), POST(), POST()
+
+### Community 53 - "Community 53"
+Cohesion: 0.27
+Nodes (8): cn(), CommandGroup(), CommandItem(), Dialog(), DialogClose(), DialogOverlay(), DialogPortal(), DialogTrigger()
+
+### Community 54 - "Community 54"
+Cohesion: 0.23
+Nodes (11): generate_grid_svg(), generate_noise_svg(), generate_ordered_texture_svg(), generate_supergraphic_svg(), _prevent_orphan_chars(), Prevent orphan characters at end of paragraphs.     Replace the last space/break, Grid mode: architectural reference grid.     Ultra-faint 1px lines creating unde, Noise mode: feTurbulence grain texture.     Adds tactile paper-like quality. (+3 more)
+
+### Community 55 - "Community 55"
 Cohesion: 0.24
 Nodes (11): aggregate_results(), calculate_stats(), generate_benchmark(), generate_markdown(), load_run_results(), main(), Aggregate run results into summary statistics.      Returns run_summary with sta, Generate complete benchmark.json from run results. (+3 more)
 
-### Community 52 - "Community 52"
+### Community 56 - "Community 56"
 Cohesion: 0.33
 Nodes (9): collectStats(), convert(), loadPdfLib(), loadPlaywright(), postProcess(), preRenderHooks(), prettyBytes(), resolveChromium() (+1 more)
 
-### Community 53 - "Community 53"
+### Community 57 - "Community 57"
 Cohesion: 0.18
 Nodes (11): agent-browser CLI, Agent Browser Skill, Chrome DevTools Protocol, Headless Browser Automation, Node.js, npm, Rust, Session Management (agent-browser) (+3 more)
 
-### Community 54 - "Community 54"
+### Community 58 - "Community 58"
 Cohesion: 0.4
 Nodes (6): addToRemoveQueue(), dispatch(), genId(), reducer(), toast(), useToast()
 
-### Community 55 - "Community 55"
-Cohesion: 0.36
-Nodes (8): cn(), Menubar(), MenubarGroup(), MenubarLabel(), MenubarMenu(), MenubarPortal(), MenubarRadioItem(), MenubarSubContent()
-
-### Community 56 - "Community 56"
+### Community 59 - "Community 59"
 Cohesion: 0.36
 Nodes (8): cn(), Drawer(), DrawerClose(), DrawerDescription(), DrawerOverlay(), DrawerPortal(), DrawerTitle(), DrawerTrigger()
 
-### Community 57 - "Community 57"
+### Community 60 - "Community 60"
+Cohesion: 0.36
+Nodes (8): cn(), Menubar(), MenubarGroup(), MenubarLabel(), MenubarMenu(), MenubarPortal(), MenubarRadioItem(), MenubarSubContent()
+
+### Community 61 - "Community 61"
 Cohesion: 0.24
 Nodes (5): Base validator with common validation logic for document files., Validator for Word document XML files against XSD schemas., Validation modules for Word document processing., Validator for PowerPoint presentation XML files against XSD schemas., Validator for tracked changes in Word documents.
 
-### Community 58 - "Community 58"
+### Community 62 - "Community 62"
+Cohesion: 0.2
+Nodes (10): _parse_align(), _parse_grid_area(), Lightweight markdown → HTML for Glass Canvas. Handles paragraphs, headers, bold,, Parse grid_area from component JSON.     Accepts two formats:       - Array:  [r, Parse align from component JSON.     Format: "vertical / horizontal" where each, Wrap a rendered component in a .grid-item div with grid positioning., Convert a JSON component object into HTML string, wrapped in grid-item., render_component() (+2 more)
+
+### Community 63 - "Community 63"
 Cohesion: 0.2
 Nodes (10): generate_color_palette(), _hex_to_rgb(), _hsl_to_hex(), _make_role(), Convert HSL (h: 0-360, s: 0-1, l: 0-1) to hex string., Nudge accent hue away from muddy/ugly zones toward attractive neighbors., Convert hex to 'r,g,b' string for rgba() usage., Generative Color Harmony Engine — geometric accent computation + 5 aesthetic mod (+2 more)
 
-### Community 59 - "Community 59"
+### Community 64 - "Community 64"
 Cohesion: 0.28
 Nodes (7): main(), package_skill(), Check if a path should be excluded from packaging., Package a skill folder into a .skill file.      Args:         skill_path: Path t, should_exclude(), Basic validation of a skill, validate_skill()
 
-### Community 60 - "Community 60"
-Cohesion: 0.43
-Nodes (6): Breadcrumb(), BreadcrumbEllipsis(), BreadcrumbLink(), BreadcrumbPage(), BreadcrumbSeparator(), cn()
-
-### Community 61 - "Community 61"
-Cohesion: 0.32
-Nodes (4): ScrollArea(), ScrollBar(), handleKeyPress(), sendMessage()
-
-### Community 62 - "Community 62"
+### Community 65 - "Community 65"
 Cohesion: 0.43
 Nodes (6): cn(), Pagination(), PaginationContent(), PaginationEllipsis(), PaginationItem(), PaginationNext()
 
-### Community 63 - "Community 63"
+### Community 66 - "Community 66"
+Cohesion: 0.43
+Nodes (6): Breadcrumb(), BreadcrumbEllipsis(), BreadcrumbLink(), BreadcrumbPage(), BreadcrumbSeparator(), cn()
+
+### Community 67 - "Community 67"
+Cohesion: 0.32
+Nodes (4): ScrollArea(), ScrollBar(), handleKeyPress(), sendMessage()
+
+### Community 68 - "Community 68"
 Cohesion: 0.36
 Nodes (7): condense_xml(), main(), pack_document(), Strip unnecessary whitespace and remove comments., Pack a directory into an Office file (.docx/.pptx/.xlsx).      Args:         inp, Validate document by converting to HTML with soffice., validate_document()
 
-### Community 64 - "Community 64"
+### Community 69 - "Community 69"
 Cohesion: 0.29
 Nodes (8): _assign_floating_meta(), _auto_assign_grid_areas(), _distribute_rows_by_weight(), _estimate_content_weight(), Estimate the visual weight (space needed) of a component based on its content., Assign grid_area to a Floating_Meta component based on its position., Distribute grid rows among content components proportionally to their content we, Auto-assign grid_area to components that don't have one,     based on the archet
 
-### Community 65 - "Community 65"
+### Community 70 - "Community 70"
 Cohesion: 0.54
 Nodes (7): build_payload(), call_api(), _clean(), load_config(), main(), render_markdown(), _truncate()
 
-### Community 66 - "Community 66"
+### Community 71 - "Community 71"
 Cohesion: 0.25
 Nodes (8): align_header(), border_header(), fill_header(), font_header(), 11pt header font — text color on primary background., Thin bottom border under header row., Apply header style to a row range., style_header_row()
 
-### Community 67 - "Community 67"
+### Community 73 - "Community 73"
 Cohesion: 0.48
 Nodes (3): cn(), ToggleGroup(), ToggleGroupItem()
 
-### Community 68 - "Community 68"
-Cohesion: 0.48
-Nodes (5): fetchDraft(), goBack(), goNext(), handleSubmit(), resetDraft()
+### Community 74 - "Community 74"
+Cohesion: 0.57
+Nodes (3): Accordion(), AccordionItem(), AccordionTrigger()
 
-### Community 69 - "Community 69"
+### Community 75 - "Community 75"
 Cohesion: 0.52
 Nodes (6): build_parser(), _cast(), collect_arguments(), invoke(), load_config(), main()
 
-### Community 70 - "Community 70"
+### Community 76 - "Community 76"
 Cohesion: 0.38
 Nodes (6): check_library(), list_examples(), prune_oldest(), List all blog examples sorted by date (oldest first)., Check library status and recommend pruning if needed., Remove the oldest examples to bring library under limit.
 
-### Community 71 - "Community 71"
+### Community 77 - "Community 77"
 Cohesion: 0.29
 Nodes (7): border_total(), fill_total(), font_subheader(), 11pt sub-header — primary color text., Medium top border above totals row., Apply totals row style., style_total_row()
 
-### Community 72 - "Community 72"
+### Community 78 - "Community 78"
 Cohesion: 0.67
 Nodes (4): api_post(), log(), E2E Test Suite — Matax TVA Calculator Tests: Calculator, Declaration, i18n, them, run_tests()
 
-### Community 73 - "Community 73"
-Cohesion: 0.53
-Nodes (4): cn(), FormControl(), FormDescription(), FormMessage()
-
-### Community 74 - "Community 74"
+### Community 79 - "Community 79"
 Cohesion: 0.6
 Nodes (4): Carousel(), CarouselNext(), cn(), useCarousel()
 
-### Community 75 - "Community 75"
+### Community 80 - "Community 80"
 Cohesion: 0.53
 Nodes (4): cn(), NavigationMenuContent(), NavigationMenuTrigger(), NavigationMenuViewport()
 
-### Community 76 - "Community 76"
+### Community 81 - "Community 81"
 Cohesion: 0.53
 Nodes (4): cn(), ContextMenu(), ContextMenuLabel(), ContextMenuRadioItem()
 
-### Community 78 - "Community 78"
+### Community 82 - "Community 82"
+Cohesion: 0.53
+Nodes (4): cn(), FormControl(), FormDescription(), FormMessage()
+
+### Community 84 - "Community 84"
 Cohesion: 0.47
 Nodes (5): generate_visual(), get_script_path(), main(), Get the path to the appropriate generation script., Generate a single visual using the appropriate tool.
 
-### Community 79 - "Community 79"
-Cohesion: 0.47
-Nodes (5): main(), pretty_print_xml(), Unpack an Office file into a directory and pretty-print all XML files., Pretty-print a single XML file in place., unpack_document()
-
-### Community 80 - "Community 80"
+### Community 85 - "Community 85"
 Cohesion: 0.33
 Nodes (6): convert_office(), _locate_soffice(), Search for a working soffice binary., Convert an office document to PDF via LibreOffice., Search for a working soffice binary., Convert an office document to PDF via LibreOffice.
 
-### Community 81 - "Community 81"
+### Community 86 - "Community 86"
+Cohesion: 0.27
+Nodes (6): form_render(), meta_brand(), Convert each page of a PDF to a PNG image., Convert each page of a PDF to a PNG image., Add Z.ai branding metadata to PDF documents., Add Z.ai branding metadata to PDF documents.
+
+### Community 87 - "Community 87"
+Cohesion: 0.33
+Nodes (6): content_sanitize(), content_sanitize_cli(), Sanitize Paragraph text content before font fallback.      Removes/replaces char, Process a single character. Returns replacement string, or None to delete., Sanitize content text for PDF rendering (dry-run report).      Reads a text file, _sanitize_one_char()
+
+### Community 88 - "Community 88"
+Cohesion: 0.47
+Nodes (5): main(), pretty_print_xml(), Unpack an Office file into a directory and pretty-print all XML files., Pretty-print a single XML file in place., unpack_document()
+
+### Community 89 - "Community 89"
+Cohesion: 0.33
+Nodes (6): _generate_data_driven_svg(), generate_flow_svg(), _random_bezier_path(), Generate a single flowing bézier curve across the canvas., Flow mode: ultra-wide, ultra-faint bézier curves.     Creates atmospheric depth, Content-Aware SVG: Transform business data arrays into Bézier background curves.
+
+### Community 90 - "Community 90"
 Cohesion: 0.6
 Nodes (5): create(), createFromImage(), displayResult(), main(), query()
 
-### Community 82 - "Community 82"
+### Community 91 - "Community 91"
 Cohesion: 0.33
 Nodes (6): _apply(), Auto-detect style from user prompt and switch all color tokens.     Call this BE, Manually select a palette by style name.     Available: professional, warm, eleg, Internal: apply a palette dict to all module-level color tokens., use_palette(), use_palette_explicit()
 
-### Community 83 - "Community 83"
-Cohesion: 0.6
-Nodes (3): AlertDialog(), AlertDialogDescription(), cn()
+### Community 92 - "Community 92"
+Cohesion: 0.7
+Nodes (4): verifyToken(), getVerifiedPayload(), isValidJWT(), middleware()
 
-### Community 84 - "Community 84"
+### Community 93 - "Community 93"
+Cohesion: 0.6
+Nodes (3): Avatar(), AvatarFallback(), AvatarImage()
+
+### Community 94 - "Community 94"
 Cohesion: 0.6
 Nodes (3): cn(), InputOTP(), InputOTPGroup()
 
-### Community 85 - "Community 85"
+### Community 96 - "Community 96"
+Cohesion: 0.6
+Nodes (3): AlertDialog(), AlertDialogDescription(), cn()
+
+### Community 97 - "Community 97"
 Cohesion: 0.7
 Nodes (3): clearRateLimits(), getClientId(), withRateLimit()
 
-### Community 87 - "Community 87"
+### Community 98 - "Community 98"
 Cohesion: 0.6
 Nodes (4): copy_slide(), main(), Append a copy of slide[index] from src_prs into dst_prs., rearrange_presentation()
 
-### Community 88 - "Community 88"
+### Community 99 - "Community 99"
 Cohesion: 0.7
 Nodes (4): dimToPx(), main(), parseArgs(), resolveChromium()
 
-### Community 89 - "Community 89"
+### Community 100 - "Community 100"
 Cohesion: 0.4
 Nodes (5): fill_data_row(), font_body(), Alternating row: even=white, odd=warm-white., Apply data row style (alternating fill)., style_data_row()
 
-### Community 90 - "Community 90"
+### Community 101 - "Community 101"
 Cohesion: 0.4
 Nodes (5): align_title(), font_title(), 16pt title font — left-aligned, no fill., Apply standard sheet setup:       - hide grid lines       - set margin column A, setup_sheet()
 
-### Community 100 - "Community 100"
-Cohesion: 0.5
-Nodes (4): check_missing_glyphs(), font_check(), Scan a PDF for .notdef glyphs, control chars, and other problematic characters., Scan a PDF for missing glyphs (□ boxes) after generation.
-
-### Community 101 - "Community 101"
+### Community 115 - "Community 115"
 Cohesion: 0.5
 Nodes (4): calculate_layout(), _divide_vertical(), Calculate positioned layout for named elements.          Args:         elements:, Divide a rectangle into n vertical bands with golden-ratio-inspired proportions.
 
-### Community 102 - "Community 102"
+### Community 116 - "Community 116"
 Cohesion: 0.83
 Nodes (3): main(), parseArgs(), resolveChromium()
 
-### Community 103 - "Community 103"
+### Community 117 - "Community 117"
 Cohesion: 0.67
 Nodes (3): generate_html(), main(), Generate HTML report from loop output data. If auto_refresh is True, adds a meta
 
-### Community 104 - "Community 104"
+### Community 118 - "Community 118"
 Cohesion: 0.5
 Nodes (4): make_chart_title(), Build a chart Title with font baked into <tx><rich><defRPr>/<rPr>.     Ensures W, Set chart title and axis titles using make_chart_title() for     cross-platform, setup_chart_titles()
 
-### Community 105 - "Community 105"
+### Community 119 - "Community 119"
 Cohesion: 0.83
 Nodes (3): createSystemMessage(), createUserMessage(), generateMessageId()
 
-### Community 133 - "Community 133"
-Cohesion: 0.67
-Nodes (3): meta_brand(), Add Z.ai branding metadata to PDF documents., Add Z.ai branding metadata to PDF documents.
-
-### Community 134 - "Community 134"
-Cohesion: 0.67
-Nodes (3): form_render(), Convert each page of a PDF to a PNG image., Convert each page of a PDF to a PNG image.
-
-### Community 137 - "Community 137"
+### Community 150 - "Community 150"
 Cohesion: 0.67
 Nodes (3): Marketing Mode README, Marketing Mode Skill, Marketing Mode Prompt
 
 ## Knowledge Gaps
 - **496 isolated node(s):** `BM25 ranking algorithm for text search`, `Lowercase, split, remove punctuation, filter short words`, `Build BM25 index from documents`, `Score all documents against query`, `Load CSV and return list of dicts` (+491 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **44 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **49 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `Community 11` to `Community 0`, `Community 8`, `Community 20`, `Community 21`, `Community 24`, `Community 28`, `Community 31`, `Community 55`, `Community 56`, `Community 60`, `Community 61`, `Community 62`, `Community 67`, `Community 73`, `Community 74`, `Community 75`, `Community 76`, `Community 83`, `Community 84`, `Community 92`, `Community 93`, `Community 94`, `Community 95`, `Community 96`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
-- **Why does `useI18n()` connect `Community 25` to `Community 0`, `Community 67`, `Community 68`, `Community 8`, `Community 11`, `Community 45`, `Community 46`, `Community 20`, `Community 21`, `Community 24`, `Community 28`, `Community 31`?**
-  _High betweenness centrality (0.032) - this node is a cross-community bridge._
-- **Why does `calculateDeclaration()` connect `Community 7` to `Community 20`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `cn()` connect `Community 7` to `Community 5`, `Community 11`, `Community 19`, `Community 20`, `Community 21`, `Community 24`, `Community 29`, `Community 42`, `Community 53`, `Community 59`, `Community 60`, `Community 65`, `Community 66`, `Community 67`, `Community 73`, `Community 74`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 93`, `Community 94`, `Community 95`, `Community 96`, `Community 106`, `Community 107`, `Community 108`, `Community 109`, `Community 110`, `Community 111`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Why does `useI18n()` connect `Community 11` to `Community 35`, `Community 5`, `Community 7`, `Community 73`, `Community 42`, `Community 45`, `Community 19`, `Community 20`, `Community 21`, `Community 24`, `Community 29`, `Community 30`, `Community 95`?**
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `calculateDeclaration()` connect `Community 43` to `Community 72`, `Community 19`, `Community 46`?**
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `useI18n()` (e.g. with `PrivacySettingsPage()` and `ThesisPanel()`) actually correct?**
   _`useI18n()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 17 inferred relationships involving `getSession()` (e.g. with `GET()` and `DELETE()`) actually correct?**

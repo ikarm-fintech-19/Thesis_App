@@ -32,7 +32,7 @@
     "hash": "675899342e765a4d16acd75a53389101"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/next-env.d.ts": {
-    "mtime": 1778166840.971433,
+    "mtime": 1778344947.3537319,
     "hash": "2a74d3909800ca5467fa83b0ab4a4890"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/scratch/verify-g50-full.ts": {
@@ -76,12 +76,16 @@
     "hash": "e3e958cb2070d724af2a973769dcb1ed"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/scratch/audit-g50.ts": {
-    "mtime": 1778111457.3548467,
-    "hash": "0226a29f7b49a6f80e573f946bed8bfd"
+    "mtime": 1778334354.9520614,
+    "hash": "21575e22740a83e5f0223a03d0b76718"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/scratch/verify-tc11.ts": {
     "mtime": 1778162526.5279815,
     "hash": "0f85e5c57b9f8ab0f04de5be3a33a08a"
+  },
+  "/home/dev-lab/Documents/GitHub/Thesis_App/scratch/test-api.ts": {
+    "mtime": 1778278953.8225849,
+    "hash": "9246e34fefe9032d08551c7535b0df58"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/scratch/test-db.js": {
     "mtime": 1778025011.6589308,
@@ -95,9 +99,9 @@
     "mtime": 1778027933.0316544,
     "hash": "3b02b93d781038377d08e1b6debc8410"
   },
-  "/home/dev-lab/Documents/GitHub/Thesis_App/src/middleware.ts": {
-    "mtime": 1778237968.5508475,
-    "hash": "675275710cf64db3ae898729cb17637e"
+  "/home/dev-lab/Documents/GitHub/Thesis_App/src/proxy.ts": {
+    "mtime": 1778326471.2805471,
+    "hash": "688de08391cc848e0c8543c199ed91c8"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/hooks/use-mobile.ts": {
     "mtime": 1777839142.6806226,
@@ -124,8 +128,8 @@
     "hash": "606571f5a2805298001a277c539a3ebc"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/dashboard/Sidebar.tsx": {
-    "mtime": 1778106843.0070379,
-    "hash": "d6639e93814f027940fee2474e5649f3"
+    "mtime": 1778340488.1448905,
+    "hash": "8ef6562f41191e2457d19026cd2e4486"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/dashboard/RefundWarningBanner.tsx": {
     "mtime": 1778106849.9870603,
@@ -384,16 +388,16 @@
     "hash": "a81efb435c82e12b290a1da5625b3952"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/g50/PurchasesStep.tsx": {
-    "mtime": 1778207881.6950116,
-    "hash": "12f4efe1143009366c20a0a149a2e0a7"
+    "mtime": 1778279036.767025,
+    "hash": "78523515f27f30fb2080ced43dbe7820"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/g50/SalariesStep.tsx": {
     "mtime": 1778162329.6336432,
     "hash": "f37ad5a878b6e6dd88181db0fa89e677"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/g50/SummaryStep.tsx": {
-    "mtime": 1778111709.976074,
-    "hash": "3f0a139de03995ce8e15edd43576104e"
+    "mtime": 1778279081.4834874,
+    "hash": "c615d693babce0b17e33426e7ff2f645"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/g50/PeriodStep.tsx": {
     "mtime": 1777929604.291433,
@@ -404,8 +408,8 @@
     "hash": "beaa458091bc42a97f3ec6cabc30600e"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/layout/Header.tsx": {
-    "mtime": 1778020804.5428991,
-    "hash": "00b9a0c7c5d00001a1109a6600f866bb"
+    "mtime": 1778328035.666505,
+    "hash": "ff6ba2fafb0b4c8b551dc8ac924d0b4b"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/components/layout/Providers.tsx": {
     "mtime": 1777845384.7628233,
@@ -576,8 +580,8 @@
     "hash": "e07d13fa3824c2ac7d98e32bfb8c0f6d"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/app/api/declaration/calculate/route.ts": {
-    "mtime": 1778162300.9213026,
-    "hash": "944d29d2befeabf13ed8a91c393ae7ad"
+    "mtime": 1778279026.6189399,
+    "hash": "64878d6f17d3a2bd6e69d107cf558bb1"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/app/api/declaration/draft/route.ts": {
     "mtime": 1778017787.4470682,
@@ -628,8 +632,8 @@
     "hash": "5010441aa3f0fbbde48d19b7aebfd70f"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/app/login/page.tsx": {
-    "mtime": 1778094088.0582712,
-    "hash": "2f1fe05340aad7941405a6d4f347e6a7"
+    "mtime": 1778328043.6224859,
+    "hash": "836555c6b8bc218d5d872dc8cd6a5191"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/lib/dividends-engine.ts": {
     "mtime": 1778106370.537372,
@@ -652,8 +656,8 @@
     "hash": "ab618d4c2e78c5f1f656be5d922e1baa"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/lib/irg-salaires-engine.ts": {
-    "mtime": 1778162495.3676112,
-    "hash": "eb9be2245939f070b1acc7a4d59ac9f0"
+    "mtime": 1778334336.816006,
+    "hash": "9e88219fcb923853bf5ff03c034b033a"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/src/lib/i18n-context.tsx": {
     "mtime": 1777935117.9295766,
@@ -740,8 +744,8 @@
     "hash": "d63174c62101babf6b5cd84cf515d583"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/tests/irg-salaires-engine.test.ts": {
-    "mtime": 1778237941.962495,
-    "hash": "a397d3c7f3c9212aa3a733e7f532caf2"
+    "mtime": 1778334342.724024,
+    "hash": "d5759cbaba93dfe17c9e16d76dc2cf6d"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/prisma/seed.ts": {
     "mtime": 1778035266.460734,
@@ -824,7 +828,7 @@
     "hash": "b02fde0fef5a593b184bfe767db7e07d"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/graphify-out/converted/thesis_chapters_3_and_5_6ef7fcf1.md": {
-    "mtime": 1778237993.2271814,
+    "mtime": 1778344971.3137596,
     "hash": "7280816b3a4c7e86ade9ded9e5bcf161"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/lf2026.txt": {
@@ -872,7 +876,7 @@
     "hash": "6695bced127a31693f77f145f71075be"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/graphify-out/converted/G50 2025_6c88a5d0.md": {
-    "mtime": 1778237993.563186,
+    "mtime": 1778344971.64176,
     "hash": "49e76ca06054fc981794ea2024e1b842"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/Articles/GN\u00b0 11 (IRG - BIC).pdf": {
@@ -923,9 +927,17 @@
     "mtime": 1777931212.5968668,
     "hash": "76d7dc221a4fc8ff163d103e20311bb8"
   },
+  "/home/dev-lab/Documents/GitHub/Thesis_App/public/icon-192.png": {
+    "mtime": 1778326460.648529,
+    "hash": "888e02dd82e7608ac81e97eba22f9388"
+  },
   "/home/dev-lab/Documents/GitHub/Thesis_App/public/logo.svg": {
     "mtime": 1761710853.0,
     "hash": "42f46ee1967225126315578016f0f9b6"
+  },
+  "/home/dev-lab/Documents/GitHub/Thesis_App/public/icon-512.png": {
+    "mtime": 1778326460.644529,
+    "hash": "888e02dd82e7608ac81e97eba22f9388"
   },
   "/home/dev-lab/Documents/GitHub/Thesis_App/public/logo.png": {
     "mtime": 1777931030.5006561,
